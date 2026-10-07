@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ctrl+all</title>
+<meta name="description" content="ctrl+all runs the coding agents you already pay for on your Mac, and lets you steer them from your phone. Claude Code, Codex, OpenCode and eight more. No per-token metering.">
+<meta property="og:title" content="ctrl+all">
+<meta property="og:description" content="All your coding agents. One Mac. Any phone.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://namangoyal3.github.io/ctrlall-site/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f8f7f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0c0e" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23ff5b2e'/%3E%3Cpath d='M18 38 32 24l14 14' fill='none' stroke='%23fff' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preload" as="image" href="assets/hero-window@2x.png">
+<style>
+:root{
+  --bg:#f8f7f4; --bg-2:#ffffff; --ink:#1d1d1f; --ink-2:#48484d; --ink-3:#86868b;
+  --line:rgba(29,29,31,.10); --line-2:rgba(29,29,31,.06);
+  --brand:#ff5b2e; --brand-deep:#e0431a; --brand-wash:#ffe7dc;
+  --dark:#0e1116; --dark-ink:#f5f5f7; --dark-ink-2:#a1a1a6;
+  --shadow:0 40px 90px -30px rgba(29,29,31,.32), 0 2px 6px rgba(29,29,31,.06);
+  --r-surface:24px; --r-window:14px; --r-pill:999px;
+  --nav-h:52px; --w:1120px; --ease:cubic-bezier(.16,1,.3,1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b0c0e; --bg-2:#141518; --ink:#f5f5f7; --ink-2:#b4b4b9; --ink-3:#7c7c82;
+    --line:rgba(255,255,255,.12); --line-2:rgba(255,255,255,.07);
+    --brand-wash:#2a1a14;
+    --shadow:0 40px 90px -30px rgba(0,0,0,.75), 0 2px 6px rgba(0,0,0,.4);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,p{margin:0}
+.wrap{width:min(var(--w),100% - 40px);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:10;height:var(--nav-h);
+  background:color-mix(in srgb,var(--bg) 80%,transparent);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid var(--line-2)}
+.nav .wrap{height:100%;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:17px;letter-spacing:-.01em}
+.mark{width:26px;height:26px;border-radius:7px;background:var(--brand);display:grid;place-items:center;flex:none}
+.mark svg{width:14px;height:14px}
+.nav-link{font-size:14px;color:var(--ink-2);transition:color .2s}
+.nav-link:hover{color:var(--brand)}
+
+/* hero */
+.hero{padding:clamp(44px,6vw,80px) 0 0}
+.h1{font-size:clamp(42px,6vw,82px);line-height:1;letter-spacing:-.04em;font-weight:600;text-wrap:balance;max-width:11em}
+.h1 em{font-style:normal;color:var(--brand)}
+.lede{margin-top:22px;font-size:clamp(17px,1.35vw,19px);line-height:1.45;color:var(--ink-2);max-width:32em}
+.form{margin-top:28px;display:flex;gap:10px;max-width:520px}
+.form input{flex:1;min-width:0;height:52px;padding:0 20px;font:inherit;font-size:16px;color:var(--ink);
+  background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r-pill);outline:none;transition:border-color .2s,box-shadow .2s}
+.form input::placeholder{color:var(--ink-3)}
+.form input:focus{border-color:var(--brand);box-shadow:0 0 0 4px color-mix(in srgb,var(--brand) 18%,transparent)}
+.btn{height:52px;padding:0 24px;border:0;border-radius:var(--r-pill);background:var(--ink);color:var(--bg);
+  font:inherit;font-size:16px;font-weight:600;cursor:pointer;white-space:nowrap;transition:transform .15s,background .2s,opacity .2s}
+.btn:hover{background:var(--brand);color:#fff}
+.btn:active{transform:scale(.97)}
+.btn[disabled]{opacity:.6;cursor:default}
+.btn:focus-visible,.form input:focus-visible,.nav-link:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
+.note{margin-top:12px;font-size:13px;color:var(--ink-3);min-height:1.5em}
+.note.err{color:var(--brand-deep)}
+.done{display:none;margin-top:28px;padding:20px 24px;border-radius:18px;background:var(--brand-wash);font-size:16px;line-height:1.45;max-width:520px}
+.done strong{display:block;font-size:19px;letter-spacing:-.02em;margin-bottom:2px}
+form.sent{display:none}
+form.sent + .note{display:none}
+form.sent ~ .done{display:block}
+
+/* hero stage: Mac window with the phone in front */
+.stage{position:relative;margin-top:clamp(40px,5vw,64px);height:clamp(420px,52vw,760px);overflow:hidden;border-radius:var(--r-surface) var(--r-surface) 0 0;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--brand) 14%,var(--bg)) 0%,color-mix(in srgb,var(--brand) 4%,var(--bg)) 70%,var(--bg) 100%)}
+.stage::before{content:"";position:absolute;inset:auto -10% -40% 30%;height:80%;border-radius:50%;
+  background:radial-gradient(closest-side,color-mix(in srgb,var(--brand) 30%,transparent),transparent 72%);filter:blur(10px)}
+.stage .window{position:absolute;left:clamp(20px,5%,64px);right:clamp(120px,22%,280px);top:clamp(28px,5%,56px)}
+.stage .phone{position:absolute;right:clamp(16px,5%,64px);bottom:-8%;width:clamp(170px,22%,290px)}
+.window{border-radius:var(--r-window);overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+.window-bar{height:36px;display:flex;align-items:center;gap:8px;padding:0 16px;background:#f5f5f7;border-bottom:1px solid rgba(29,29,31,.08)}
+.window-bar i{width:12px;height:12px;border-radius:50%;display:block}
+.window-bar i:nth-child(1){background:#ff5f57}.window-bar i:nth-child(2){background:#febc2e}.window-bar i:nth-child(3){background:#28c840}
+.window img{width:100%}
+.phone{aspect-ratio:393/852;background:#1d1d1f;border-radius:14% / 6.5%;padding:3.6%;position:relative;
+  box-shadow:0 50px 100px -30px rgba(29,29,31,.5),inset 0 0 0 2px #3a3a3c}
+.phone img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:11.5% / 5.3%;background:#f6f7fb}
+.phone::after{content:"";position:absolute;top:7%;left:50%;transform:translateX(-50%);width:28%;height:3%;border-radius:999px;background:#0a0a0a}
+
+/* shared section head */
+.h2{font-size:clamp(32px,4.4vw,56px);line-height:1.04;letter-spacing:-.035em;font-weight:600;text-wrap:balance}
+.sub{margin-top:16px;font-size:clamp(17px,1.3vw,19px);line-height:1.45;color:var(--ink-2);max-width:34em}
+
+/* bento: 3 tiles */
+.bento{padding:clamp(80px,10vw,140px) 0 0}
+.bento .h2{max-width:14em;margin-bottom:clamp(32px,4vw,56px)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto auto;gap:18px}
+.tile{position:relative;border-radius:var(--r-surface);background:var(--bg-2);border:1px solid var(--line-2);overflow:hidden;display:flex;flex-direction:column;padding:34px 34px 0}
+.tile.wide{grid-column:span 2}
+.tile.tall{grid-row:span 2}
+.tile h3{font-size:clamp(22px,2.1vw,30px);line-height:1.12;letter-spacing:-.028em;font-weight:600;max-width:14em}
+.tile p{margin-top:12px;font-size:16px;line-height:1.5;color:var(--ink-2);max-width:30em}
+.tile .shot{margin:28px -1px 0 0;margin-right:-34px;border-top-left-radius:12px;overflow:hidden;border:1px solid var(--line);border-right:0;border-bottom:0;
+  box-shadow:0 24px 60px -24px rgba(29,29,31,.4);background:#fff;aspect-ratio:21/12}
+.tile .shot img{width:100%;height:100%;object-fit:cover;object-position:left top}
+.tile.dark{background:var(--dark);color:var(--dark-ink);border-color:transparent}
+.tile.dark p{color:var(--dark-ink-2)}
+.tile.dark{min-height:620px}
+.tile.dark .phone{position:absolute;left:50%;bottom:-16%;transform:translateX(-50%);width:min(76%,270px)}
+.tile.dark .phone img{background:#111318}
+
+/* the zero */
+.zero{margin-top:clamp(80px,10vw,140px);background:var(--dark);color:var(--dark-ink);padding:clamp(80px,10vw,150px) 0}
+.zero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:end}
+.zero .big{font-size:clamp(180px,26vw,360px);line-height:.82;letter-spacing:-.07em;font-weight:600;color:var(--brand);font-variant-numeric:tabular-nums}
+.zero .big-label{display:block;margin-top:18px;font-size:clamp(24px,2.4vw,34px);letter-spacing:-.03em;font-weight:600}
+.zero .sub{color:var(--dark-ink-2);max-width:28em}
+.zero .pair{margin-top:clamp(32px,4vw,56px);display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.zero .stat{border-top:1px solid rgba(255,255,255,.16);padding-top:18px}
+.zero .stat b{display:block;font-size:clamp(36px,3.6vw,52px);line-height:1;letter-spacing:-.04em;font-weight:600}
+.zero .stat span{display:block;margin-top:8px;font-size:15px;color:var(--dark-ink-2);line-height:1.4}
+
+/* steps */
+.steps{padding:clamp(80px,10vw,140px) 0 0}
+.steps .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(40px,6vw,96px);align-items:start}
+.step-list{margin-top:36px}
+.step{display:grid;grid-template-columns:72px 1fr;gap:12px;padding:30px 0;border-top:1px solid var(--line)}
+.step:last-child{border-bottom:1px solid var(--line)}
+.step .n{font-size:40px;line-height:1;letter-spacing:-.04em;font-weight:600;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.step h3{font-size:clamp(21px,1.9vw,26px);line-height:1.15;letter-spacing:-.025em;font-weight:600}
+.step p{margin-top:8px;font-size:16px;line-height:1.5;color:var(--ink-2);max-width:28em}
+.sticky{position:sticky;top:calc(var(--nav-h) + 32px)}
+
+/* closing */
+.cta{padding:clamp(100px,13vw,180px) 0 clamp(80px,10vw,130px);text-align:center}
+.cta .h2{margin-inline:auto;max-width:12em;font-size:clamp(40px,6vw,88px);letter-spacing:-.045em}
+.cta .sub{margin-inline:auto}
+.cta .form{margin:36px auto 0}
+.cta .done{margin-inline:auto;text-align:left}
+
+footer{border-top:1px solid var(--line-2);padding:28px 0 calc(28px + env(safe-area-inset-bottom))}
+footer .wrap{display:flex;align-items:center;justify-content:space-between;font-size:14px;color:var(--ink-3)}
+footer .brand{font-size:15px;color:var(--ink)}
+
+/* motion: content arrives as you reach it */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.rise{animation:rise .9s var(--ease) both}
+.rise:nth-child(2){animation-delay:.07s}.rise:nth-child(3){animation-delay:.14s}.rise:nth-child(4){animation-delay:.2s}
+.stage{animation:rise 1.2s .25s var(--ease) both}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .rise,.stage{animation:none}
+}
+
+/* responsive */
+@media (max-width:980px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto}
+  .tile.wide{grid-column:span 2}
+  .tile.tall{grid-row:auto;grid-column:span 2;flex-direction:row;align-items:center;gap:24px;padding-bottom:0}
+  .tile.tall > div{flex:1}
+  .tile.dark{min-height:0}
+  .tile.dark .phone{position:static;transform:none;margin:24px 0 -40%;width:200px;flex:none}
+  .zero .wrap{grid-template-columns:1fr}
+  .steps .wrap{grid-template-columns:1fr}
+  .sticky{position:static}
+}
+@media (max-width:640px){
+  .wrap{width:min(var(--w),100% - 32px)}
+  .form{flex-direction:column}
+  .btn{width:100%}
+  .stage{height:auto;aspect-ratio:4/5;border-radius:18px 18px 0 0}
+  .stage .window{left:16px;right:-40%;top:20px}
+  .stage .window img{aspect-ratio:3/4;object-fit:cover;object-position:left top}
+  .stage .phone{width:46%;right:14px;bottom:-6%}
+  .grid{grid-template-columns:1fr}
+  .tile,.tile.wide,.tile.tall{grid-column:span 1;padding:26px 22px 0;flex-direction:column}
+  .tile .shot{margin-right:-22px}
+  .tile.dark .phone{margin:28px auto -30%;width:min(70%,220px)}
+  .zero .pair{grid-template-columns:1fr}
+  .step{grid-template-columns:48px 1fr}
+  .step .n{font-size:28px}
+  footer .wrap{flex-direction:column;gap:12px;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <nav class="wrap" aria-label="Main">
+    <a class="brand" href="#top" aria-label="ctrl+all home">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><path d="M16 40 32 24l16 16" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      ctrl+all
+    </a>
+    <a class="nav-link" href="#waitlist">Waitlist</a>
+  </nav>
+</header>
+
+<main id="top">
+
+<section class="hero" aria-labelledby="hero-h">
+  <div class="wrap">
+    <h1 class="h1 rise" id="hero-h">All your coding agents. One Mac. <em>Any phone.</em></h1>
+    <p class="lede rise">ctrl+all runs Claude Code, Codex, OpenCode and eight more on your Mac, and lets you steer them from anywhere. Your subscriptions do the work.</p>
+    <form class="form rise" data-waitlist novalidate>
+      <label class="sr" for="email-hero">Email address</label>
+      <input id="email-hero" type="email" name="email" placeholder="Your email" autocomplete="email" inputmode="email" required>
+      <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn" type="submit">Join the waitlist</button>
+    </form>
+    <p class="note rise" aria-live="polite">For macOS. Invites go out in small batches.</p>
+    <div class="done" role="status"><strong>You're on the list.</strong>We send one email when your invite is ready. Nothing else.</div>
+
+    <div class="stage" aria-label="The ctrl+all desktop window, with the phone client in front of it">
+      <div class="window">
+        <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+        <img src="assets/hero-window@2x.png" width="2368" height="1800" alt="A Claude Code transcript inside ctrl+all: the prompt, Read and Edit tool rows marked Done, and a Commit and Push button" fetchpriority="high">
+      </div>
+      <div class="phone">
+        <picture>
+          <source srcset="assets/phone-pair-dark.png" media="(prefers-color-scheme: dark)">
+          <img src="assets/phone-pair-light.png" width="393" height="852" alt="The ctrl+all phone client asking for a ten-character code to connect to your Mac">
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bento" aria-labelledby="bento-h">
+  <div class="wrap">
+    <h2 class="h2 reveal" id="bento-h">Hand it an outcome. Keep your hands on the controls.</h2>
+    <div class="grid">
+      <article class="tile wide reveal">
+        <h3>A goal, not a prompt.</h3>
+        <p>Pick the engine, name the outcome. The goal loop writes a plan, then builds and tests each phase in its own worktree and merges only on green.</p>
+        <div class="shot"><img src="assets/goal-sheet.png" width="840" height="640" alt="The New goal sheet: a project picker, assistant chips for Claude Code, Codex, OpenCode, Grok, Hermes, Kimi and local Ollama, and fields for the title, the goal and the test command" loading="lazy"></div>
+      </article>
+      <article class="tile tall dark reveal">
+        <div>
+          <h3>Your keys never leave your phone.</h3>
+          <p>Pair by QR or a ten-character code. Every frame is sealed on the device, and the relay forwards bytes it cannot read.</p>
+        </div>
+        <div class="phone"><img src="assets/phone-pair-dark.png" width="393" height="852" alt="The phone pairing screen in dark mode" loading="lazy"></div>
+      </article>
+      <article class="tile wide reveal">
+        <h3>Permission is enforced on the Mac.</h3>
+        <p>Plan, ask, auto-edit or full auto. A permission request lands as a card you can answer from either screen. A phone can lower its own rank, never raise it.</p>
+        <div class="shot"><img src="assets/permission.png" width="760" height="440" alt="A permission card inside a chat asking to allow an edit, with Allow and Deny buttons" loading="lazy"></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="zero" aria-labelledby="zero-h">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="big" aria-hidden="true">0</div>
+      <h2 class="big-label" id="zero-h">Zero tokens metered.</h2>
+    </div>
+    <div class="reveal">
+      <p class="sub">You already pay Anthropic, OpenAI or whoever runs your agent. ctrl+all runs those same CLIs on your own Mac, so there is no second bill and no cloud copy of your code.</p>
+      <div class="pair">
+        <div class="stat"><b>11</b><span>engines, from Claude Code to a local Ollama model</span></div>
+        <div class="stat"><b>185</b><span>RPC methods, every one reachable from the phone</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="steps" aria-labelledby="steps-h">
+  <div class="wrap">
+    <div class="reveal">
+      <h2 class="h2" id="steps-h">Up in three steps.</h2>
+      <div class="step-list">
+        <div class="step"><span class="n" aria-hidden="true">01</span><div><h3>Install on your Mac.</h3><p>One app. It finds the agent CLIs you already have and runs them exactly as your terminal would.</p></div></div>
+        <div class="step"><span class="n" aria-hidden="true">02</span><div><h3>Pair your phone.</h3><p>Scan the QR or type the code. Your phone makes its own keys and keeps them.</p></div></div>
+        <div class="step"><span class="n" aria-hidden="true">03</span><div><h3>Steer from anywhere.</h3><p>Answer the agent's question, approve a permission, read the diff, merge the branch. From the train.</p></div></div>
+      </div>
+    </div>
+    <div class="sticky reveal">
+      <div class="window">
+        <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+        <img src="assets/steps-window@2x.png" width="2104" height="1600" alt="The Workspaces pane listing a project's environments" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="waitlist" aria-labelledby="cta-h">
+  <div class="wrap reveal">
+    <h2 class="h2" id="cta-h">Get in early.</h2>
+    <p class="sub">We are letting people in a few at a time. Leave your email and we will send one message when your invite is ready.</p>
+    <form class="form" data-waitlist novalidate>
+      <label class="sr" for="email-foot">Email address</label>
+      <input id="email-foot" type="email" name="email" placeholder="Your email" autocomplete="email" inputmode="email" required>
+      <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn" type="submit">Join the waitlist</button>
+    </form>
+    <p class="note" aria-live="polite"></p>
+    <div class="done" role="status"><strong>You're on the list.</strong>We send one email when your invite is ready. Nothing else.</div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="mark" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><path d="M16 40 32 24l16 16" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>ctrl+all</a>
+    <span>Made for people who run agents. &copy; 2026 ctrl+all.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var ENDPOINT = 'https://learnanything.pro/api/leads/article-signup';
+  var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  function bind(form){
+    var input = form.querySelector('input[type=email]');
+    var btn = form.querySelector('button');
+    var note = form.nextElementSibling;
+    var idle = note.textContent;
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var email = (input.value || '').trim();
+      if (form.querySelector('input[name=company]').value) return; // honeypot
+      if (!EMAIL.test(email)) { note.className = 'note err'; note.textContent = 'That email does not look right.'; input.focus(); return; }
+      btn.disabled = true; var label = btn.textContent; btn.textContent = 'Joining…';
+      note.className = 'note'; note.textContent = idle;
+      fetch(ENDPOINT, {
+        method: 'POST', mode: 'cors',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ email: email, articleSlug: 'ctrlall-waitlist', vertical: 'ctrlall' })
+      }).then(function(r){
+        if (!r.ok) throw new Error('status ' + r.status);
+        return r.json();
+      }).then(function(){
+        try { localStorage.setItem('ctrlall-waitlist', email); } catch (_) {}
+        form.classList.add('sent');
+      }).catch(function(){
+        btn.disabled = false; btn.textContent = label;
+        note.className = 'note err';
+        note.textContent = 'We could not save that just now. Please try again in a moment.';
+      });
+    });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('form[data-waitlist]'), bind);
+
+  var reveal = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    reveal.forEach(function(el){ io.observe(el); });
+  } else {
+    reveal.forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>

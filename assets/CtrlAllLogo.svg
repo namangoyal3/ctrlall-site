@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#212936"/>
+      <stop offset="1" stop-color="#0E1116"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1024" height="1024" fill="url(#background)"/>
+  <rect x="72" y="72" width="880" height="880" rx="224" fill="#171C24" stroke="#343E4D" stroke-width="12"/>
+
+  <!-- Shelly's four tentacles. -->
+  <g fill="none" stroke="#E8815F" stroke-width="68" stroke-linecap="round">
+    <path d="M400 632 C397 726 352 772 328 842"/>
+    <path d="M477 651 C469 742 454 790 454 850"/>
+    <path d="M547 651 C555 742 570 790 570 850"/>
+    <path d="M624 632 C627 726 672 772 696 842"/>
+  </g>
+
+  <!-- Head, face patch, and namesake shell. -->
+  <ellipse cx="512" cy="445" rx="254" ry="246" fill="#E8815F"/>
+  <ellipse cx="512" cy="534" rx="132" ry="92" fill="#F2A48C" opacity="0.5"/>
+  <circle cx="681" cy="232" r="86" fill="#F7D9B4"/>
+  <path d="M681 150 C745 151 777 218 747 269 C718 319 638 316 606 268 C571 215 612 166 659 172 C704 178 720 226 695 253 C672 278 633 264 633 235 C633 212 655 199 674 207"
+        fill="none" stroke="#C05F3E" stroke-width="17" stroke-linecap="round"/>
+
+  <g fill="#33221B">
+    <circle cx="427" cy="413" r="32"/>
+    <circle cx="597" cy="413" r="32"/>
+  </g>
+  <g fill="#FFFFFF">
+    <circle cx="416" cy="402" r="10"/>
+    <circle cx="586" cy="402" r="10"/>
+  </g>
+  <path d="M455 485 C485 522 539 522 569 485" fill="none" stroke="#33221B" stroke-width="19" stroke-linecap="round"/>
+
+  <!-- A tiny terminal prompt makes the product legible even without a wordmark. -->
+  <rect x="351" y="593" width="322" height="126" rx="48" fill="#0E1116" stroke="#343E4D" stroke-width="9"/>
+  <path d="M411 633 L454 656 L411 679" fill="none" stroke="#F5A15D" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M500 680 H590" fill="none" stroke="#EAE5DB" stroke-width="18" stroke-linecap="round"/>
+</svg>
