@@ -339,13 +339,16 @@ footer .brand{font-size:15px;color:var(--ink)}
       if (!EMAIL.test(email)) { note.className = 'note err'; note.textContent = 'That email does not look right.'; input.focus(); return; }
       btn.disabled = true; var label = btn.textContent; btn.textContent = 'Joining…';
       note.className = 'note'; note.textContent = idle;
-      fetch(ENDPOINT, {
-        method: 'POST', mode: 'cors',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ email: email, articleSlug: 'ctrlall-waitlist', vertical: 'ctrlall' })
-      }).then(function(r){
+      var payload = JSON.stringify({ email: email, articleSlug: 'ctrlall-waitlist', vertical: 'ctrlall' });
+      fetch(ENDPOINT, { method: 'POST', mode: 'cors', headers: {'Content-Type': 'application/json'}, body: payload })
+      .then(function(r){
         if (!r.ok) throw new Error('status ' + r.status);
         return r.json();
+      }, function(){
+        // ponytail: the endpoint saves the lead but may not send CORS headers yet,
+        // so a blocked preflight falls back to an opaque no-cors POST (text/plain
+        // body, parsed as JSON server-side). Remove once CORS is confirmed live.
+        return fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', headers: {'Content-Type': 'text/plain'}, body: payload });
       }).then(function(){
         try { localStorage.setItem('ctrlall-waitlist', email); } catch (_) {}
         form.classList.add('sent');
