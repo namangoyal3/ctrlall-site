@@ -14,22 +14,19 @@
 <meta name="theme-color" content="#0b0c0e" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23ff5b2e'/%3E%3Cpath d='M18 38 32 24l14 14' fill='none' stroke='%23fff' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preload" as="image" href="assets/phone-chat-light.png">
-<link rel="preload" as="image" href="assets/hero-window@2x.png" media="(prefers-color-scheme: light)">
-<link rel="preload" as="image" href="assets/hero-window-dark@2x.png" media="(prefers-color-scheme: dark)">
 <style>
 :root{
   --bg:#f8f7f4; --bg-2:#ffffff; --ink:#1d1d1f; --ink-2:#48484d; --ink-3:#86868b;
-  --line:rgba(29,29,31,.10); --line-2:rgba(29,29,31,.06);
+  --line:rgba(29,29,31,.12); --line-2:rgba(29,29,31,.07);
   --brand:#ff5b2e; --brand-deep:#e0431a; --brand-wash:#ffe7dc;
   --dark:#0e1116; --dark-ink:#f5f5f7; --dark-ink-2:#a1a1a6;
   --shadow:0 40px 90px -30px rgba(29,29,31,.32), 0 2px 6px rgba(29,29,31,.06);
-  --r-surface:24px; --r-window:14px; --r-pill:999px;
-  --nav-h:52px; --w:1120px; --ease:cubic-bezier(.16,1,.3,1);
+  --r-pill:999px; --nav-h:52px; --w:1120px; --ease:cubic-bezier(.16,1,.3,1);
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --bg:#0b0c0e; --bg-2:#141518; --ink:#f5f5f7; --ink-2:#b4b4b9; --ink-3:#7c7c82;
-    --line:rgba(255,255,255,.12); --line-2:rgba(255,255,255,.07);
+    --line:rgba(255,255,255,.14); --line-2:rgba(255,255,255,.08);
     --brand-wash:#2a1a14;
     --shadow:0 40px 90px -30px rgba(0,0,0,.75), 0 2px 6px rgba(0,0,0,.4);
   }
@@ -41,99 +38,97 @@ body{margin:0;background:var(--bg);color:var(--ink);
   font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
-h1,h2,h3,p{margin:0}
+h1,h2,h3,p,ul{margin:0} ul{padding:0;list-style:none}
 .wrap{width:min(var(--w),100% - 40px);margin-inline:auto}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .hp{position:absolute;left:-9999px;width:1px;height:1px}
+.ic{width:28px;height:28px;color:var(--brand)}
 
 /* nav */
-.nav{position:sticky;top:0;z-index:10;height:var(--nav-h);
-  background:color-mix(in srgb,var(--bg) 80%,transparent);
-  -webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
-  border-bottom:1px solid var(--line-2)}
+.nav{position:sticky;top:0;z-index:10;height:var(--nav-h);background:color-mix(in srgb,var(--bg) 82%,transparent);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line-2)}
 .nav .wrap{height:100%;display:flex;align-items:center;justify-content:space-between}
 .brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:17px;letter-spacing:-.01em}
 .mark{width:26px;height:26px;border-radius:7px;background:var(--brand);display:grid;place-items:center;flex:none}
 .mark svg{width:14px;height:14px}
-.nav-link{font-size:14px;color:var(--ink-2);transition:color .2s}
-.nav-link:hover{color:var(--brand)}
+.nav-links{display:flex;gap:26px;font-size:14px;color:var(--ink-2)}
+.nav-links a:hover{color:var(--brand)}
+
+/* type */
+.h1{font-size:clamp(40px,5.2vw,68px);line-height:1.02;letter-spacing:-.038em;font-weight:600;text-wrap:balance}
+.h1 em{font-style:normal;color:var(--brand)}
+.h2{font-size:clamp(30px,3.8vw,48px);line-height:1.06;letter-spacing:-.032em;font-weight:600;text-wrap:balance}
+.sub{margin-top:16px;font-size:clamp(17px,1.3vw,19px);line-height:1.5;color:var(--ink-2);max-width:36em}
 
 /* hero */
-.hero{padding:clamp(44px,6vw,80px) 0 0}
-.h1{font-size:clamp(42px,6vw,82px);line-height:1;letter-spacing:-.04em;font-weight:600;text-wrap:balance;max-width:11em}
-.h1 em{font-style:normal;color:var(--brand)}
-.lede{margin-top:22px;font-size:clamp(17px,1.35vw,19px);line-height:1.45;color:var(--ink-2);max-width:32em}
+.hero{padding:clamp(44px,6vw,84px) 0 clamp(48px,6vw,80px);border-bottom:1px solid var(--line-2)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(32px,6vw,80px);align-items:center}
+.lede{margin-top:22px;font-size:clamp(17px,1.35vw,19px);line-height:1.5;color:var(--ink-2);max-width:30em}
 .form{margin-top:28px;display:flex;gap:10px;max-width:520px}
-.form input{flex:1;min-width:0;height:52px;padding:0 20px;font:inherit;font-size:16px;color:var(--ink);
-  background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r-pill);outline:none;transition:border-color .2s,box-shadow .2s}
+.form input{flex:1;min-width:0;height:52px;padding:0 20px;font:inherit;font-size:16px;color:var(--ink);background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r-pill);outline:none;transition:border-color .2s,box-shadow .2s}
 .form input::placeholder{color:var(--ink-3)}
 .form input:focus{border-color:var(--brand);box-shadow:0 0 0 4px color-mix(in srgb,var(--brand) 18%,transparent)}
-.btn{height:52px;padding:0 24px;border:0;border-radius:var(--r-pill);background:var(--ink);color:var(--bg);
-  font:inherit;font-size:16px;font-weight:600;cursor:pointer;white-space:nowrap;transition:transform .15s,background .2s,opacity .2s}
-.btn:hover{background:var(--brand);color:#fff}
-.btn:active{transform:scale(.97)}
-.btn[disabled]{opacity:.6;cursor:default}
-.btn:focus-visible,.form input:focus-visible,.nav-link:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
-.note{margin-top:12px;font-size:13px;color:var(--ink-3);min-height:1.5em}
-.note.err{color:var(--brand-deep)}
+.btn{height:52px;padding:0 24px;border:0;border-radius:var(--r-pill);background:var(--ink);color:var(--bg);font:inherit;font-size:16px;font-weight:600;cursor:pointer;white-space:nowrap;transition:transform .15s,background .2s,opacity .2s}
+.btn:hover{background:var(--brand);color:#fff} .btn:active{transform:scale(.97)} .btn[disabled]{opacity:.6;cursor:default}
+.btn:focus-visible,.form input:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
+.note{margin-top:12px;font-size:13px;color:var(--ink-3);min-height:1.5em} .note.err{color:var(--brand-deep)}
 .done{display:none;margin-top:28px;padding:20px 24px;border-radius:18px;background:var(--brand-wash);font-size:16px;line-height:1.45;max-width:520px}
 .done strong{display:block;font-size:19px;letter-spacing:-.02em;margin-bottom:2px}
-form.sent{display:none}
-form.sent + .note{display:none}
-form.sent ~ .done{display:block}
+form.sent{display:none} form.sent + .note{display:none} form.sent ~ .done{display:block}
+.pick{margin-top:36px}
+.pick > span{display:block;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.tiles{margin-top:12px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;max-width:560px}
+.tiles li{display:flex;flex-direction:column;gap:10px;padding:12px 12px 11px;border:1px solid var(--line);border-radius:14px;background:var(--bg-2);font-size:13px;font-weight:600;letter-spacing:-.01em;line-height:1.2}
+.tiles img{width:36px;height:36px;border-radius:9px}
+.tiles .more{justify-content:center;align-items:center;color:var(--ink-3);border-style:dashed;background:transparent}
 
-/* hero stage: Mac window with the phone in front */
-.stage{position:relative;margin-top:clamp(40px,5vw,64px);padding:clamp(20px,4vw,56px) clamp(20px,4vw,56px) 0;border-radius:var(--r-surface);
-  background:linear-gradient(180deg,color-mix(in srgb,var(--brand) 14%,var(--bg)) 0%,color-mix(in srgb,var(--brand) 5%,var(--bg)) 100%)}
-.stage .window{width:82%}
-.stage .phone{position:absolute;right:clamp(20px,4vw,56px);bottom:-36px;width:clamp(150px,21%,250px)}
-.window{border-radius:var(--r-window);overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+/* phone */
+.phone-wrap{justify-self:center;position:relative;isolation:isolate}
+.phone-wrap::before{content:"";position:absolute;inset:6% -18% -4% -18%;border-radius:50%;z-index:-1;background:radial-gradient(closest-side,color-mix(in srgb,var(--brand) 22%,transparent),transparent 72%);filter:blur(8px)}
+.phone{width:clamp(250px,24vw,310px);aspect-ratio:393/852;background:#1d1d1f;border-radius:14% / 6.5%;padding:3.6%;position:relative;box-shadow:var(--shadow),inset 0 0 0 2px #3a3a3c}
+.phone img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:11.5% / 5.3%;background:#f6f7fb}
+
+/* engines strip */
+.engines{padding:clamp(40px,5vw,56px) 0}
+.engines p{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);text-align:center}
+.engines ul{margin-top:22px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px 14px}
+.engines li{display:flex;align-items:center;gap:10px;padding:8px 16px 8px 8px;border:1px solid var(--line);border-radius:var(--r-pill);background:var(--bg-2);font-size:15px;font-weight:600;letter-spacing:-.01em}
+.engines img{width:28px;height:28px;border-radius:50%}
+
+/* two cards */
+.two{padding:clamp(56px,7vw,96px) 0 0}
+.two .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{border:1px solid var(--line);border-radius:24px;background:var(--bg-2);padding:clamp(28px,3vw,40px)}
+.card header{display:flex;align-items:center;gap:14px}
+.card h3{font-size:clamp(24px,2.4vw,32px);line-height:1.1;letter-spacing:-.03em;font-weight:600}
+.card > p{margin-top:12px;font-size:16px;color:var(--ink-2);max-width:30em}
+.card ul{margin-top:22px;display:grid;gap:12px}
+.card li{display:flex;gap:12px;font-size:16px;line-height:1.45;color:var(--ink)}
+.card li::before{content:"";flex:none;width:8px;height:8px;margin-top:9px;border-radius:50%;background:var(--brand)}
+.card.dark{background:var(--dark);color:var(--dark-ink);border-color:transparent}
+.card.dark > p{color:var(--dark-ink-2)} .card.dark li{color:var(--dark-ink)}
+
+/* mac window */
+.window-sec{padding:clamp(80px,10vw,128px) 0 0}
+.window-sec .head{max-width:34em;margin-bottom:clamp(28px,4vw,44px)}
+.window{border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
 .window-bar{height:36px;display:flex;align-items:center;gap:8px;padding:0 16px;background:#f5f5f7;border-bottom:1px solid rgba(29,29,31,.08)}
 .window-bar i{width:12px;height:12px;border-radius:50%;display:block}
-.window-bar i:nth-child(1){background:#ff5f57}.window-bar i:nth-child(2){background:#febc2e}.window-bar i:nth-child(3){background:#28c840}
+.window-bar i:nth-child(1){background:#ff5f57} .window-bar i:nth-child(2){background:#febc2e} .window-bar i:nth-child(3){background:#28c840}
 .window img{width:100%}
-.phone{aspect-ratio:393/852;background:#1d1d1f;border-radius:14% / 6.5%;padding:3.6%;position:relative;
-  box-shadow:0 50px 100px -30px rgba(29,29,31,.5),inset 0 0 0 2px #3a3a3c}
-.phone img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:11.5% / 5.3%;background:#f6f7fb}
-.phone::after{content:"";position:absolute;top:7%;left:50%;transform:translateX(-50%);width:28%;height:3%;border-radius:999px;background:#0a0a0a}
 
-/* shared section head */
-.h2{font-size:clamp(32px,4.4vw,56px);line-height:1.04;letter-spacing:-.035em;font-weight:600;text-wrap:balance}
-.sub{margin-top:16px;font-size:clamp(17px,1.3vw,19px);line-height:1.45;color:var(--ink-2);max-width:34em}
-
-/* bento: 3 tiles */
-.bento{padding:clamp(80px,10vw,140px) 0 0}
-.bento .h2{max-width:14em;margin-bottom:clamp(32px,4vw,56px)}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-.tile{position:relative;border-radius:var(--r-surface);background:var(--bg-2);border:1px solid var(--line-2);overflow:hidden;display:flex;flex-direction:column;padding:34px 34px 0}
-.tile.wide{grid-column:span 2}
-.tile h3{font-size:clamp(22px,2.1vw,30px);line-height:1.12;letter-spacing:-.028em;font-weight:600;max-width:14em}
-.tile p{margin-top:12px;font-size:16px;line-height:1.5;color:var(--ink-2);max-width:30em}
-.tile{padding-bottom:34px}
-.tile .shot{margin-top:auto;padding-top:28px}
-.tile .shot img{width:100%;border-radius:12px;border:1px solid var(--line);box-shadow:0 18px 50px -24px rgba(29,29,31,.35);background:#fff}
-.tile.dark{background:var(--dark);color:var(--dark-ink);border-color:transparent}
-.tile.dark p{color:var(--dark-ink-2)}
-.tile.dark .phone{margin:36px auto 0;width:min(64%,230px)}
-.tile.dark .phone img{background:#111318}
-
-/* more benefits */
-.more{padding:clamp(80px,10vw,140px) 0 0}
-.more .h2{max-width:14em;margin-bottom:clamp(32px,4vw,56px)}
-.feats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 28px}
-.feat-shot{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 18px 50px -28px rgba(29,29,31,.35)}
-.feat-shot img{width:100%}
-.feat h3{margin-top:18px;font-size:19px;line-height:1.2;letter-spacing:-.02em;font-weight:600}
-.feat p{margin-top:8px;font-size:15px;line-height:1.5;color:var(--ink-2)}
-.engines{margin-top:clamp(56px,7vw,88px);text-align:center}
-.engines p{font-size:14px;color:var(--ink-3);font-weight:500}
-.engines ul{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px}
-.engines li{font-size:clamp(17px,1.5vw,22px);font-weight:600;letter-spacing:-.02em;color:var(--ink-2)}
+/* capabilities */
+.caps{padding:clamp(80px,10vw,128px) 0 0}
+.caps .head{max-width:30em;margin-bottom:clamp(28px,4vw,44px)}
+.caps .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.cap{padding:26px 26px 28px;border:1px solid var(--line);border-radius:18px;background:var(--bg-2)}
+.cap h3{margin-top:18px;font-size:18px;line-height:1.2;letter-spacing:-.02em;font-weight:600}
+.cap p{margin-top:8px;font-size:15px;line-height:1.5;color:var(--ink-2)}
 
 /* the zero */
-.zero{margin-top:clamp(80px,10vw,140px);background:var(--dark);color:var(--dark-ink);padding:clamp(80px,10vw,150px) 0}
+.zero{margin-top:clamp(80px,10vw,128px);background:var(--dark);color:var(--dark-ink);padding:clamp(72px,9vw,128px) 0}
 .zero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:end}
-.zero .big{font-size:clamp(180px,26vw,360px);line-height:.82;letter-spacing:-.07em;font-weight:600;color:var(--brand);font-variant-numeric:tabular-nums}
+.zero .big{font-size:clamp(160px,24vw,320px);line-height:.82;letter-spacing:-.07em;font-weight:600;color:var(--brand)}
 .zero .big-label{display:block;margin-top:18px;font-size:clamp(24px,2.4vw,34px);letter-spacing:-.03em;font-weight:600}
 .zero .sub{color:var(--dark-ink-2);max-width:28em}
 .zero .pair{margin-top:clamp(32px,4vw,56px);display:grid;grid-template-columns:1fr 1fr;gap:32px}
@@ -142,63 +137,58 @@ form.sent ~ .done{display:block}
 .zero .stat span{display:block;margin-top:8px;font-size:15px;color:var(--dark-ink-2);line-height:1.4}
 
 /* steps */
-.steps{padding:clamp(80px,10vw,140px) 0 0}
-.steps .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(40px,6vw,96px);align-items:start}
-.step-list{margin-top:36px}
-.step{display:grid;grid-template-columns:72px 1fr;gap:12px;padding:30px 0;border-top:1px solid var(--line)}
-.step:last-child{border-bottom:1px solid var(--line)}
-.step .n{font-size:40px;line-height:1;letter-spacing:-.04em;font-weight:600;color:var(--ink-3);font-variant-numeric:tabular-nums}
-.step h3{font-size:clamp(21px,1.9vw,26px);line-height:1.15;letter-spacing:-.025em;font-weight:600}
-.step p{margin-top:8px;font-size:16px;line-height:1.5;color:var(--ink-2);max-width:28em}
-.sticky{position:sticky;top:calc(var(--nav-h) + 32px)}
+.steps{padding:clamp(80px,10vw,128px) 0 0}
+.steps .head{margin-bottom:clamp(28px,4vw,44px)}
+.steps .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.step{border-top:1px solid var(--line);padding-top:22px}
+.step .n{display:block;font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--brand)}
+.step h3{margin-top:10px;font-size:22px;line-height:1.15;letter-spacing:-.025em;font-weight:600}
+.step p{margin-top:8px;font-size:16px;line-height:1.5;color:var(--ink-2)}
+
+/* faq */
+.faq{padding:clamp(80px,10vw,128px) 0 0}
+.faq .wrap{max-width:760px}
+.faq .h2{margin-bottom:clamp(20px,3vw,32px)}
+details{border-top:1px solid var(--line)} details:last-of-type{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:18px 36px 18px 0;font-size:18px;font-weight:600;letter-spacing:-.015em;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:4px;top:14px;font-size:24px;font-weight:300;color:var(--ink-3);transition:transform .25s var(--ease)}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 0 20px;font-size:16px;line-height:1.55;color:var(--ink-2);max-width:40em}
 
 /* closing */
-.cta{padding:clamp(100px,13vw,180px) 0 clamp(80px,10vw,130px);text-align:center}
-.cta .h2{margin-inline:auto;max-width:12em;font-size:clamp(40px,6vw,88px);letter-spacing:-.045em}
-.cta .sub{margin-inline:auto}
-.cta .form{margin:36px auto 0}
-.cta .done{margin-inline:auto;text-align:left}
-
+.cta{padding:clamp(96px,12vw,160px) 0 clamp(72px,9vw,120px);text-align:center}
+.cta .h2{margin-inline:auto;max-width:12em;font-size:clamp(40px,6vw,84px);letter-spacing:-.045em}
+.cta .sub{margin-inline:auto} .cta .form{margin:36px auto 0} .cta .done{margin-inline:auto;text-align:left}
 footer{border-top:1px solid var(--line-2);padding:28px 0 calc(28px + env(safe-area-inset-bottom))}
 footer .wrap{display:flex;align-items:center;justify-content:space-between;font-size:14px;color:var(--ink-3)}
 footer .brand{font-size:15px;color:var(--ink)}
 
-/* motion: content arrives as you reach it */
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+/* motion */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 .rise{animation:rise .9s var(--ease) both}
-.rise:nth-child(2){animation-delay:.07s}.rise:nth-child(3){animation-delay:.14s}.rise:nth-child(4){animation-delay:.2s}
-.stage{animation:rise 1.2s .25s var(--ease) both}
-@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .reveal{opacity:1;transform:none;transition:none}
-  .rise,.stage{animation:none}
-}
+.rise:nth-child(2){animation-delay:.07s} .rise:nth-child(3){animation-delay:.14s} .rise:nth-child(4){animation-delay:.2s} .rise:nth-child(5){animation-delay:.26s}
+.phone-wrap{animation:rise 1.1s .2s var(--ease) both}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} .reveal{opacity:1;transform:none;transition:none} .rise,.phone-wrap{animation:none}}
 
 /* responsive */
 @media (max-width:980px){
-  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .tile.wide{grid-column:span 2}
+  .hero .wrap{grid-template-columns:1fr;gap:44px}
+  .phone-wrap{order:2}
+  .two .grid{grid-template-columns:1fr}
+  .caps .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .zero .wrap{grid-template-columns:1fr}
-  .feats{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .steps .wrap{grid-template-columns:1fr}
-  .sticky{position:static}
+  .steps .grid{grid-template-columns:1fr}
 }
 @media (max-width:640px){
   .wrap{width:min(var(--w),100% - 32px)}
-  .form{flex-direction:column}
-  .btn{width:100%}
-  .stage{padding:16px 16px 0;border-radius:18px}
-  .stage .window{width:100%}
-  .stage .phone{position:static;width:52%;margin:-28% auto 0;transform:translateX(26%)}
-  .grid{grid-template-columns:1fr}
-  .tile,.tile.wide{grid-column:span 1;padding:26px 22px 26px}
-  .tile.dark .phone{width:min(60%,200px)}
+  .nav-links{gap:18px}
+  .form{flex-direction:column} .btn{width:100%}
+  .tiles{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .caps .grid{grid-template-columns:1fr}
   .zero .pair{grid-template-columns:1fr}
-  .feats{grid-template-columns:1fr;gap:32px}
-  .step{grid-template-columns:48px 1fr}
-  .step .n{font-size:28px}
   footer .wrap{flex-direction:column;gap:12px;align-items:flex-start}
 }
 </style>
@@ -211,7 +201,7 @@ footer .brand{font-size:15px;color:var(--ink)}
       <span class="mark" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><path d="M16 40 32 24l16 16" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       ctrl+all
     </a>
-    <a class="nav-link" href="#waitlist">Waitlist</a>
+    <div class="nav-links"><a href="#how">How it works</a><a href="#faq">FAQ</a><a href="#waitlist">Waitlist</a></div>
   </nav>
 </header>
 
@@ -219,98 +209,114 @@ footer .brand{font-size:15px;color:var(--ink)}
 
 <section class="hero" aria-labelledby="hero-h">
   <div class="wrap">
-    <h1 class="h1 rise" id="hero-h">All your coding agents. One Mac. <em>Any phone.</em></h1>
-    <p class="lede rise">ctrl+all runs Claude Code, Codex, OpenCode and eight more on your Mac, and lets you steer them from anywhere. Your subscriptions do the work.</p>
-    <form class="form rise" data-waitlist novalidate>
-      <label class="sr" for="email-hero">Email address</label>
-      <input id="email-hero" type="email" name="email" placeholder="Your email" autocomplete="email" inputmode="email" required>
-      <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button class="btn" type="submit">Join the waitlist</button>
-    </form>
-    <p class="note rise" aria-live="polite">For macOS. Invites go out in small batches.</p>
-    <div class="done" role="status"><strong>You're on the list.</strong>We send one email when your invite is ready. Nothing else.</div>
-
-    <div class="stage" aria-label="The ctrl+all desktop window, with the phone client in front of it">
-      <div class="window">
-        <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i></div>
-        <picture>
-          <source srcset="assets/hero-window-dark@2x.png" media="(prefers-color-scheme: dark)">
-          <img src="assets/hero-window@2x.png" width="2368" height="1640" alt="A Claude Code transcript inside ctrl+all: the agent's notes, a Bash row marked Done, an edit to app.js, an answered permission card and a Commit and Push button" fetchpriority="high">
-        </picture>
+    <div>
+      <h1 class="h1 rise" id="hero-h">All your coding agents. One Mac. <em>Any phone.</em></h1>
+      <p class="lede rise">ctrl+all runs Claude Code, Codex, OpenCode and eight more on your Mac, and lets you steer them from anywhere. Your subscriptions do the work.</p>
+      <form class="form rise" data-waitlist novalidate>
+        <label class="sr" for="email-hero">Email address</label>
+        <input id="email-hero" type="email" name="email" placeholder="Your email" autocomplete="email" inputmode="email" required>
+        <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn" type="submit">Join the waitlist</button>
+      </form>
+      <p class="note rise" aria-live="polite">For macOS. Invites go out in small batches.</p>
+      <div class="done" role="status"><strong>You're on the list.</strong>We send one email when your invite is ready. Nothing else.</div>
+      <div class="pick rise">
+        <span>Pick your agent</span>
+        <ul class="tiles">
+        <li><img src="assets/logos/claude.png" width="36" height="36" alt=""><span>Claude Code</span></li>
+        <li><img src="assets/logos/codex.png" width="36" height="36" alt=""><span>Codex</span></li>
+        <li><img src="assets/logos/opencode.png" width="36" height="36" alt=""><span>OpenCode</span></li>
+        <li><img src="assets/logos/ollama.png" width="36" height="36" alt=""><span>Ollama</span></li>
+        <li class="more"><span>+7 more</span></li>
+        </ul>
       </div>
+    </div>
+    <div class="phone-wrap">
       <div class="phone">
-        <img src="assets/phone-chat-light.png" width="393" height="852" alt="The ctrl+all phone client showing a live Claude Code chat: the prompt, a Read tool row marked Done, the agent's reply, and a Commit button">
+        <img src="assets/phone-chat-light.png" width="393" height="852" alt="The ctrl+all phone client showing a live Claude Code chat: the prompt, a Read tool row marked Done, the agent's reply, and a Commit button" fetchpriority="high">
       </div>
     </div>
   </div>
 </section>
 
-<section class="bento" aria-labelledby="bento-h">
+<section class="engines" aria-label="Supported agents">
+  <div class="wrap reveal">
+    <p>Runs the agents you already pay for</p>
+    <ul>
+        <li><img src="assets/logos/claude.png" width="40" height="40" alt="" loading="lazy"><span>Claude Code</span></li>
+        <li><img src="assets/logos/codex.png" width="40" height="40" alt="" loading="lazy"><span>Codex</span></li>
+        <li><img src="assets/logos/opencode.png" width="40" height="40" alt="" loading="lazy"><span>OpenCode</span></li>
+        <li><img src="assets/logos/grok.png" width="40" height="40" alt="" loading="lazy"><span>Grok</span></li>
+        <li><img src="assets/logos/hermes.png" width="40" height="40" alt="" loading="lazy"><span>Hermes</span></li>
+        <li><img src="assets/logos/kimi.png" width="40" height="40" alt="" loading="lazy"><span>Kimi</span></li>
+        <li><img src="assets/logos/zai.png" width="40" height="40" alt="" loading="lazy"><span>Z.ai</span></li>
+        <li><img src="assets/logos/cursor.png" width="40" height="40" alt="" loading="lazy"><span>Cursor</span></li>
+        <li><img src="assets/logos/gemini.png" width="40" height="40" alt="" loading="lazy"><span>Gemini</span></li>
+        <li><img src="assets/logos/copilot.png" width="40" height="40" alt="" loading="lazy"><span>Copilot</span></li>
+        <li><img src="assets/logos/ollama.png" width="40" height="40" alt="" loading="lazy"><span>Ollama</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="two" aria-label="What you get">
   <div class="wrap">
-    <h2 class="h2 reveal" id="bento-h">Hand it an outcome. Keep your hands on the controls.</h2>
     <div class="grid">
-      <article class="tile wide reveal">
-        <h3>A goal, not a prompt.</h3>
-        <p>Pick the engine, name the outcome. The goal loop writes a plan, then builds and tests each phase in its own worktree and merges only on green.</p>
-        <div class="shot"><picture>
-          <source srcset="assets/goal-sheet-dark@2x.png" media="(prefers-color-scheme: dark)">
-          <img src="assets/goal-sheet@2x.png" width="1840" height="1140" alt="The New goal sheet: a project picker, assistant chips for Claude Code, Codex, OpenCode, Grok Build, Hermes, Kimi Code and local Ollama, a note that the run is sandboxed, and fields for the title and the goal" loading="lazy">
-        </picture></div>
+      <article class="card reveal">
+        <header><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"/></svg><h3>From your phone</h3></header>
+        <p>Everything that needs a human, answered from wherever you are.</p>
+        <ul>
+          <li>Answer the agent's questions and permission prompts as cards.</li>
+          <li>Read the diff, then stage, commit and push.</li>
+          <li>Start a goal and watch each phase land.</li>
+          <li>One inbox for every chat and every goal that waits on you.</li>
+        </ul>
       </article>
-      <article class="tile reveal">
-        <h3>Permission is enforced on the Mac.</h3>
-        <p>Plan, ask, auto-edit or full auto. A permission request lands as a card you can answer from either screen. A phone can lower its own rank, never raise it.</p>
-        <div class="shot"><img src="assets/permission.png" width="760" height="440" alt="A permission card inside a chat asking to allow an edit, with Allow and Deny buttons" loading="lazy"></div>
-      </article>
-      <article class="tile dark reveal">
-        <h3>Your keys never leave your phone.</h3>
-        <p>Pair by QR or a ten-character code. Every frame is sealed on the device, and the relay forwards bytes it cannot read.</p>
-        <div class="phone"><img src="assets/phone-pair-dark.png" width="393" height="852" alt="The phone pairing screen" loading="lazy"></div>
+      <article class="card dark reveal">
+        <header><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,40H48A24,24,0,0,0,24,64V176a24,24,0,0,0,24,24h72v16H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V200h72a24,24,0,0,0,24-24V64A24,24,0,0,0,208,40ZM48,56H208a8,8,0,0,1,8,8v80H40V64A8,8,0,0,1,48,56ZM208,184H48a8,8,0,0,1-8-8V160H216v16A8,8,0,0,1,208,184Z"/></svg><h3>On your Mac</h3></header>
+        <p>The engine lives where your code lives, and keeps going after you close the lid.</p>
+        <ul>
+          <li>Always on under launchd. Quit the window and the agents keep running.</li>
+          <li>A goal loop that plans, builds and tests in its own worktree.</li>
+          <li>Routines that run a prompt on a schedule, unattended.</li>
+          <li>A terminal, git and a list of your dev servers, per project.</li>
+        </ul>
       </article>
     </div>
   </div>
 </section>
 
-<section class="more" aria-labelledby="more-h">
+<section class="window-sec" aria-labelledby="win-h">
   <div class="wrap">
-    <h2 class="h2 reveal" id="more-h">Built for the whole day, not one chat.</h2>
-    <div class="feats">
-      <article class="feat reveal">
-        <div class="feat-shot"><picture><source srcset="assets/feat-routines-dark@2x.png" media="(prefers-color-scheme: dark)"><img src="assets/feat-routines@2x.png" width="1800" height="1200" alt="The Routines pane listing a morning issue triage, a nightly dependency audit and a weekly changelog, each with Run now, Pause and Delete" loading="lazy"></picture></div>
-        <h3>Prompts that run themselves.</h3>
-        <p>Save a prompt on a schedule. Nightly audits, morning triage, a weekly changelog. Each run opens a fresh chat you can read.</p>
-      </article>
-      <article class="feat reveal">
-        <div class="feat-shot"><picture><source srcset="assets/feat-marketplace-dark@2x.png" media="(prefers-color-scheme: dark)"><img src="assets/feat-marketplace@2x.png" width="1800" height="1200" alt="The Marketplace pane with a git URL import field and a grid of skill collections, some marked Installed" loading="lazy"></picture></div>
-        <h3>Skills, one import away.</h3>
-        <p>Browse a curated catalog or paste a git URL. Install once, and every engine that supports it can use it.</p>
-      </article>
-      <article class="feat reveal">
-        <div class="feat-shot"><picture><source srcset="assets/feat-terminal-dark@2x.png" media="(prefers-color-scheme: dark)"><img src="assets/feat-terminal@2x.png" width="1800" height="1200" alt="The Terminal pane running git status and ls in the project folder" loading="lazy"></picture></div>
-        <h3>A real terminal, per project.</h3>
-        <p>A shell on your Mac, open from the desktop or the phone, next to the list of dev servers you have running.</p>
-      </article>
-      <article class="feat reveal">
-        <div class="feat-shot"><picture><source srcset="assets/feat-workspaces-dark@2x.png" media="(prefers-color-scheme: dark)"><img src="assets/feat-workspaces@2x.png" width="1800" height="1200" alt="The Workspaces pane showing two live chats side by side, each with its recent tool calls" loading="lazy"></picture></div>
-        <h3>Watch several chats side by side.</h3>
-        <p>Each card is a live chat in its own environment. Close a card and the chat stays in the sidebar.</p>
-      </article>
-      <article class="feat reveal">
-        <div class="feat-shot"><picture><source srcset="assets/feat-judge-dark@2x.png" media="(prefers-color-scheme: dark)"><img src="assets/feat-judge@2x.png" width="1800" height="1200" alt="The Judge section of Settings: a local model to download, and a choice between judging on this Mac or in the cloud" loading="lazy"></picture></div>
-        <h3>A judge that runs on your Mac.</h3>
-        <p>A small model the app downloads once reads each goal turn and says whether it did its phase. Nothing leaves the machine.</p>
-      </article>
-      <article class="feat reveal">
-        <div class="feat-shot"><picture><source srcset="assets/feat-skills-dark@2x.png" media="(prefers-color-scheme: dark)"><img src="assets/feat-skills@2x.png" width="1800" height="1200" alt="The Skills pane listing reusable instructions found in the project and on this Mac" loading="lazy"></picture></div>
-        <h3>Your skills and agents, catalogued.</h3>
-        <p>Every reusable instruction in the project and on this Mac, searchable, with the agent it launches.</p>
-      </article>
+    <div class="head reveal">
+      <h2 class="h2" id="win-h">One window on your Mac. Every agent inside it.</h2>
+      <p class="sub">Skills, agents, goals, routines, terminal and git in one app. The phone loads the same page against the same engine.</p>
     </div>
-    <div class="engines reveal">
-      <p>Works with the agents you already use</p>
-      <ul>
-        <li>Claude Code</li><li>Codex</li><li>OpenCode</li><li>Grok</li><li>Hermes</li><li>Kimi</li><li>Z.ai</li><li>Cursor</li><li>Gemini</li><li>Copilot</li><li>Ollama</li>
-      </ul>
+    <div class="window reveal">
+      <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+      <picture>
+        <source srcset="assets/hero-window-dark@2x.png" media="(prefers-color-scheme: dark)">
+        <img src="assets/hero-window@2x.png" width="2368" height="1640" alt="A Claude Code transcript inside ctrl+all: the agent's notes, a Bash row marked Done, an edit to app.js, an answered permission card and a Commit and Push button" loading="lazy">
+      </picture>
+    </div>
+  </div>
+</section>
+
+<section class="caps" aria-labelledby="caps-h">
+  <div class="wrap">
+    <div class="head reveal">
+      <h2 class="h2" id="caps-h">Different jobs. Same controls.</h2>
+      <p class="sub">Everything below runs on your Mac and answers to your phone.</p>
+    </div>
+    <div class="grid">
+      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.87,83.16A104.1,104.1,0,1,1,195.67,49l22.67-22.68a8,8,0,0,1,11.32,11.32l-96,96a8,8,0,0,1-11.32-11.32l27.72-27.72a40,40,0,1,0,17.87,31.09,8,8,0,1,1,16-.9,56,56,0,1,1-22.38-41.65L184.3,60.39a87.88,87.88,0,1,0,23.13,29.67,8,8,0,0,1,14.44-6.9Z"/></svg><h3>Goals</h3><p>Hand it an outcome. It writes a plan, builds and tests each phase in its own worktree, and merges only on green.</p></article>
+      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-38.34-85.66a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L116,164.69l42.34-42.35A8,8,0,0,1,169.66,122.34Z"/></svg><h3>Routines</h3><p>A saved prompt that runs on a schedule, unattended. Nightly audits, morning triage, a weekly changelog.</p></article>
+      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232,96a7.89,7.89,0,0,0-.3-2.2L217.35,43.6A16.07,16.07,0,0,0,202,32H54A16.07,16.07,0,0,0,38.65,43.6L24.31,93.8A7.89,7.89,0,0,0,24,96h0v16a40,40,0,0,0,16,32v72a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8V144a40,40,0,0,0,16-32V96ZM54,48H202l11.42,40H42.61Zm50,56h48v8a24,24,0,0,1-48,0Zm-16,0v8a24,24,0,0,1-35.12,21.26,7.88,7.88,0,0,0-1.82-1.06A24,24,0,0,1,40,112v-8ZM200,208H56V151.2a40.57,40.57,0,0,0,8,.8,40,40,0,0,0,32-16,40,40,0,0,0,64,0,40,40,0,0,0,32,16,40.57,40.57,0,0,0,8-.8Zm4.93-75.8a8.08,8.08,0,0,0-1.8,1.05A24,24,0,0,1,168,112v-8h48v8A24,24,0,0,1,204.93,132.2Z"/></svg><h3>Marketplace</h3><p>Browse a curated set of skills or import one by git URL. Installed once, reachable from every engine.</p></article>
+      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M237.66,18.34a8,8,0,0,0-11.32,0l-52.4,52.41-5.37-5.38a32.05,32.05,0,0,0-45.26,0L100,88.69l-6.34-6.35A8,8,0,0,0,82.34,93.66L88.69,100,65.37,123.31a32,32,0,0,0,0,45.26l5.38,5.37-52.41,52.4a8,8,0,0,0,11.32,11.32l52.4-52.41,5.37,5.38a32,32,0,0,0,45.26,0L156,167.31l6.34,6.35a8,8,0,0,0,11.32-11.32L167.31,156l23.32-23.31a32,32,0,0,0,0-45.26l-5.38-5.37,52.41-52.4A8,8,0,0,0,237.66,18.34Zm-116.29,161a16,16,0,0,1-22.62,0L76.69,157.25a16,16,0,0,1,0-22.62L100,111.31,144.69,156Zm57.94-57.94L156,144.69,111.31,100l23.32-23.31a16,16,0,0,1,22.62,0l22.06,22A16,16,0,0,1,179.31,121.37ZM88.57,35A8,8,0,0,1,103.43,29l8,20A8,8,0,0,1,96.57,55ZM24.57,93A8,8,0,0,1,35,88.57l20,8A8,8,0,0,1,49,111.43l-20-8A8,8,0,0,1,24.57,93ZM231.43,163a8,8,0,0,1-10.4,4.46l-20-8A8,8,0,1,1,207,144.57l20,8A8,8,0,0,1,231.43,163Zm-64,58.06A8,8,0,0,1,152.57,227l-8-20A8,8,0,0,1,159.43,201Z"/></svg><h3>MCP, once</h3><p>Add a server one time and it reaches every installed engine that supports it, not just one.</p></article>
+      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"/></svg><h3>Permissions</h3><p>Plan, ask, auto-edit or full auto, enforced on the Mac. A phone can lower its own rank, never raise it.</p></article>
+      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M136,80v43.47l36.12,21.67a8,8,0,0,1-8.24,13.72l-40-24A8,8,0,0,1,120,128V80a8,8,0,0,1,16,0Zm-8-48A95.44,95.44,0,0,0,60.08,60.15C52.81,67.51,46.35,74.59,40,82V64a8,8,0,0,0-16,0v40a8,8,0,0,0,8,8H72a8,8,0,0,0,0-16H49c7.15-8.42,14.27-16.35,22.39-24.57a80,80,0,1,1,1.66,114.75,8,8,0,1,0-11,11.64A96,96,0,1,0,128,32Z"/></svg><h3>Rewind a turn</h3><p>Every chat is an append-only log. Undo a turn and the files and the transcript go back to the checkpoint.</p></article>
+      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm0,16V152h-28.7A15.86,15.86,0,0,0,168,156.69L148.69,176H107.31L88,156.69A15.86,15.86,0,0,0,76.69,152H48V48Zm0,160H48V168H76.69L96,187.31A15.86,15.86,0,0,0,107.31,192h41.38A15.86,15.86,0,0,0,160,187.31L179.31,168H208v40Z"/></svg><h3>Inbox</h3><p>One screen for everything that waits on you: open questions from every chat, and goals that stopped.</p></article>
+      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M120,128V48a8,8,0,0,1,16,0v80a8,8,0,0,1-16,0Zm60.37-78.7a8,8,0,0,0-8.74,13.4C194.74,77.77,208,101.57,208,128a80,80,0,0,1-160,0c0-26.43,13.26-50.23,36.37-65.3a8,8,0,0,0-8.74-13.4C47.9,67.38,32,96.06,32,128a96,96,0,0,0,192,0C224,96.06,208.1,67.38,180.37,49.3Z"/></svg><h3>Always on</h3><p>The engine runs under launchd. Quit the window and your agents keep working, and your phone still reaches them.</p></article>
+      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,112a28,28,0,0,0-8,54.83V184a8,8,0,0,0,16,0V166.83A28,28,0,0,0,128,112Zm0,40a12,12,0,1,1,12-12A12,12,0,0,1,128,152Zm80-72H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Z"/></svg><h3>Sealed relay</h3><p>Keys are made on your devices and stay there. The relay forwards bytes it cannot read.</p></article>
     </div>
   </div>
 </section>
@@ -331,25 +337,26 @@ footer .brand{font-size:15px;color:var(--ink)}
   </div>
 </section>
 
-<section class="steps" aria-labelledby="steps-h">
+<section class="steps" id="how" aria-labelledby="steps-h">
   <div class="wrap">
-    <div class="reveal">
-      <h2 class="h2" id="steps-h">Up in three steps.</h2>
-      <div class="step-list">
-        <div class="step"><span class="n" aria-hidden="true">01</span><div><h3>Install on your Mac.</h3><p>One app. It finds the agent CLIs you already have and runs them exactly as your terminal would.</p></div></div>
-        <div class="step"><span class="n" aria-hidden="true">02</span><div><h3>Pair your phone.</h3><p>Scan the QR or type the code. Your phone makes its own keys and keeps them.</p></div></div>
-        <div class="step"><span class="n" aria-hidden="true">03</span><div><h3>Steer from anywhere.</h3><p>Answer the agent's question, approve a permission, read the diff, merge the branch. From the train.</p></div></div>
-      </div>
+    <div class="head reveal"><h2 class="h2" id="steps-h">Up in three steps.</h2></div>
+    <div class="grid">
+      <div class="step reveal"><span class="n">01</span><h3>Install on your Mac.</h3><p>One app. It finds the agent CLIs you already have and runs them exactly as your terminal would.</p></div>
+      <div class="step reveal"><span class="n">02</span><h3>Pair your phone.</h3><p>Scan the QR or type the ten-character code. Your phone makes its own keys and keeps them.</p></div>
+      <div class="step reveal"><span class="n">03</span><h3>Steer from anywhere.</h3><p>Answer the agent's question, approve a permission, read the diff, merge the branch. From the train.</p></div>
     </div>
-    <div class="sticky reveal">
-      <div class="window">
-        <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i></div>
-        <picture>
-          <source srcset="assets/steps-chat-dark@2x.png" media="(prefers-color-scheme: dark)">
-          <img src="assets/steps-chat@2x.png" width="2368" height="1340" alt="A Codex run in progress inside ctrl+all: Bash tool rows, the agent's notes, Steer and Queue buttons on the composer, and the project, mode and branch bar" loading="lazy">
-        </picture>
-      </div>
-    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq" aria-labelledby="faq-h">
+  <div class="wrap">
+    <h2 class="h2 reveal" id="faq-h">Questions, answered.</h2>
+      <details class="reveal"><summary>Do I need an account or a cloud workspace?</summary><p>No. The engine runs on your Mac. Off your network, a relay forwards sealed frames between your phone and your Mac. With Tailscale Funnel or a quick tunnel there is no cloud account at all.</p></details>
+      <details class="reveal"><summary>Which agents does it run?</summary><p>Claude Code, Codex, OpenCode, Grok, Hermes, Kimi, Z.ai, Cursor, Gemini, Copilot and a local Ollama model. Each runs as it would in your terminal, on the subscription you already have.</p></details>
+      <details class="reveal"><summary>Does it cost per token?</summary><p>No. ctrl+all meters nothing. You pay the vendors you already pay, and nothing else.</p></details>
+      <details class="reveal"><summary>Can my phone do something my Mac would refuse?</summary><p>No. Permission modes are enforced on the Mac. A phone can lower its own rank for a session and can never raise it. Teammates get a role: owner, operator or viewer.</p></details>
+      <details class="reveal"><summary>Is there a phone app?</summary><p>A web client works on any phone today and installs to the Home Screen. A native iOS app is next.</p></details>
+      <details class="reveal"><summary>What does the relay see?</summary><p>Opaque bytes. Frames are sealed with X25519, Ed25519 and ChaCha20-Poly1305 before they leave a device.</p></details>
   </div>
 </section>
 
@@ -381,7 +388,6 @@ footer .brand{font-size:15px;color:var(--ink)}
 (function(){
   var ENDPOINT = 'https://learnanything.pro/api/leads/article-signup';
   var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
   function bind(form){
     var input = form.querySelector('input[type=email]');
     var btn = form.querySelector('button');
@@ -392,30 +398,24 @@ footer .brand{font-size:15px;color:var(--ink)}
       var email = (input.value || '').trim();
       if (form.querySelector('input[name=company]').value) return; // honeypot
       if (!EMAIL.test(email)) { note.className = 'note err'; note.textContent = 'That email does not look right.'; input.focus(); return; }
-      btn.disabled = true; var label = btn.textContent; btn.textContent = 'Joining…';
+      btn.disabled = true; var label = btn.textContent; btn.textContent = 'Joining\u2026';
       note.className = 'note'; note.textContent = idle;
       var payload = JSON.stringify({ email: email, articleSlug: 'ctrlall-waitlist', vertical: 'ctrlall' });
       fetch(ENDPOINT, { method: 'POST', mode: 'cors', headers: {'Content-Type': 'application/json'}, body: payload })
-      .then(function(r){
-        if (!r.ok) throw new Error('status ' + r.status);
-        return r.json();
-      }, function(){
+      .then(function(r){ if (!r.ok) throw new Error('status ' + r.status); return r.json(); }, function(){
         // ponytail: the endpoint saves the lead but may not send CORS headers yet,
-        // so a blocked preflight falls back to an opaque no-cors POST (text/plain
-        // body, parsed as JSON server-side). Remove once CORS is confirmed live.
+        // so a blocked preflight falls back to an opaque no-cors POST. Remove once CORS is live.
         return fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', headers: {'Content-Type': 'text/plain'}, body: payload });
       }).then(function(){
         try { localStorage.setItem('ctrlall-waitlist', email); } catch (_) {}
         form.classList.add('sent');
       }).catch(function(){
         btn.disabled = false; btn.textContent = label;
-        note.className = 'note err';
-        note.textContent = 'We could not save that just now. Please try again in a moment.';
+        note.className = 'note err'; note.textContent = 'We could not save that just now. Please try again in a moment.';
       });
     });
   }
   Array.prototype.forEach.call(document.querySelectorAll('form[data-waitlist]'), bind);
-
   var reveal = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     var io = new IntersectionObserver(function(entries){
