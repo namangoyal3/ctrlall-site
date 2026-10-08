@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ctrl+all</title>
-<meta name="description" content="ctrl+all runs the coding agents you already pay for on your Mac, and lets you steer them from your phone. Claude Code, Codex, OpenCode and eight more. No per-token metering.">
+<meta name="description" content="ctrl+all is the control room for every coding agent you run. Give Claude Code, Codex, OpenCode and eight more outcomes instead of prompts, keep them working after you walk away, and approve the moments that matter from your phone.">
 <meta property="og:title" content="ctrl+all">
-<meta property="og:description" content="All your coding agents. One Mac. Any phone.">
+<meta property="og:description" content="Every coding agent you run. One team. One control room.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://namangoyal3.github.io/ctrlall-site/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -98,15 +98,24 @@ form.sent{display:none} form.sent + .note{display:none} form.sent ~ .done{displa
 .engines li{display:flex;align-items:center;gap:10px;padding:8px 16px 8px 8px;border:1px solid var(--line);border-radius:var(--r-pill);background:var(--bg-2);font-size:15px;font-weight:600;letter-spacing:-.01em}
 .engines img{width:28px;height:28px;border-radius:50%}
 
+/* problem + turn */
+.problem{padding:clamp(72px,9vw,120px) 0 0}
+.problem .h2{max-width:16em}
+.pains{margin-top:clamp(28px,4vw,44px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.pain{border-top:1px solid var(--line);padding-top:18px}
+.pain b{display:block;font-size:19px;letter-spacing:-.02em;font-weight:600}
+.pain p{margin-top:8px;font-size:16px;line-height:1.5;color:var(--ink-2)}
+.turn{margin-top:clamp(40px,5vw,64px);font-size:clamp(22px,2.4vw,32px);line-height:1.25;letter-spacing:-.025em;font-weight:600;max-width:24em}
 /* two cards */
 .two{padding:clamp(56px,7vw,96px) 0 0}
-.two .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.two .h2{max-width:16em;margin-bottom:clamp(28px,4vw,44px)}
+.two .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .card{border:1px solid var(--line);border-radius:24px;background:var(--bg-2);padding:clamp(28px,3vw,40px)}
 .card header{display:flex;align-items:center;gap:14px}
-.card h3{font-size:clamp(24px,2.4vw,32px);line-height:1.1;letter-spacing:-.03em;font-weight:600}
+.card h3{font-size:clamp(21px,1.9vw,25px);line-height:1.1;letter-spacing:-.03em;font-weight:600}
 .card > p{margin-top:12px;font-size:16px;color:var(--ink-2);max-width:30em}
 .card ul{margin-top:22px;display:grid;gap:12px}
-.card li{display:flex;gap:12px;font-size:16px;line-height:1.45;color:var(--ink)}
+.card li{display:flex;gap:12px;font-size:15px;line-height:1.45;color:var(--ink)}
 .card li::before{content:"";flex:none;width:8px;height:8px;margin-top:9px;border-radius:50%;background:var(--brand)}
 .card.dark{background:var(--dark);color:var(--dark-ink);border-color:transparent}
 .card.dark > p{color:var(--dark-ink-2)} .card.dark li{color:var(--dark-ink)}
@@ -181,6 +190,7 @@ footer .brand{font-size:15px;color:var(--ink)}
   .hero .wrap{grid-template-columns:1fr;gap:44px}
   .phone-wrap{order:2}
   .two .grid{grid-template-columns:1fr}
+  .pains{grid-template-columns:1fr;gap:20px}
   .caps .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .zero .wrap{grid-template-columns:1fr}
   .steps .grid{grid-template-columns:1fr}
@@ -213,8 +223,8 @@ footer .brand{font-size:15px;color:var(--ink)}
 <section class="hero" aria-labelledby="hero-h">
   <div class="wrap">
     <div>
-      <h1 class="h1 rise" id="hero-h">All your coding agents. One Mac. <em>Any phone.</em></h1>
-      <p class="lede rise">ctrl+all runs Claude Code, Codex, OpenCode and eight more on your Mac, and lets you steer them from anywhere. Your subscriptions do the work.</p>
+      <h1 class="h1 rise" id="hero-h">Every coding agent you run. One team. <em>One control room.</em></h1>
+      <p class="lede rise">ctrl+all runs Claude Code, Codex, OpenCode and eight more on your Mac. Hand them outcomes, keep them working after you walk away, and approve the moments that matter from your phone.</p>
       <form class="form rise" data-waitlist novalidate>
         <label class="sr" for="email-hero">Email address</label>
         <input id="email-hero" type="email" name="email" placeholder="Your email" autocomplete="email" inputmode="email" required>
@@ -263,9 +273,21 @@ footer .brand{font-size:15px;color:var(--ink)}
   </div>
 </section>
 
+<section class="problem" aria-labelledby="prob-h">
+  <div class="wrap">
+    <h2 class="h2 reveal" id="prob-h">Five agents. Five terminals. You in the middle.</h2>
+    <div class="pains">
+      <div class="pain reveal"><b>Nothing is shared.</b><p>Each agent lives in its own terminal with its own tools, its own skills and no memory of the others.</p></div>
+      <div class="pain reveal"><b>Work stops at the first yes.</b><p>A long task waits on a permission prompt. You find out an hour later, when you come back to the desk.</p></div>
+      <div class="pain reveal"><b>The lid closes, the day ends.</b><p>Your subscriptions sit idle all night because nothing runs when you are not sitting there.</p></div>
+    </div>
+    <p class="turn reveal">ctrl+all is the layer above them. The agents stay exactly what they are. The management becomes one thing.</p>
+  </div>
+</section>
+
 <section class="engines" aria-label="Supported agents">
   <div class="wrap reveal">
-    <p>Runs the agents you already pay for</p>
+    <p>It runs the agents you already pay for, as themselves</p>
     <ul>
         <li><img src="assets/logos/claude.png" width="40" height="40" alt="" loading="lazy"><span>Claude Code</span></li>
         <li><img src="assets/logos/codex.png" width="40" height="40" alt="" loading="lazy"><span>Codex</span></li>
@@ -282,27 +304,35 @@ footer .brand{font-size:15px;color:var(--ink)}
   </div>
 </section>
 
-<section class="two" aria-label="What you get">
+<section class="two" aria-labelledby="pil-h">
   <div class="wrap">
+    <h2 class="h2 reveal" id="pil-h">Three things remote access never gave you.</h2>
     <div class="grid">
       <article class="card reveal">
-        <header><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"/></svg><h3>From your phone</h3></header>
-        <p>Everything that needs a human, answered from wherever you are.</p>
+        <header><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.87,83.16A104.1,104.1,0,1,1,195.67,49l22.67-22.68a8,8,0,0,1,11.32,11.32l-96,96a8,8,0,0,1-11.32-11.32l27.72-27.72a40,40,0,1,0,17.87,31.09,8,8,0,1,1,16-.9,56,56,0,1,1-22.38-41.65L184.3,60.39a87.88,87.88,0,1,0,23.13,29.67,8,8,0,0,1,14.44-6.9Z"/></svg><h3>Outcomes, not prompts</h3></header>
+        <p>Name what done looks like. The goal loop writes the PRD and the plan, then builds and tests each phase in its own worktree.</p>
         <ul>
-          <li>Answer the agent's questions and permission prompts as cards.</li>
-          <li>Read the diff, then stage, commit and push.</li>
-          <li>Start a goal and watch each phase land.</li>
-          <li>One inbox for every chat and every goal that waits on you.</li>
+          <li>Checkpoints on green, merges with --no-ff, refuses if the branch moved under it.</li>
+          <li>Hard caps on builds and tests, so a loop cannot run away.</li>
+          <li>Missions that outlive a turn, with per-project memory injected into every prompt.</li>
         </ul>
       </article>
       <article class="card dark reveal">
-        <header><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,40H48A24,24,0,0,0,24,64V176a24,24,0,0,0,24,24h72v16H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V200h72a24,24,0,0,0,24-24V64A24,24,0,0,0,208,40ZM48,56H208a8,8,0,0,1,8,8v80H40V64A8,8,0,0,1,48,56ZM208,184H48a8,8,0,0,1-8-8V160H216v16A8,8,0,0,1,208,184Z"/></svg><h3>On your Mac</h3></header>
-        <p>The engine lives where your code lives, and keeps going after you close the lid.</p>
+        <header><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M120,128V48a8,8,0,0,1,16,0v80a8,8,0,0,1-16,0Zm60.37-78.7a8,8,0,0,0-8.74,13.4C194.74,77.77,208,101.57,208,128a80,80,0,0,1-160,0c0-26.43,13.26-50.23,36.37-65.3a8,8,0,0,0-8.74-13.4C47.9,67.38,32,96.06,32,128a96,96,0,0,0,192,0C224,96.06,208.1,67.38,180.37,49.3Z"/></svg><h3>Work that keeps going</h3></header>
+        <p>The engine runs under launchd. Quit the window, close the lid, and the agents keep working.</p>
         <ul>
-          <li>Always on under launchd. Quit the window and the agents keep running.</li>
-          <li>A goal loop that plans, builds and tests in its own worktree.</li>
-          <li>Routines that run a prompt on a schedule, unattended.</li>
-          <li>A terminal, git and a list of your dev servers, per project.</li>
+          <li>Routines run a saved prompt on a schedule, unattended.</li>
+          <li>One inbox collects every question and every stopped goal, from every engine.</li>
+          <li>Every chat is an append-only log. Rewind a turn and the files go back too.</li>
+        </ul>
+      </article>
+      <article class="card reveal">
+        <header><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"/></svg><h3>Control that holds</h3></header>
+        <p>Plan, ask, auto-edit or full auto, enforced on the Mac. Your phone is a window, never a bypass.</p>
+        <ul>
+          <li>A phone can lower its own rank for a session and can never raise it.</li>
+          <li>Teammates get a role: owner, operator or viewer. Each pairs their own phone.</li>
+          <li>Sealed frames end to end. No cloud workspace, no copy of your code, no metering.</li>
         </ul>
       </article>
     </div>
@@ -312,8 +342,8 @@ footer .brand{font-size:15px;color:var(--ink)}
 <section class="window-sec" id="try" aria-labelledby="win-h">
   <div class="wrap">
     <div class="head reveal">
-      <h2 class="h2" id="win-h">Click around. This is the real layout.</h2>
-      <p class="sub">Four things work in this preview: the chat's permission card, Goals, Routines and the Terminal. The rest waits for the beta.</p>
+      <h2 class="h2" id="win-h">Try the control room.</h2>
+      <p class="sub">Answer a permission, start a goal, run a routine, open the terminal. Four things work in this preview. The rest ships with the beta.</p>
     </div>
     <div class="mac reveal" id="mac">
       <div class="mac-bar" aria-hidden="true"><i></i><i></i><i></i><span>ctrl+all</span></div>
@@ -429,19 +459,19 @@ footer .brand{font-size:15px;color:var(--ink)}
 <section class="caps" aria-labelledby="caps-h">
   <div class="wrap">
     <div class="head reveal">
-      <h2 class="h2" id="caps-h">Different jobs. Same controls.</h2>
-      <p class="sub">Everything below runs on your Mac and answers to your phone.</p>
+      <h2 class="h2" id="caps-h">Set up once. Every agent gets it.</h2>
+      <p class="sub">The things you used to configure per tool now live in one place and reach all eleven engines.</p>
     </div>
     <div class="grid">
-      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.87,83.16A104.1,104.1,0,1,1,195.67,49l22.67-22.68a8,8,0,0,1,11.32,11.32l-96,96a8,8,0,0,1-11.32-11.32l27.72-27.72a40,40,0,1,0,17.87,31.09,8,8,0,1,1,16-.9,56,56,0,1,1-22.38-41.65L184.3,60.39a87.88,87.88,0,1,0,23.13,29.67,8,8,0,0,1,14.44-6.9Z"/></svg><h3>Goals</h3><p>Hand it an outcome. It writes a plan, builds and tests each phase in its own worktree, and merges only on green.</p></article>
-      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-38.34-85.66a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L116,164.69l42.34-42.35A8,8,0,0,1,169.66,122.34Z"/></svg><h3>Routines</h3><p>A saved prompt that runs on a schedule, unattended. Nightly audits, morning triage, a weekly changelog.</p></article>
-      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232,96a7.89,7.89,0,0,0-.3-2.2L217.35,43.6A16.07,16.07,0,0,0,202,32H54A16.07,16.07,0,0,0,38.65,43.6L24.31,93.8A7.89,7.89,0,0,0,24,96h0v16a40,40,0,0,0,16,32v72a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8V144a40,40,0,0,0,16-32V96ZM54,48H202l11.42,40H42.61Zm50,56h48v8a24,24,0,0,1-48,0Zm-16,0v8a24,24,0,0,1-35.12,21.26,7.88,7.88,0,0,0-1.82-1.06A24,24,0,0,1,40,112v-8ZM200,208H56V151.2a40.57,40.57,0,0,0,8,.8,40,40,0,0,0,32-16,40,40,0,0,0,64,0,40,40,0,0,0,32,16,40.57,40.57,0,0,0,8-.8Zm4.93-75.8a8.08,8.08,0,0,0-1.8,1.05A24,24,0,0,1,168,112v-8h48v8A24,24,0,0,1,204.93,132.2Z"/></svg><h3>Marketplace</h3><p>Browse a curated set of skills or import one by git URL. Installed once, reachable from every engine.</p></article>
-      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M237.66,18.34a8,8,0,0,0-11.32,0l-52.4,52.41-5.37-5.38a32.05,32.05,0,0,0-45.26,0L100,88.69l-6.34-6.35A8,8,0,0,0,82.34,93.66L88.69,100,65.37,123.31a32,32,0,0,0,0,45.26l5.38,5.37-52.41,52.4a8,8,0,0,0,11.32,11.32l52.4-52.41,5.37,5.38a32,32,0,0,0,45.26,0L156,167.31l6.34,6.35a8,8,0,0,0,11.32-11.32L167.31,156l23.32-23.31a32,32,0,0,0,0-45.26l-5.38-5.37,52.41-52.4A8,8,0,0,0,237.66,18.34Zm-116.29,161a16,16,0,0,1-22.62,0L76.69,157.25a16,16,0,0,1,0-22.62L100,111.31,144.69,156Zm57.94-57.94L156,144.69,111.31,100l23.32-23.31a16,16,0,0,1,22.62,0l22.06,22A16,16,0,0,1,179.31,121.37ZM88.57,35A8,8,0,0,1,103.43,29l8,20A8,8,0,0,1,96.57,55ZM24.57,93A8,8,0,0,1,35,88.57l20,8A8,8,0,0,1,49,111.43l-20-8A8,8,0,0,1,24.57,93ZM231.43,163a8,8,0,0,1-10.4,4.46l-20-8A8,8,0,1,1,207,144.57l20,8A8,8,0,0,1,231.43,163Zm-64,58.06A8,8,0,0,1,152.57,227l-8-20A8,8,0,0,1,159.43,201Z"/></svg><h3>MCP, once</h3><p>Add a server one time and it reaches every installed engine that supports it, not just one.</p></article>
-      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"/></svg><h3>Permissions</h3><p>Plan, ask, auto-edit or full auto, enforced on the Mac. A phone can lower its own rank, never raise it.</p></article>
-      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M136,80v43.47l36.12,21.67a8,8,0,0,1-8.24,13.72l-40-24A8,8,0,0,1,120,128V80a8,8,0,0,1,16,0Zm-8-48A95.44,95.44,0,0,0,60.08,60.15C52.81,67.51,46.35,74.59,40,82V64a8,8,0,0,0-16,0v40a8,8,0,0,0,8,8H72a8,8,0,0,0,0-16H49c7.15-8.42,14.27-16.35,22.39-24.57a80,80,0,1,1,1.66,114.75,8,8,0,1,0-11,11.64A96,96,0,1,0,128,32Z"/></svg><h3>Rewind a turn</h3><p>Every chat is an append-only log. Undo a turn and the files and the transcript go back to the checkpoint.</p></article>
-      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm0,16V152h-28.7A15.86,15.86,0,0,0,168,156.69L148.69,176H107.31L88,156.69A15.86,15.86,0,0,0,76.69,152H48V48Zm0,160H48V168H76.69L96,187.31A15.86,15.86,0,0,0,107.31,192h41.38A15.86,15.86,0,0,0,160,187.31L179.31,168H208v40Z"/></svg><h3>Inbox</h3><p>One screen for everything that waits on you: open questions from every chat, and goals that stopped.</p></article>
-      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M120,128V48a8,8,0,0,1,16,0v80a8,8,0,0,1-16,0Zm60.37-78.7a8,8,0,0,0-8.74,13.4C194.74,77.77,208,101.57,208,128a80,80,0,0,1-160,0c0-26.43,13.26-50.23,36.37-65.3a8,8,0,0,0-8.74-13.4C47.9,67.38,32,96.06,32,128a96,96,0,0,0,192,0C224,96.06,208.1,67.38,180.37,49.3Z"/></svg><h3>Always on</h3><p>The engine runs under launchd. Quit the window and your agents keep working, and your phone still reaches them.</p></article>
-      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,112a28,28,0,0,0-8,54.83V184a8,8,0,0,0,16,0V166.83A28,28,0,0,0,128,112Zm0,40a12,12,0,1,1,12-12A12,12,0,0,1,128,152Zm80-72H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Z"/></svg><h3>Sealed relay</h3><p>Keys are made on your devices and stay there. The relay forwards bytes it cannot read.</p></article>
+      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M237.66,18.34a8,8,0,0,0-11.32,0l-52.4,52.41-5.37-5.38a32.05,32.05,0,0,0-45.26,0L100,88.69l-6.34-6.35A8,8,0,0,0,82.34,93.66L88.69,100,65.37,123.31a32,32,0,0,0,0,45.26l5.38,5.37-52.41,52.4a8,8,0,0,0,11.32,11.32l52.4-52.41,5.37,5.38a32,32,0,0,0,45.26,0L156,167.31l6.34,6.35a8,8,0,0,0,11.32-11.32L167.31,156l23.32-23.31a32,32,0,0,0,0-45.26l-5.38-5.37,52.41-52.4A8,8,0,0,0,237.66,18.34Zm-116.29,161a16,16,0,0,1-22.62,0L76.69,157.25a16,16,0,0,1,0-22.62L100,111.31,144.69,156Zm57.94-57.94L156,144.69,111.31,100l23.32-23.31a16,16,0,0,1,22.62,0l22.06,22A16,16,0,0,1,179.31,121.37ZM88.57,35A8,8,0,0,1,103.43,29l8,20A8,8,0,0,1,96.57,55ZM24.57,93A8,8,0,0,1,35,88.57l20,8A8,8,0,0,1,49,111.43l-20-8A8,8,0,0,1,24.57,93ZM231.43,163a8,8,0,0,1-10.4,4.46l-20-8A8,8,0,1,1,207,144.57l20,8A8,8,0,0,1,231.43,163Zm-64,58.06A8,8,0,0,1,152.57,227l-8-20A8,8,0,0,1,159.43,201Z"/></svg><h3>MCP, once</h3><p>Add a server one time and it reaches every installed engine that supports it. No more per-tool config files.</p></article>
+      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232,96a7.89,7.89,0,0,0-.3-2.2L217.35,43.6A16.07,16.07,0,0,0,202,32H54A16.07,16.07,0,0,0,38.65,43.6L24.31,93.8A7.89,7.89,0,0,0,24,96h0v16a40,40,0,0,0,16,32v72a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8V144a40,40,0,0,0,16-32V96ZM54,48H202l11.42,40H42.61Zm50,56h48v8a24,24,0,0,1-48,0Zm-16,0v8a24,24,0,0,1-35.12,21.26,7.88,7.88,0,0,0-1.82-1.06A24,24,0,0,1,40,112v-8ZM200,208H56V151.2a40.57,40.57,0,0,0,8,.8,40,40,0,0,0,32-16,40,40,0,0,0,64,0,40,40,0,0,0,32,16,40.57,40.57,0,0,0,8-.8Zm4.93-75.8a8.08,8.08,0,0,0-1.8,1.05A24,24,0,0,1,168,112v-8h48v8A24,24,0,0,1,204.93,132.2Z"/></svg><h3>Skills marketplace</h3><p>Browse a curated set or import by git URL. One install, every engine can use it, with update and rollback.</p></article>
+      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M248,124a56.11,56.11,0,0,0-32-50.61V72a48,48,0,0,0-88-26.49A48,48,0,0,0,40,72v1.39a56,56,0,0,0,0,101.2V176a48,48,0,0,0,88,26.49A48,48,0,0,0,216,176v-1.41A56.09,56.09,0,0,0,248,124ZM88,208a32,32,0,0,1-31.81-28.56A55.87,55.87,0,0,0,64,180h8a8,8,0,0,0,0-16H64A40,40,0,0,1,50.67,86.27,8,8,0,0,0,56,78.73V72a32,32,0,0,1,64,0v68.26A47.8,47.8,0,0,0,88,128a8,8,0,0,0,0,16,32,32,0,0,1,0,64Zm104-44h-8a8,8,0,0,0,0,16h8a55.87,55.87,0,0,0,7.81-.56A32,32,0,1,1,168,144a8,8,0,0,0,0-16,47.8,47.8,0,0,0-32,12.26V72a32,32,0,0,1,64,0v6.73a8,8,0,0,0,5.33,7.54A40,40,0,0,1,192,164Zm16-52a8,8,0,0,1-8,8h-4a36,36,0,0,1-36-36V80a8,8,0,0,1,16,0v4a20,20,0,0,0,20,20h4A8,8,0,0,1,208,112ZM60,120H56a8,8,0,0,1,0-16h4A20,20,0,0,0,80,84V80a8,8,0,0,1,16,0v4A36,36,0,0,1,60,120Z"/></svg><h3>Project memory</h3><p>Durable notes per project, injected into every prompt whichever agent takes the turn.</p></article>
+      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M42.76,50A8,8,0,0,0,40,56V224a8,8,0,0,0,16,0V179.77c26.79-21.16,49.87-9.75,76.45,3.41,16.4,8.11,34.06,16.85,53,16.85,13.93,0,28.54-4.75,43.82-18a8,8,0,0,0,2.76-6V56A8,8,0,0,0,218.76,50c-28,24.23-51.72,12.49-79.21-1.12C111.07,34.76,78.78,18.79,42.76,50ZM216,172.25c-26.79,21.16-49.87,9.74-76.45-3.41-25-12.35-52.81-26.13-83.55-8.4V59.79c26.79-21.16,49.87-9.75,76.45,3.4,25,12.35,52.82,26.13,83.55,8.4Z"/></svg><h3>Missions</h3><p>A goal that outlives a turn. Link the chats that serve it and see what each one touched.</p></article>
+      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48v48Zm-96,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,200,136Zm0,64H152V152h48v48Z"/></svg><h3>Workspaces</h3><p>Several live chats side by side, each in its own environment. Close a card and the chat stays.</p></article>
+      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M136,80v43.47l36.12,21.67a8,8,0,0,1-8.24,13.72l-40-24A8,8,0,0,1,120,128V80a8,8,0,0,1,16,0Zm-8-48A95.44,95.44,0,0,0,60.08,60.15C52.81,67.51,46.35,74.59,40,82V64a8,8,0,0,0-16,0v40a8,8,0,0,0,8,8H72a8,8,0,0,0,0-16H49c7.15-8.42,14.27-16.35,22.39-24.57a80,80,0,1,1,1.66,114.75,8,8,0,1,0-11,11.64A96,96,0,1,0,128,32Z"/></svg><h3>Rewind</h3><p>Undo a turn and the files and the transcript go back to the checkpoint. Nothing is ever overwritten.</p></article>
+      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1-7.37-4.89,8,8,0,0,1,0-6.22A8,8,0,0,1,192,112a24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.84,8,57,57,0,0,0-98.16,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"/></svg><h3>Team roles</h3><p>Owner, operator, viewer. Invite a teammate, hand them a role, and they pair their own phone.</p></article>
+      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M215.79,118.17a8,8,0,0,0-5-5.66L153.18,90.9l14.66-73.33a8,8,0,0,0-13.69-7l-112,120a8,8,0,0,0,3,13l57.63,21.61L88.16,238.43a8,8,0,0,0,13.69,7l112-120A8,8,0,0,0,215.79,118.17ZM109.37,214l10.47-52.38a8,8,0,0,0-5-9.06L62,132.71l84.62-90.66L136.16,94.43a8,8,0,0,0,5,9.06l52.8,19.8Z"/></svg><h3>Local judge</h3><p>A small model the app downloads once checks each goal turn did its phase. Nothing leaves the Mac.</p></article>
+      <article class="cap reveal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M80,64a8,8,0,0,1,8-8H216a8,8,0,0,1,0,16H88A8,8,0,0,1,80,64Zm136,56H88a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Zm0,64H88a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16ZM44,52A12,12,0,1,0,56,64,12,12,0,0,0,44,52Zm0,64a12,12,0,1,0,12,12A12,12,0,0,0,44,116Zm0,64a12,12,0,1,0,12,12A12,12,0,0,0,44,180Z"/></svg><h3>Event log</h3><p>Append-only per chat, the book of record. Reconnect from any point without losing a line.</p></article>
     </div>
   </div>
 </section>
@@ -476,6 +506,7 @@ footer .brand{font-size:15px;color:var(--ink)}
 <section class="faq" id="faq" aria-labelledby="faq-h">
   <div class="wrap">
     <h2 class="h2 reveal" id="faq-h">Questions, answered.</h2>
+      <details class="reveal"><summary>Is this just remote access to my Mac?</summary><p>No. Remote access shows you a screen. ctrl+all runs the agents itself: it writes the plan, opens the worktree, runs the tests, holds a permission until you answer, and keeps going after you close the lid. The phone is one window into that engine. The Mac window is another.</p></details>
       <details class="reveal"><summary>Do I need an account or a cloud workspace?</summary><p>No. The engine runs on your Mac. Off your network, a relay forwards sealed frames between your phone and your Mac. With Tailscale Funnel or a quick tunnel there is no cloud account at all.</p></details>
       <details class="reveal"><summary>Which agents does it run?</summary><p>Claude Code, Codex, OpenCode, Grok, Hermes, Kimi, Z.ai, Cursor, Gemini, Copilot and a local Ollama model. Each runs as it would in your terminal, on the subscription you already have.</p></details>
       <details class="reveal"><summary>Does it cost per token?</summary><p>No. ctrl+all meters nothing. You pay the vendors you already pay, and nothing else.</p></details>
@@ -503,7 +534,7 @@ footer .brand{font-size:15px;color:var(--ink)}
 <dialog class="wl" id="wl" aria-labelledby="wl-h">
   <div class="inner">
     <button type="button" class="close" data-close aria-label="Close">&times;</button>
-    <h2 id="wl-h">Want this on your Mac?</h2>
+    <h2 id="wl-h">Want the control room on your Mac?</h2>
     <p class="sub">You just tried the parts that matter. Leave your email and we send one message when your invite is ready.</p>
     <form class="form" data-waitlist novalidate>
       <label class="sr" for="email-dlg">Email address</label>
