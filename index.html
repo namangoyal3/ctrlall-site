@@ -13,7 +13,7 @@
 <meta name="theme-color" content="#f8f7f4" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0b0c0e" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23ff5b2e'/%3E%3Cpath d='M18 38 32 24l14 14' fill='none' stroke='%23fff' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-<link rel="preload" as="image" href="assets/phone-chat-light.png">
+<link rel="stylesheet" href="demo.css">
 <style>
 :root{
   --bg:#f8f7f4; --bg-2:#ffffff; --ink:#1d1d1f; --ink-2:#48484d; --ink-3:#86868b;
@@ -61,7 +61,7 @@ h1,h2,h3,p,ul{margin:0} ul{padding:0;list-style:none}
 .sub{margin-top:16px;font-size:clamp(17px,1.3vw,19px);line-height:1.5;color:var(--ink-2);max-width:36em}
 
 /* hero */
-.hero{padding:clamp(44px,6vw,84px) 0 clamp(48px,6vw,80px);border-bottom:1px solid var(--line-2)}
+.hero{padding:clamp(44px,6vw,84px) 0 clamp(48px,6vw,80px);border-bottom:1px solid var(--line-2);overflow-x:clip}
 .hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(32px,6vw,80px);align-items:center}
 .lede{margin-top:22px;font-size:clamp(17px,1.35vw,19px);line-height:1.5;color:var(--ink-2);max-width:30em}
 .form{margin-top:28px;display:flex;gap:10px;max-width:520px}
@@ -87,7 +87,10 @@ form.sent{display:none} form.sent + .note{display:none} form.sent ~ .done{displa
 .phone-wrap::before{content:"";position:absolute;inset:6% -18% -4% -18%;border-radius:50%;z-index:-1;background:radial-gradient(closest-side,color-mix(in srgb,var(--brand) 22%,transparent),transparent 72%);filter:blur(8px)}
 .phone{width:clamp(250px,24vw,310px);aspect-ratio:393/852;background:#1d1d1f;border-radius:14% / 6.5%;padding:3.6%;position:relative;box-shadow:var(--shadow),inset 0 0 0 2px #3a3a3c}
 .phone img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:11.5% / 5.3%;background:#f6f7fb}
+.phone::after{content:"";position:absolute;top:7%;left:50%;transform:translateX(-50%);width:28%;height:3%;border-radius:999px;background:#0a0a0a}
 
+.try-hint{margin-top:16px;text-align:center;font-size:13px;color:var(--ink-3)}
+.link{border:0;background:none;padding:0;color:var(--brand);font:inherit;cursor:pointer;text-decoration:underline}
 /* engines strip */
 .engines{padding:clamp(40px,5vw,56px) 0}
 .engines p{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);text-align:center}
@@ -232,9 +235,30 @@ footer .brand{font-size:15px;color:var(--ink)}
       </div>
     </div>
     <div class="phone-wrap">
-      <div class="phone">
-        <img src="assets/phone-chat-light.png" width="393" height="852" alt="The ctrl+all phone client showing a live Claude Code chat: the prompt, a Read tool row marked Done, the agent's reply, and a Commit button" fetchpriority="high">
+      <div class="ph" aria-label="Interactive preview of the phone client">
+        <div class="ph-screen">
+          <div class="ph-head"><span class="menu" aria-hidden="true"><i></i><em></em></span>ps-e2e-demo<span class="diff" data-diff></span></div>
+          <div class="ph-tx">
+            <span class="undo">Undo this turn</span>
+            <div class="bubble">Add a one-line JSDoc comment above greet in app.js saying: Greets the given name. Then stop.</div>
+            <div class="rows">
+              <div class="row"><b>Read</b><code>~/ps-e2e-demo/app.js</code><span class="st ok">Done</span></div>
+              <div class="row"><b>Edit</b><code>~/ps-e2e-demo/app.js</code><span class="st wait" data-edit-status>Waiting</span></div>
+            </div>
+            <div class="perm" data-perm-card>
+              <p>Allow <b>Edit</b> to edit <code>app.js</code>?</p>
+              <div class="acts"><button type="button" class="pri" data-perm="allow">Allow</button><button type="button" data-perm="deny">Deny</button></div>
+              <div class="answered hide"></div>
+            </div>
+            <p class="agent hide" data-after-allow>Done. One JSDoc line above <code>greet</code>, nothing else touched.</p>
+            <p class="agent hide" data-after-deny>Stopped before editing. Nothing changed.</p>
+            <span class="commit hide" data-after-allow>Commit <small>1</small></span>
+          </div>
+          <div class="ph-comp"><div class="in">Send a command… @files, skills, plugins</div><div class="meta"><span class="plus">+</span>Ask<span class="mic"></span></div></div>
+          <div class="ph-bar"><span>ps-e2e-demo</span><span>Ask</span><span>main</span></div>
+        </div>
       </div>
+      <p class="try-hint">Tap Allow or Deny. The Mac window below answers too.</p>
     </div>
   </div>
 </section>
@@ -285,18 +309,119 @@ footer .brand{font-size:15px;color:var(--ink)}
   </div>
 </section>
 
-<section class="window-sec" aria-labelledby="win-h">
+<section class="window-sec" id="try" aria-labelledby="win-h">
   <div class="wrap">
     <div class="head reveal">
-      <h2 class="h2" id="win-h">One window on your Mac. Every agent inside it.</h2>
-      <p class="sub">Skills, agents, goals, routines, terminal and git in one app. The phone loads the same page against the same engine.</p>
+      <h2 class="h2" id="win-h">Click around. This is the real layout.</h2>
+      <p class="sub">Four things work in this preview: the chat's permission card, Goals, Routines and the Terminal. The rest waits for the beta.</p>
     </div>
-    <div class="window reveal">
-      <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i></div>
-      <picture>
-        <source srcset="assets/hero-window-dark@2x.png" media="(prefers-color-scheme: dark)">
-        <img src="assets/hero-window@2x.png" width="2368" height="1640" alt="A Claude Code transcript inside ctrl+all: the agent's notes, a Bash row marked Done, an edit to app.js, an answered permission card and a Commit and Push button" loading="lazy">
-      </picture>
+    <div class="mac reveal" id="mac">
+      <div class="mac-bar" aria-hidden="true"><i></i><i></i><i></i><span>ctrl+all</span></div>
+      <div class="mac-body">
+        <aside class="sb">
+          <span class="mark" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><path d="M16 40 32 24l16 16" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <button type="button" class="sb-new" data-nav="chat"><b>+</b> New</button>
+          <nav aria-label="Preview panes">
+            <button type="button" class="m-only" data-nav="chat"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128ZM84,116a12,12,0,1,0,12,12A12,12,0,0,0,84,116Zm88,0a12,12,0,1,0,12,12A12,12,0,0,0,172,116Zm60,12A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-16,0A88,88,0,1,0,51.81,172.06a8,8,0,0,1,.66,6.54L40,216,77.4,203.53a7.85,7.85,0,0,1,2.53-.42,8,8,0,0,1,4,1.08A88,88,0,0,0,216,128Z"/></svg>Chat<span class="try" aria-hidden="true"></span></button>
+            <button type="button" disabled title="Not in this preview"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M215.79,118.17a8,8,0,0,0-5-5.66L153.18,90.9l14.66-73.33a8,8,0,0,0-13.69-7l-112,120a8,8,0,0,0,3,13l57.63,21.61L88.16,238.43a8,8,0,0,0,13.69,7l112-120A8,8,0,0,0,215.79,118.17ZM109.37,214l10.47-52.38a8,8,0,0,0-5-9.06L62,132.71l84.62-90.66L136.16,94.43a8,8,0,0,0,5,9.06l52.8,19.8Z"/></svg>Skills</button>
+            <button type="button" disabled title="Not in this preview"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M200,48H136V16a8,8,0,0,0-16,0V48H56A32,32,0,0,0,24,80V192a32,32,0,0,0,32,32H200a32,32,0,0,0,32-32V80A32,32,0,0,0,200,48Zm16,144a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V80A16,16,0,0,1,56,64H200a16,16,0,0,1,16,16Zm-52-56H92a28,28,0,0,0,0,56h72a28,28,0,0,0,0-56Zm-24,16v24H116V152ZM80,164a12,12,0,0,1,12-12h8v24H92A12,12,0,0,1,80,164Zm84,12h-8V152h8a12,12,0,0,1,0,24ZM72,108a12,12,0,1,1,12,12A12,12,0,0,1,72,108Zm88,0a12,12,0,1,1,12,12A12,12,0,0,1,160,108Z"/></svg>Agents</button>
+            <button type="button" data-nav="terminal"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,128a8,8,0,0,1-3,6.25l-40,32a8,8,0,1,1-10-12.5L107.19,128,75,102.25a8,8,0,1,1,10-12.5l40,32A8,8,0,0,1,128,128Zm48,24H136a8,8,0,0,0,0,16h40a8,8,0,0,0,0-16Zm56-96V200a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56ZM216,200V56H40V200H216Z"/></svg>Terminal<span class="try" aria-hidden="true"></span></button>
+            <button type="button" disabled title="Not in this preview"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M42.76,50A8,8,0,0,0,40,56V224a8,8,0,0,0,16,0V179.77c26.79-21.16,49.87-9.75,76.45,3.41,16.4,8.11,34.06,16.85,53,16.85,13.93,0,28.54-4.75,43.82-18a8,8,0,0,0,2.76-6V56A8,8,0,0,0,218.76,50c-28,24.23-51.72,12.49-79.21-1.12C111.07,34.76,78.78,18.79,42.76,50ZM216,172.25c-26.79,21.16-49.87,9.74-76.45-3.41-25-12.35-52.81-26.13-83.55-8.4V59.79c26.79-21.16,49.87-9.75,76.45,3.4,25,12.35,52.82,26.13,83.55,8.4Z"/></svg>Missions</button>
+            <button type="button" data-nav="goals"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.87,83.16A104.1,104.1,0,1,1,195.67,49l22.67-22.68a8,8,0,0,1,11.32,11.32l-96,96a8,8,0,0,1-11.32-11.32l27.72-27.72a40,40,0,1,0,17.87,31.09,8,8,0,1,1,16-.9,56,56,0,1,1-22.38-41.65L184.3,60.39a87.88,87.88,0,1,0,23.13,29.67,8,8,0,0,1,14.44-6.9Z"/></svg>Goals<span class="try" aria-hidden="true"></span></button>
+            <button type="button" data-nav="routines"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-38.34-85.66a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L116,164.69l42.34-42.35A8,8,0,0,1,169.66,122.34Z"/></svg>Routines<span class="try" aria-hidden="true"></span></button>
+            <button type="button" disabled title="Not in this preview"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232,96a7.89,7.89,0,0,0-.3-2.2L217.35,43.6A16.07,16.07,0,0,0,202,32H54A16.07,16.07,0,0,0,38.65,43.6L24.31,93.8A7.89,7.89,0,0,0,24,96h0v16a40,40,0,0,0,16,32v72a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8V144a40,40,0,0,0,16-32V96ZM54,48H202l11.42,40H42.61Zm50,56h48v8a24,24,0,0,1-48,0Zm-16,0v8a24,24,0,0,1-35.12,21.26,7.88,7.88,0,0,0-1.82-1.06A24,24,0,0,1,40,112v-8ZM200,208H56V151.2a40.57,40.57,0,0,0,8,.8,40,40,0,0,0,32-16,40,40,0,0,0,64,0,40,40,0,0,0,32,16,40.57,40.57,0,0,0,8-.8Zm4.93-75.8a8.08,8.08,0,0,0-1.8,1.05A24,24,0,0,1,168,112v-8h48v8A24,24,0,0,1,204.93,132.2Z"/></svg>Marketplace</button>
+            <button type="button" disabled title="Not in this preview"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48v48Zm-96,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,200,136Zm0,64H152V152h48v48Z"/></svg>Workspaces</button>
+            <button type="button" disabled title="Not in this preview"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm109.94-52.79a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A112.1,112.1,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07l-.15,33.65-29.83,17a8,8,0,0,0-3.89,5.4,106.47,106.47,0,0,0,0,41.56,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.62a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,112.1,112.1,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.15-33.65,29.83-17a8,8,0,0,0,3.89-5.4A106.47,106.47,0,0,0,237.94,107.21Zm-15,34.91-28.57,16.25a8,8,0,0,0-3,3c-.58,1-1.19,2.06-1.81,3.06a7.94,7.94,0,0,0-1.22,4.21l-.15,32.25a95.89,95.89,0,0,1-25.37,14.3L134,199.13a8,8,0,0,0-3.91-1h-.19c-1.21,0-2.43,0-3.64,0a8.08,8.08,0,0,0-4.1,1l-28.84,16.1A96,96,0,0,1,67.88,201l-.11-32.2a8,8,0,0,0-1.22-4.22c-.62-1-1.23-2-1.8-3.06a8.09,8.09,0,0,0-3-3.06l-28.6-16.29a90.49,90.49,0,0,1,0-28.26L61.67,97.63a8,8,0,0,0,3-3c.58-1,1.19-2.06,1.81-3.06a7.94,7.94,0,0,0,1.22-4.21l.15-32.25a95.89,95.89,0,0,1,25.37-14.3L122,56.87a8,8,0,0,0,4.1,1c1.21,0,2.43,0,3.64,0a8.08,8.08,0,0,0,4.1-1l28.84-16.1A96,96,0,0,1,188.12,55l.11,32.2a8,8,0,0,0,1.22,4.22c.62,1,1.23,2,1.8,3.06a8.09,8.09,0,0,0,3,3.06l28.6,16.29A90.49,90.49,0,0,1,222.9,142.12Z"/></svg>Settings</button>
+          </nav>
+          <div class="sb-proj">
+            <div class="h"><span>Projects</span></div>
+            <div class="box">
+              <div class="name">ps-e2e-demo</div>
+              <div class="chat" data-nav="chat" role="button" tabindex="0"><i></i><span>Add a one-line JSDoc…</span><small>claude</small></div>
+            </div>
+          </div>
+          <div class="sb-foot"><span class="mark" style="width:22px;height:22px;border-radius:6px;margin:0"></span><span>This Mac<em>engine running</em></span></div>
+        </aside>
+
+        <section class="pane" data-pane="chat">
+          <div class="pane-head">ps-e2e-demo <span class="tag">Hera</span><span class="hint">Answer the card, here or on the phone</span></div>
+          <div class="pane-body">
+            <div class="tx">
+              <div class="bubble">Add a one-line JSDoc comment above greet in app.js saying: Greets the given name. Then stop.</div>
+              <div class="think">Thinking</div>
+              <div class="rows">
+                <div class="row"><b>Read</b><code>/Users/you/ps-e2e-demo/app.js</code><span class="st ok">Done</span></div>
+                <div class="row"><b>Edit</b><code>/Users/you/ps-e2e-demo/app.js</code><span class="st wait" data-edit-status>Waiting</span></div>
+              </div>
+              <div class="perm" data-perm-card>
+                <p>Allow <b>Edit</b> to edit <code>/Users/you/ps-e2e-demo/app.js</code>?</p>
+                <div class="acts"><button type="button" class="pri" data-perm="allow">Allow</button><button type="button" data-perm="deny">Deny</button></div>
+                <div class="answered hide"></div>
+              </div>
+              <p class="agent hide" data-after-allow>Done. One JSDoc line above <code>greet</code>, nothing else touched.</p>
+              <p class="agent hide" data-after-deny>Stopped before editing. Nothing changed. <button type="button" class="link" data-reset-chat>Ask again</button></p>
+              <span class="commit hide" data-after-allow><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M205.66,117.66a8,8,0,0,1-11.32,0L136,59.31V216a8,8,0,0,1-16,0V59.31L61.66,117.66a8,8,0,0,1-11.32-11.32l72-72a8,8,0,0,1,11.32,0l72,72A8,8,0,0,1,205.66,117.66Z"/></svg> Commit &amp; Push <small>1</small></span>
+              <div class="composer"><input type="text" placeholder="Send a command… @files, skills, plugins" aria-label="Command (preview only)" readonly><div class="meta"><i></i>Claude Code · Default · standard <span>+</span><span>Enter to send</span><span class="send" aria-hidden="true">↑</span></div></div>
+              <div class="ctxbar"><span>ps-e2e-demo</span><span>Ask</span><span>main</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="pane" data-pane="goals">
+          <div class="pane-head">New goal<span class="hint">Pick an engine, then Start</span></div>
+          <div class="pane-body">
+            <div class="form-grid" id="goal-form">
+              <div><label>Project</label><div class="field">ps-e2e-demo</div></div>
+              <div><label>Assistant</label><div class="chips">
+                <button type="button" data-engine="Claude Code">Claude Code</button><button type="button" data-engine="Codex">Codex</button><button type="button" data-engine="OpenCode">OpenCode</button><button type="button" data-engine="Grok Build">Grok Build</button><button type="button" data-engine="Hermes">Hermes</button><button type="button" data-engine="Kimi Code">Kimi Code</button><button type="button" data-engine="Local (Ollama)">Local (Ollama)</button>
+              </div></div>
+              <div class="sandbox"><b>This runs in Full Auto.</b> The agent works without asking you to approve each step. On Claude Code it runs inside an OS sandbox, so it cannot read ctrl+all's credentials or change your shell startup files.</div>
+              <div><label>Title</label><div class="field">Add CSV export to the reports page</div></div>
+              <div><label>Goal</label><div class="field ta">What done looks like. The agent writes a PRD and a phase plan from this, then builds and tests each phase on its own branch. You read the result.</div></div>
+              <div><label>Effort</label><div class="chips"><button type="button" disabled>quick</button><button type="button" aria-pressed="true" disabled>standard</button><button type="button" disabled>thorough</button></div></div>
+              <button type="button" class="start" id="goal-start">Start</button>
+            </div>
+            <div class="goal-run hide" id="goal-run">
+              <h4>Add CSV export to the reports page</h4>
+              <p class="sub"><span id="goal-engine">Claude Code</span> · goal/add-csv-export · standard effort</p>
+              <ul class="rail" id="goal-rail">
+                <li><i></i>Interview: PRD.md and PLAN.md written<small></small></li>
+                <li><i></i>Phase 1 of 3: building in its own worktree<small></small></li>
+                <li><i></i>Tests green, checkpoint committed<small></small></li>
+                <li><i></i>Phase 2 of 3: building<small></small></li>
+                <li><i></i>Tests green, checkpoint committed<small></small></li>
+                <li><i></i>Phase 3 of 3: building<small></small></li>
+                <li><i></i>Tests green, merged with --no-ff<small></small></li>
+              </ul>
+              <button type="button" class="again" id="goal-again">Start another</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="pane" data-pane="routines">
+          <div class="pane-head">Routines<span class="hint">Run one now, or pause it</span></div>
+          <div class="pane-body">
+            <div class="rt">
+              <p class="lead">Run the same prompt on a schedule and keep the results. A routine opens a fresh chat each time.</p>
+              <ul>
+                <li data-routine="triage"><div class="nm"><i class="dot"></i><div>Morning issue triage<small class="when"></small></div></div><button type="button" class="run">Run now</button><button type="button" class="pause">Pause</button><button type="button" class="del" disabled>Delete</button></li>
+                <li data-routine="audit"><div class="nm"><i class="dot"></i><div>Nightly dependency audit<small class="when"></small></div></div><button type="button" class="run">Run now</button><button type="button" class="pause">Pause</button><button type="button" class="del" disabled>Delete</button></li>
+                <li data-routine="changelog"><div class="nm"><i class="dot"></i><div>Weekly changelog<small class="when"></small></div></div><button type="button" class="run">Run now</button><button type="button" class="pause">Pause</button><button type="button" class="del" disabled>Delete</button></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="pane" data-pane="terminal">
+          <div class="pane-head">Terminal<span class="hint">A real shell per project. Here, a small one.</span></div>
+          <div class="term">
+            <div class="sugg"><button type="button" data-cmd="git status">git status</button><button type="button" data-cmd="ctrlall doctor">ctrlall doctor</button><button type="button" data-cmd="ls -la">ls -la</button><button type="button" data-cmd="ctrlall relay show">ctrlall relay show</button></div>
+            <pre class="out" id="term-out"><span class="dim">/Users/you/ps-e2e-demo</span>
+</pre>
+            <form id="term-form" autocomplete="off"><span class="p">you@mac <span class="dim">ps-e2e-demo %</span></span><label class="sr" for="term-in">Command</label><input id="term-in" type="text" spellcheck="false" autocapitalize="off"></form>
+          </div>
+        </section>
+      </div>
     </div>
   </div>
 </section>
@@ -375,6 +500,22 @@ footer .brand{font-size:15px;color:var(--ink)}
   </div>
 </section>
 
+<dialog class="wl" id="wl" aria-labelledby="wl-h">
+  <div class="inner">
+    <button type="button" class="close" data-close aria-label="Close">&times;</button>
+    <h2 id="wl-h">Want this on your Mac?</h2>
+    <p class="sub">You just tried the parts that matter. Leave your email and we send one message when your invite is ready.</p>
+    <form class="form" data-waitlist novalidate>
+      <label class="sr" for="email-dlg">Email address</label>
+      <input id="email-dlg" type="email" name="email" placeholder="Your email" autocomplete="email" inputmode="email" required>
+      <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn" type="submit">Join the waitlist</button>
+    </form>
+    <p class="note" aria-live="polite">For macOS. Invites go out in small batches.</p>
+    <div class="done" role="status"><strong>You're on the list.</strong>We send one email when your invite is ready. Nothing else.</div>
+  </div>
+</dialog>
+
 </main>
 
 <footer>
@@ -427,5 +568,6 @@ footer .brand{font-size:15px;color:var(--ink)}
   }
 })();
 </script>
+<script src="demo.js" defer></script>
 </body>
 </html>
