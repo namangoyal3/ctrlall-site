@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ctrl+all</title>
-<meta name="description" content="ctrl+all makes coding agents multiplayer. Claude Code, Codex, OpenCode and eight more run on one Mac where a team can watch them work, redirect them mid-turn, hand them off, and approve the moments that matter from a phone.">
+<meta name="description" content="ctrl+all makes coding agents multiplayer. Claude Code, Codex, OpenCode and five more run on one Mac where a team can watch them work, redirect them mid-turn, hand them off, and approve the moments that matter from a phone.">
 <meta property="og:title" content="ctrl+all">
-<meta property="og:description" content="Coding agents, finally multiplayer. Watch, redirect and hand off Claude Code, Codex, OpenCode and eight more, as a team.">
+<meta property="og:description" content="Coding agents, finally multiplayer. Watch, redirect and hand off Claude Code, Codex, OpenCode and more, as a team.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://namangoyal3.github.io/ctrlall-site/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -97,6 +97,7 @@ form.sent{display:none} form.sent + .note{display:none} form.sent ~ .done{displa
 .engines ul{margin-top:22px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px 14px}
 .engines li{display:flex;align-items:center;gap:10px;padding:8px 16px 8px 8px;border:1px solid var(--line);border-radius:var(--r-pill);background:var(--bg-2);font-size:15px;font-weight:600;letter-spacing:-.01em}
 .engines img{width:28px;height:28px;border-radius:50%}
+.engines li em{font-style:normal;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--brand);background:var(--brand-wash);padding:2px 6px;border-radius:999px}
 
 /* problem + turn */
 .problem{padding:clamp(72px,9vw,120px) 0 0}
@@ -224,7 +225,7 @@ footer .brand{font-size:15px;color:var(--ink)}
   <div class="wrap">
     <div>
       <h1 class="h1 rise" id="hero-h">Coding agents, finally <em>multiplayer.</em></h1>
-      <p class="lede rise">ctrl+all runs Claude Code, Codex, OpenCode and eight more on one Mac, where your whole team can watch them work, redirect them mid-turn, and hand them off. From a laptop or a phone.</p>
+      <p class="lede rise">ctrl+all runs Claude Code, Codex, OpenCode and five more on one Mac, where your whole team can watch them work, redirect them mid-turn, and hand them off. From a laptop or a phone.</p>
       <form class="form rise" data-waitlist novalidate>
         <label class="sr" for="email-hero">Email address</label>
         <input id="email-hero" type="email" name="email" placeholder="Your email" autocomplete="email" inputmode="email" required>
@@ -240,7 +241,7 @@ footer .brand{font-size:15px;color:var(--ink)}
         <li><img src="assets/logos/codex.png" width="36" height="36" alt=""><span>Codex</span></li>
         <li><img src="assets/logos/opencode.png" width="36" height="36" alt=""><span>OpenCode</span></li>
         <li><img src="assets/logos/ollama.png" width="36" height="36" alt=""><span>Ollama</span></li>
-        <li class="more"><span>+7 more</span></li>
+        <li class="more"><span>+4 more</span></li>
         </ul>
       </div>
     </div>
@@ -287,7 +288,7 @@ footer .brand{font-size:15px;color:var(--ink)}
 
 <section class="engines" aria-label="Supported agents">
   <div class="wrap reveal">
-    <p>It runs the agents you already pay for, as themselves</p>
+    <p>Eight agents run today, as themselves. Three more are wired and waiting on verification</p>
     <ul>
         <li><img src="assets/logos/claude.png" width="40" height="40" alt="" loading="lazy"><span>Claude Code</span></li>
         <li><img src="assets/logos/codex.png" width="40" height="40" alt="" loading="lazy"><span>Codex</span></li>
@@ -296,10 +297,10 @@ footer .brand{font-size:15px;color:var(--ink)}
         <li><img src="assets/logos/hermes.png" width="40" height="40" alt="" loading="lazy"><span>Hermes</span></li>
         <li><img src="assets/logos/kimi.png" width="40" height="40" alt="" loading="lazy"><span>Kimi</span></li>
         <li><img src="assets/logos/zai.png" width="40" height="40" alt="" loading="lazy"><span>Z.ai</span></li>
-        <li><img src="assets/logos/cursor.png" width="40" height="40" alt="" loading="lazy"><span>Cursor</span></li>
-        <li><img src="assets/logos/gemini.png" width="40" height="40" alt="" loading="lazy"><span>Gemini</span></li>
-        <li><img src="assets/logos/copilot.png" width="40" height="40" alt="" loading="lazy"><span>Copilot</span></li>
         <li><img src="assets/logos/ollama.png" width="40" height="40" alt="" loading="lazy"><span>Ollama</span></li>
+        <li><img src="assets/logos/cursor.png" width="40" height="40" alt="" loading="lazy"><span>Cursor</span><em>soon</em></li>
+        <li><img src="assets/logos/gemini.png" width="40" height="40" alt="" loading="lazy"><span>Gemini</span><em>soon</em></li>
+        <li><img src="assets/logos/copilot.png" width="40" height="40" alt="" loading="lazy"><span>Copilot</span><em>soon</em></li>
     </ul>
   </div>
 </section>
@@ -312,8 +313,8 @@ footer .brand{font-size:15px;color:var(--ink)}
         <header><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48v48Zm-96,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,200,136Zm0,64H152V152h48v48Z"/></svg><h3>Watch</h3></header>
         <p>Every transcript, tool call and diff streams to every paired device, live.</p>
         <ul>
-          <li>Workspaces put several running chats side by side, each in its own environment.</li>
-          <li>Share a live terminal with your organization while the agent works in it.</li>
+          <li>Workspaces put several running chats side by side on one screen.</li>
+          <li>Pair as many phones and laptops as you like. Every one streams the same session through the relay.</li>
           <li>Every chat is an append-only log, so the record is there for whoever comes next.</li>
         </ul>
       </article>
@@ -322,7 +323,7 @@ footer .brand{font-size:15px;color:var(--ink)}
         <p>Steer a running turn or queue the next one, from the desk or from the train.</p>
         <ul>
           <li>Questions and permission prompts arrive as cards on every device and are answered once.</li>
-          <li>Plan, ask, auto-edit or full auto, enforced on the Mac. A phone can lower its rank, never raise it.</li>
+          <li>Plan, ask, auto-edit or full auto, decided on the Mac, never by the phone. A phone can lower its rank, never raise it.</li>
           <li>Hand it an outcome: the goal loop plans, builds and tests each phase in its own worktree and merges on green.</li>
         </ul>
       </article>
@@ -485,8 +486,8 @@ footer .brand{font-size:15px;color:var(--ink)}
     <div class="reveal">
       <p class="sub">You already pay Anthropic, OpenAI or whoever runs your agent. ctrl+all runs those same CLIs on your own Mac, so there is no second bill and no cloud copy of your code.</p>
       <div class="pair">
-        <div class="stat"><b>11</b><span>engines, from Claude Code to a local Ollama model</span></div>
-        <div class="stat"><b>185</b><span>RPC methods, every one reachable from the phone</span></div>
+        <div class="stat"><b>8</b><span>engines running today, from Claude Code to a local Ollama model. Three more wired.</span></div>
+        <div class="stat"><b>180+</b><span>RPC methods, every one reachable from a paired phone</span></div>
       </div>
     </div>
   </div>
@@ -509,7 +510,7 @@ footer .brand{font-size:15px;color:var(--ink)}
       <details class="reveal"><summary>Is this just remote access to my Mac?</summary><p>No. Remote access shows one person a screen. ctrl+all runs the agents itself and makes the session shared: it writes the plan, opens the worktree, runs the tests, holds a permission until someone with the right role answers, and keeps going after you close the lid. Your phone, your laptop and your teammates are all windows into the same engine.</p></details>
       <details class="reveal"><summary>How does a team use it?</summary><p>One Mac runs the engine. The owner invites teammates with a role, owner, operator or viewer, and each pairs their own phone or laptop. Everyone sees the same chats, goals and inbox, fenced to what their role allows.</p></details>
       <details class="reveal"><summary>Do I need an account or a cloud workspace?</summary><p>No. The engine runs on your Mac. Off your network, a relay forwards sealed frames between your phone and your Mac. With Tailscale Funnel or a quick tunnel there is no cloud account at all.</p></details>
-      <details class="reveal"><summary>Which agents does it run?</summary><p>Claude Code, Codex, OpenCode, Grok, Hermes, Kimi, Z.ai, Cursor, Gemini, Copilot and a local Ollama model. Each runs as it would in your terminal, on the subscription you already have.</p></details>
+      <details class="reveal"><summary>Which agents does it run?</summary><p>Today: Claude Code, Codex, OpenCode, Grok, Hermes, Kimi, Z.ai and a local Ollama model, each as it would run in your terminal, on the subscription you already have. Cursor, Gemini and Copilot adapters are written against their CLIs and are waiting on verification before we call them supported.</p></details>
       <details class="reveal"><summary>Does it cost per token?</summary><p>No. ctrl+all meters nothing. You pay the vendors you already pay, and nothing else.</p></details>
       <details class="reveal"><summary>Can my phone do something my Mac would refuse?</summary><p>No. Permission modes are enforced on the Mac. A phone can lower its own rank for a session and can never raise it. Teammates get a role: owner, operator or viewer.</p></details>
       <details class="reveal"><summary>Is there a phone app?</summary><p>A web client works on any phone today and installs to the Home Screen. A native iOS app is next.</p></details>
