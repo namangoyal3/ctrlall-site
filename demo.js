@@ -83,8 +83,7 @@
     b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); b.click(); } });
     b.addEventListener('click', function () {
       var name = b.getAttribute('data-nav');
-      showPane(name);
-      if (name !== 'chat') noteInteraction('pane:' + name);
+      showPane(name); // looking is free; only using a feature counts toward the prompt
     });
   });
 
