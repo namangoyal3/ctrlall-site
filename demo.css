@@ -187,8 +187,46 @@ dialog.wl .done{max-width:none}
   .row{grid-template-columns:40px 1fr auto}
 }
 @media (max-width:640px){
-  .ph{width:min(300px,86vw)}
+  /* Phone mock at phone width: near 1:1 with the viewer's own phone, so the demo text is native-size. */
+  .ph{width:min(100%,360px);margin-inline:auto;aspect-ratio:393/780}
+  .ph-screen{padding:14px 12px 12px;font-size:13px}
+  .ph-head{font-size:15px;padding:8px 2px 12px}
+  .ph-head .menu{width:30px;height:30px}
+  .ph-head .diff{font-size:12px}
+  .ph-tx{gap:10px}
+  .ph-tx .undo{font-size:12px}
+  .ph-tx .bubble{padding:10px 12px;font-size:14px}
+  .ph-tx .row{grid-template-columns:40px 1fr auto;font-size:12px;padding:6px 0}
+  .ph-tx .row code{font-size:11px}
+  .ph-tx .perm{padding:12px}
+  .ph-tx .perm p{font-size:13px;margin-bottom:10px}
+  .ph-tx .perm .acts button{height:40px;padding:0 16px;border-radius:9px;font-size:14px}
+  .ph-comp{padding:10px 12px}
+  .ph-comp .in{font-size:13px}
+  .ph-comp .meta{font-size:12px}
+  .ph-bar{font-size:12px}
+  /* Mac window at phone width: an app panel, not a scaled-down desktop. */
+  .mac-bar span{font-size:13px}
+  .sb{overflow:visible}
+  .sb nav{flex:1;flex-wrap:wrap}
+  .sb nav button{width:auto;flex:1 1 calc(50% - 6px);height:40px;padding:0 14px;font-size:14px}
+  .pane{min-height:0}
+  .pane-head{height:52px;padding:0 16px;font-size:15px}
+  .pane-head .tag{font-size:11px}
   .pane-head .hint{display:none}
+  .pane-body{padding:14px}
+  .tx{font-size:14px}
+  .row{font-size:13px;padding:10px 12px}
+  .row code{font-size:12px}
+  .perm code{font-size:12px}
+  .perm .acts button{height:40px;padding:0 16px}
+  .composer .meta{font-size:12px}
+  .composer .send{width:36px;height:36px}
+  .ctxbar{font-size:12px}
+  .term{font-size:13px}
+  /* 16px inputs: iOS Safari zooms the whole page on focus below that. */
+  .composer input,.term input{font-size:16px}
   .rt li{grid-template-columns:1fr auto auto}
+  .rt li button{height:40px;padding:0 14px;font-size:13px}
   .rt li button.del{display:none}
 }

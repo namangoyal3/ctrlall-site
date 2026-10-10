@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="demo.css">
 <style>
 :root{
-  --bg:#f8f7f4; --bg-2:#ffffff; --ink:#1d1d1f; --ink-2:#48484d; --ink-3:#86868b;
+  --bg:#f8f7f4; --bg-2:#ffffff; --ink:#1d1d1f; --ink-2:#48484d; --ink-3:#6e6e73;
   --line:rgba(29,29,31,.12); --line-2:rgba(29,29,31,.07);
   --brand:#ff5b2e; --brand-deep:#e0431a; --brand-wash:#ffe7dc;
   --dark:#0e1116; --dark-ink:#f5f5f7; --dark-ink-2:#a1a1a6;
@@ -25,7 +25,7 @@
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#0b0c0e; --bg-2:#141518; --ink:#f5f5f7; --ink-2:#b4b4b9; --ink-3:#7c7c82;
+    --bg:#0b0c0e; --bg-2:#141518; --ink:#f5f5f7; --ink-2:#b4b4b9; --ink-3:#8e8e93;
     --line:rgba(255,255,255,.14); --line-2:rgba(255,255,255,.08);
     --brand-wash:#2a1a14;
     --shadow:0 40px 90px -30px rgba(0,0,0,.75), 0 2px 6px rgba(0,0,0,.4);
@@ -198,10 +198,21 @@ footer .brand{font-size:15px;color:var(--ink)}
 }
 @media (max-width:640px){
   .wrap{width:min(var(--w),100% - 32px)}
-  .nav-links{gap:18px}
+  .nav{background:color-mix(in srgb,var(--bg) 94%,transparent)}
+  .nav-links{gap:20px}
+  .nav-links a{display:inline-block;padding:14px 0}
+  .hero .wrap{gap:36px}
   .form{flex-direction:column} .btn{width:100%}
   .tiles{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .caps .grid{grid-template-columns:1fr}
+  .phone-wrap{justify-self:stretch}
+  .two{padding-top:48px}
+  .caps,.steps,.faq,.window-sec{padding-top:56px}
+  .cta{padding:64px 0 56px}
+  .caps .grid{grid-template-columns:1fr;gap:10px}
+  .cap{display:grid;grid-template-columns:24px minmax(0,1fr);column-gap:14px;row-gap:4px;align-items:start;padding:16px}
+  .cap .ic{grid-row:1 / span 2;width:24px;height:24px;margin:1px 0 0}
+  .cap h3,.cap p{margin:0}
+  .engines li em{font-size:11px}
   .zero .pair{grid-template-columns:1fr}
   footer .wrap{flex-direction:column;gap:12px;align-items:flex-start}
 }
