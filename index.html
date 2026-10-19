@@ -201,6 +201,8 @@ details p{padding:0 0 20px;font-size:16px;line-height:1.55;color:var(--ink-2);ma
 footer{border-top:1px solid var(--line-2);padding:28px 0 calc(28px + env(safe-area-inset-bottom))}
 footer .wrap{display:flex;align-items:center;justify-content:space-between;font-size:14px;color:var(--ink-3)}
 footer .brand{font-size:15px;color:var(--ink)}
+footer .wrap{flex-wrap:wrap;row-gap:10px}
+footer .tm{flex-basis:100%;font-size:12px;line-height:1.5}
 
 /* motion */
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
@@ -650,6 +652,7 @@ footer .brand{font-size:15px;color:var(--ink)}
   <div class="wrap">
     <a class="brand" href="#top"><span class="mark" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><path d="M16 40 32 24l16 16" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>ctrl+all</a>
     <span>Made for people who run agents. &copy; 2026 ctrl+all. Help: <a href="mailto:support@ctrlall.app">support@ctrlall.app</a></span>
+    <span class="tm">Claude, Codex, Gemini, Copilot, Grok, Cursor and the other names and logos on this page are trademarks of their owners. ctrl+all is not affiliated with or endorsed by them.</span>
   </div>
 </footer>
 
