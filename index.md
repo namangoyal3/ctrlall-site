@@ -1,0 +1,142 @@
+# ctrl+all
+
+> Every coding agent you pay for, in one inbox, with your team, from your pocket. Claude Code and Codex on one Mac, roles for the team, goals that run overnight. Free beta.
+
+Canonical: https://ctrlall.app/
+Last updated: 2026-11-05
+
+## Run coding agents as a team.
+
+Claude Code and Codex on one always-on Mac. Your team joins from any phone, with roles. Goals run overnight. Free beta.
+
+[Download for Mac](https://ctrlall.app/download) [Try it live](https://ctrlall.app/#try)
+
+Runs the agents you already pay for.
+
+- Claude Code
+- Codex
+- OpenCode
+- Copilot
+- Grok
+- Kimi
+- Hermes
+- Ollama
+
+Your team shares one Claude Code and Codex session on one Mac: anyone with the role taps Allow from a phone, and goals keep building after everyone logs off.
+
+## Watch. Redirect. Hand off.
+
+Today an agent lives in one person's terminal. ctrl+all gives it a room.
+
+1. **Watch** One session. Every paired phone sees the same turn, live.
+2. **Redirect** Steer it mid-run from any phone. A permission card takes one Allow, from whoever has the role.
+3. **Hand off** Invite teammates as owner, operator or viewer. Goals keep building overnight.
+
+## Set up once. Every agent gets it.
+
+### A CLI for scripts
+
+The same control room in your shell.
+
+### MCP, once
+
+Add a server one time. Every engine gets it.
+
+### Skills marketplace
+
+Curated or by git URL. One place to install and remove.
+
+### Project memory
+
+Notes every agent reads before every turn.
+
+### Rewind
+
+Undo a turn. Files and transcript go back.
+
+## Zero tokens metered.
+
+You already pay your agent's vendor. ctrl+all runs the same CLIs on your own Mac. No second bill, no cloud copy of your code.
+
+**8** engines verified live
+
+**~140** operations a paired phone can call
+
+## Up in three steps.
+
+1. **Install on your Mac.** It finds the agent CLIs you already have.
+2. **Pair your phone.** Scan the QR in any phone browser. It keeps its own keys.
+3. **Invite your team.** Each teammate pairs their own phone, with a role.
+
+## Download ctrl+all.
+
+Free beta. Needs macOS 14.5 or later. Runs on Apple silicon and Intel. Updates install themselves.
+
+### You need
+
+- A Mac with macOS 14.5 or later.
+- One agent CLI, such as Claude Code or Codex.
+- Your own account with its vendor.
+
+[Download for Mac](https://ctrlall.app/download)
+
+### The first time you open it
+
+1. Open the disk image. Drag ctrl+all to **Applications**.
+2. Open it from Applications. It opens, no warning.
+
+Signed with an Apple Developer ID and notarized by Apple. Updates arrive in the sidebar: click "Restart to update".
+
+## Free to run. Pay for the relay.
+
+Everything on the Mac is free. Pro is the relay we run for you.
+
+**Free** $0
+
+The engine, the desktop and web apps, every agent, local pairing, a relay you run yourself, and every update.
+
+[Download for Mac](https://ctrlall.app/#download)
+
+**Pro** $48 /year or $5 a month
+
+The hosted relay, push notifications, and pairing with no setup.
+
+Prefer to run your own relay? It's free and [documented](https://ctrlall.app/#faq-relay).
+
+## Questions, answered.
+
+### Is this just ssh and tmux to my Mac?
+
+Those show one person one terminal. ctrl+all runs the agents on one Mac as a shared session: teammates join with roles, one Allow from anyone with the role answers the prompt for all, and a goal keeps building after everyone logs off.
+
+### How does a team use it?
+
+One Mac runs the engine, and the owner invites teammates by role: viewers watch, operators run chats and approve steps, owners also manage people. Each pairs their own phone and sees the same chats, goals and inbox, fenced to their role.
+
+### Do I need an account or a cloud workspace?
+
+No. The engine and your code stay on your Mac; off your network a relay forwards sealed frames it cannot read, or Tailscale Funnel does it with no cloud account at all.
+
+### Which agents does it run?
+
+Claude Code and Codex, each as it would run in your terminal, on the subscription you already have. OpenCode, Grok, Hermes, Kimi, GitHub Copilot and a local Ollama model run as experimental engines.
+
+### Does it cost per token?
+
+No. The beta is free and ctrl+all meters nothing: your Claude and Codex plans do the work.
+
+### What does the relay see?
+
+Only that your Mac is online and how big each message is: frames are sealed on your devices with X25519, Ed25519 and ChaCha20-Poly1305, so the relay cannot open them. It also serves the phone web client, so you trust its operator for that code; beyond that the app only checks GitHub for updates, and crash reports are off.
+
+### Can I run my own relay?
+
+Yes. The `ctrlall` CLI ships inside the app, and `ctrlall relay show` prints the relay in use. For a phone on your Wi-Fi or tailnet, the relay install script runs a relay on the Mac. For a phone anywhere, put Tailscale Funnel in front of it or run `ctrlall relay tunnel`. Either way the relay only forwards sealed frames it cannot read.
+
+### Will macOS warn me when I open it?
+
+No. Since version 1.0.0 the app is signed with an Apple Developer ID and notarized by Apple. If macOS does warn you, or says the app is damaged, do not override it: the file is not the one we published. Delete it and write to support@ctrlall.app.
+
+## Related
+- [Download for Mac](https://ctrlall.app/download)
+- [Support](mailto:support@ctrlall.app)

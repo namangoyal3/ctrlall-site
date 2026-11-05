@@ -1,0 +1,26 @@
+# ctrl+all - https://ctrlall.app
+# Agent files: /llms.txt (site map for language models), /llms-full.txt (all content), /ai.txt (usage policy).
+# Keep in sync with /llms.txt and /ai.txt.
+
+# Answer engines: search and user-triggered fetchers.
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+Allow: /
+
+# Training crawlers: allowed (owner decision, 2026-10-26).
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+User-agent: Bytespider
+Allow: /
+
+User-agent: *
+Allow: /
+
+Sitemap: https://ctrlall.app/sitemap.xml
