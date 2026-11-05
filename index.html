@@ -138,7 +138,8 @@ h1,h2,h3,p,ul,ol{margin:0} ul,ol{padding:0;list-style:none}
 /* the statement */
 .stmt{padding:clamp(88px,11vw,140px) 0 0}
 .stmt p{font-size:clamp(28px,3.6vw,50px);line-height:1.18;letter-spacing:-.03em;font-weight:600;max-width:22em;text-wrap:pretty}
-.stmt .w{color:var(--ink-3);transition:color .45s var(--ease)} .stmt .w.in{color:var(--ink)}
+.stmt .w,.stmt .chip{color:var(--ink-3);transition:color .35s var(--ease),opacity .35s var(--ease)} .stmt .chip{opacity:.45}
+.stmt .w.in,.stmt .chip.in{color:var(--ink);opacity:1}
 .chip{display:inline-flex;align-items:center;gap:8px;vertical-align:-.12em;padding:.14em .55em .14em .18em;margin:0 .06em;border-radius:var(--r-pill);background:var(--bg-3);border:1px solid var(--line);font-size:.5em;font-weight:600;letter-spacing:-.01em;color:var(--ink);white-space:nowrap;line-height:1}
 .chip img,.chip svg{width:1.7em;height:1.7em;border-radius:50%} .chip svg{color:var(--brand);border-radius:0}
 .chip.ok{background:var(--brand);border-color:var(--brand);color:#fff;padding-left:.55em;font-size:.5em}
@@ -399,7 +400,7 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
   *,*::before,*::after{animation:none!important;transition:none!important}
   .reveal,.stage .a,.channels li,.cluster img,.term .ln,.notes span,.prog .swap .a,.rew .lbl .a{opacity:1!important;transform:none!important}
   .stage .x,.prog .swap .x,.rew .lbl .x{display:none}
-  .term .ln.c span{clip-path:none} .prog .bar i{transform:none} .rew .knob{left:66%} .stmt .w{color:var(--ink)}
+  .term .ln.c span{clip-path:none} .prog .bar i{transform:none} .rew .knob{left:66%} .stmt .w,.stmt .chip{color:var(--ink);opacity:1}
   .walk-step{opacity:1}
 }
 
@@ -986,11 +987,15 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
       });
       t.parentNode.replaceChild(frag, t);
     });
-    var words = p.querySelectorAll('.w'), ticking = false;
+    /* one word at a time, left to right, driven by how far the paragraph has scrolled through the viewport:
+       lit from the moment its top crosses 85% of the viewport until its bottom reaches 35% */
+    var words = p.querySelectorAll('.w, .chip'), ticking = false;
     var paint = function(){
       ticking = false;
-      var line = innerHeight * 0.72;
-      for (var i = 0; i < words.length; i++) words[i].classList.toggle('in', words[i].getBoundingClientRect().top < line);
+      var r = p.getBoundingClientRect(), start = innerHeight * 0.85, end = innerHeight * 0.35 - r.height;
+      var k = Math.min(1, Math.max(0, (start - r.top) / (start - end)));
+      var lit = Math.round(k * words.length);
+      for (var i = 0; i < words.length; i++) words[i].classList.toggle('in', i < lit);
     };
     if (reduce) words.forEach(function(w){ w.classList.add('in'); });
     else { addEventListener('scroll', function(){ if (!ticking) { ticking = true; requestAnimationFrame(paint); } }, { passive: true }); paint(); }
