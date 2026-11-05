@@ -153,15 +153,15 @@ h1,h2,h3,p,ul,ol{margin:0} ul,ol{padding:0;list-style:none}
 .walk-step p{margin-top:6px;font-size:16px;color:var(--ink-2);max-width:26em}
 .walk-stage{position:sticky;top:calc(var(--nav-h) + 28px);height:min(560px,calc(100vh - var(--nav-h) - 56px));border-radius:var(--r-tile);background:var(--bg-2);border:1px solid var(--line-2);overflow:hidden;isolation:isolate}
 .walk-stage::after{content:"";position:absolute;inset:auto -20% -40% -20%;height:70%;z-index:-1;background:radial-gradient(closest-side,rgba(255,91,46,.18),transparent 70%)}
-.pane{position:absolute;inset:0;padding:clamp(18px,2.6vw,32px);display:none;flex-direction:column;gap:10px;font-size:13.5px;line-height:1.45;color:var(--ink-2)}
+.walk-stage .pane{position:absolute;inset:0;padding:clamp(18px,2.6vw,32px);display:none;flex-direction:column;gap:10px;font-size:13.5px;line-height:1.45;color:var(--ink-2)}
 .walk-stage[data-step="1"] .pane-1,.walk-stage[data-step="2"] .pane-2,.walk-stage[data-step="3"] .pane-3{display:flex;animation:fade .4s both}
-.pane .p{animation:print .5s var(--ease) both;animation-delay:calc(.25s * var(--i))}
-.pane .st-head{font-size:13.5px}
+.walk-stage .pane .p{animation:print .5s var(--ease) both;animation-delay:calc(.25s * var(--i))}
+.walk-stage .pane .st-head{font-size:13.5px}
 .avs{display:flex;align-items:center;gap:6px;margin-left:auto;font-size:11px;color:var(--ink-3)} .avs .av{margin-left:-6px;border:2px solid var(--bg-2);width:22px;height:22px} .avs .av:first-child{margin-left:0}
-.pane .st-row{grid-template-columns:48px 1fr auto}
+.walk-stage .pane .st-row{grid-template-columns:48px 1fr auto}
 .agent{color:var(--ink-2);max-width:40em} .agent b{color:var(--ink)}
 .from{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--ink-3);align-self:flex-end;margin-top:6px}
-.pane .bub{align-self:flex-end;max-width:70%;background:var(--brand);color:#fff;padding:10px 14px;border-radius:14px 14px 4px 14px}
+.walk-stage .pane .bub{align-self:flex-end;max-width:70%;background:var(--brand);color:#fff;padding:10px 14px;border-radius:14px 14px 4px 14px}
 .mode{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-3);border:1px solid var(--line-2);border-radius:var(--r-pill);padding:5px 10px 5px 12px}
 .mode em{font-style:normal;color:var(--ink);font-weight:600} .mode .pill{animation:pop .4s var(--ease) both 1.8s}
 .people{display:grid;gap:8px;align-self:stretch}
@@ -247,7 +247,7 @@ h1,h2,h3,p,ul,ol{margin:0} ul,ol{padding:0;list-style:none}
 /* existing rule changes: `.hero` (line 75) gains a positioning context. No overflow:hidden on
    .hero on purpose: .st-phone hangs 6% below the stage and would be clipped. The .bg wrapper clips. */
 .hero{position:relative;isolation:isolate}
-.hero > :not(.bg){position:relative;z-index:1}
+.hero .pin > :not(.bg){position:relative;z-index:1}
 
 .bg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;contain:layout paint;background:var(--bg)}
 .bg .well{position:absolute;left:0;top:0;width:100%;height:100%;display:block;will-change:transform}
@@ -262,6 +262,18 @@ h1,h2,h3,p,ul,ol{margin:0} ul,ol{padding:0;list-style:none}
 
 @media (max-width:640px){.bg{display:none}}
 @media (prefers-reduced-motion:reduce){.bg{display:none}}
+
+/* hero story: on desktop the hero pins for ~3 screens of scroll. The copy clears and the stage rises to dock
+   under the nav and plays a turn; then the hole zooms (uZoom) and swallows the stage (scale into the centre,
+   uCollapse flares the ring); the statement scrolls in over the dark tail. Off below 981px and under
+   prefers-reduced-motion: the hero is then the plain flow layout above. The story script owns the inline
+   transforms; CSS here only pins and disables the one entry animation that would override them. */
+.story.story-on{height:calc(var(--story,3.1) * (100vh - var(--nav-h)));padding:0}
+.story.story-on .pin{position:sticky;top:var(--nav-h);height:calc(100vh - var(--nav-h));overflow:clip;padding-top:clamp(40px,5vw,64px)}
+.story.story-on .hero-copy{will-change:opacity,transform}
+.story.story-on .stage{animation:none;will-change:transform}
+.story.story-on .st-mac,.story.story-on .st-phone{animation:upo 1.1s var(--ease) .9s both}
+@keyframes upo{from{opacity:0}to{opacity:1}}
 
 /* pricing */
 .pricing{padding:clamp(96px,12vw,150px) 0 0;scroll-margin-top:calc(var(--nav-h) + 12px)}
@@ -411,7 +423,7 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
   .form{flex-direction:column} .form input{width:100%} .form .btn{width:100%}
   .channels{gap:8px} .channels li{font-size:12px}
   .caps,.steps,.faq,.window-sec,.walk,.dl,.stmt{padding-top:72px} .zero{margin-top:72px} .tile .mock{font-size:11px}
-  .pane{padding:14px;gap:6px;font-size:12px} .pane .st-row{padding:7px 10px} .pane .goal{padding:10px;gap:7px}
+  .walk-stage .pane{padding:14px;gap:6px;font-size:12px} .walk-stage .pane .st-row{padding:7px 10px} .walk-stage .pane .goal{padding:10px;gap:7px}
   .cta{padding:64px 0 160px}
   footer .wrap{flex-direction:column;gap:12px;align-items:flex-start}
 }
@@ -432,14 +444,17 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
 
 <main id="top">
 
-<section class="hero" aria-labelledby="hero-h">
+<section class="hero story" aria-labelledby="hero-h">
+<div class="pin">
 <div class="bg" aria-hidden="true"><canvas class="well"></canvas></div>
   <div class="wrap">
+    <div class="hero-copy">
     <h1 class="h1" id="hero-h"><span class="w" style="--i:0">Run</span> <span class="w" style="--i:1">coding</span> <span class="w" style="--i:2">agents</span><br> <span class="w" style="--i:3">as</span> <span class="w" style="--i:4"><em>a team.</em></span></h1>
     <p class="lede">Claude Code and Codex on one always-on Mac. Your team joins from any phone, with roles. Goals run overnight. Free beta.</p>
     <div class="ctas">
       <a class="btn btn-dl" href="https://ctrlall.app/download">Download for Mac <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
       <a class="btn btn-2" href="#try">Try it live <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+    </div>
     </div>
     <div class="stage mock" aria-hidden="true">
       <div class="st-mac">
@@ -483,6 +498,13 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
       </div>
     </div>
   </div>
+</div>
+</section>
+
+<section class="stmt" aria-label="What ctrl+all does">
+  <div class="wrap">
+    <p data-words>Your team shares one <span class="chip"><img src="assets/logos/claude.png" alt="">Claude Code</span> and <span class="chip"><img src="assets/logos/codex.png" alt="">Codex</span> session on <span class="chip"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,40H48A24,24,0,0,0,24,64V176a24,24,0,0,0,24,24h72v16H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V200h72a24,24,0,0,0,24-24V64A24,24,0,0,0,208,40ZM48,56H208a8,8,0,0,1,8,8v80H40V64A8,8,0,0,1,48,56ZM208,184H48a8,8,0,0,1-8-8V160H216v16A8,8,0,0,1,208,184Z"/></svg>one Mac</span>: anyone with the role taps <span class="chip ok">Allow</span> from a <span class="chip"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"/></svg>phone</span>, and goals keep building after everyone logs off.</p>
+  </div>
 </section>
 
 <section class="marquee" aria-label="Supported agents">
@@ -510,12 +532,6 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
         <li><img src="assets/logos/ollama.png" width="24" height="24" alt="">Ollama</li>
       </ul>
     </div></div>
-  </div>
-</section>
-
-<section class="stmt" aria-label="What ctrl+all does">
-  <div class="wrap">
-    <p data-words>Your team shares one <span class="chip"><img src="assets/logos/claude.png" alt="">Claude Code</span> and <span class="chip"><img src="assets/logos/codex.png" alt="">Codex</span> session on <span class="chip"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,40H48A24,24,0,0,0,24,64V176a24,24,0,0,0,24,24h72v16H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V200h72a24,24,0,0,0,24-24V64A24,24,0,0,0,208,40ZM48,56H208a8,8,0,0,1,8,8v80H40V64A8,8,0,0,1,48,56ZM208,184H48a8,8,0,0,1-8-8V160H216v16A8,8,0,0,1,208,184Z"/></svg>one Mac</span>: anyone with the role taps <span class="chip ok">Allow</span> from a <span class="chip"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"/></svg>phone</span>, and goals keep building after everyone logs off.</p>
   </div>
 </section>
 
@@ -951,7 +967,7 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
   var stage = document.querySelector('.stage');
   if (stage && !reduce) {
     var play = function(){ stage.classList.remove('play'); void stage.offsetWidth; stage.classList.add('play'); };
-    play(); setInterval(play, 13500);
+    play(); setInterval(play, 13500); window.__stagePlay = play;
   }
 
   /* the statement lights up word by word as it crosses 72% of the viewport */
@@ -1009,6 +1025,58 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
     }, { threshold: .6 });
     counts.forEach(function(c){ io.observe(c); });
   }
+})();
+</script>
+<script>
+/* hero story: everything is a pure function of scrollY, so up and down read the same */
+(function () {
+  var sec = document.querySelector('.hero.story'), pin = sec && sec.querySelector('.pin'), wrap = pin && pin.querySelector('.wrap'),
+      copy = sec && sec.querySelector('.hero-copy'), stage = sec && sec.querySelector('.stage'), bg = pin && pin.querySelector('.bg');
+  if (!sec || !pin || !wrap || !copy || !stage || !bg) return;
+  var mq = matchMedia('(min-width: 981px) and (prefers-reduced-motion: no-preference)');
+  var HOLE_Y = 0.6;                   /* keep equal to CENTRE_Y in the backdrop script */
+  var on = false, rise = 0, docked = false, ticking = false;
+  function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function seg(p, a, b) { return clamp01((p - a) / (b - a)); }
+  function out3(t) { return 1 - Math.pow(1 - t, 3); }
+  function smooth(t) { return t * t * (3 - 2 * t); }
+  function measure() {
+    var dock = parseFloat(getComputedStyle(pin).paddingTop) || 0;
+    rise = Math.max(0, stage.offsetTop + wrap.offsetTop - dock);
+    var ox = pin.clientWidth / 2 - (stage.offsetLeft + wrap.offsetLeft), oy = pin.clientHeight * HOLE_Y - dock;
+    stage.style.transformOrigin = ox.toFixed(1) + 'px ' + oy.toFixed(1) + 'px';
+  }
+  function paint() {
+    ticking = false;
+    if (!on) return;
+    var range = sec.offsetHeight - pin.offsetHeight;
+    var p = range > 0 ? clamp01((window.scrollY - sec.offsetTop) / range) : 0;
+    window.__heroP = p;
+    var a = out3(seg(p, 0, .18)), r = out3(seg(p, 0, .22)), s = smooth(seg(p, .52, .82)), gone = p > .84;
+    copy.style.opacity = String(1 - a);
+    copy.style.transform = 'translate3d(0,' + (-48 * a).toFixed(1) + 'px,0)';
+    copy.style.pointerEvents = a >= 1 ? 'none' : '';
+    stage.style.transform = 'translate3d(0,' + (-rise * r).toFixed(1) + 'px,0) scale(' + (1 - 0.97 * s).toFixed(4) + ')';
+    stage.style.opacity = String(1 - seg(p, .74, .84));
+    stage.style.visibility = gone ? 'hidden' : '';
+    bg.style.opacity = String(1 - 0.55 * seg(p, .86, 1));
+    if (r >= 1 && !docked) { docked = true; if (typeof window.__stagePlay === 'function') window.__stagePlay(); }
+    if (r < 1) docked = false;
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(paint); } }
+  function apply() {
+    on = mq.matches;
+    sec.classList.toggle('story-on', on);
+    window.__heroStory = on;
+    if (on) { measure(); paint(); return; }
+    window.__heroP = 0;
+    [copy, stage, bg].forEach(function (el) { el.style.opacity = ''; el.style.transform = ''; el.style.visibility = ''; el.style.pointerEvents = ''; });
+    stage.style.transformOrigin = '';
+  }
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', function () { if (on) { measure(); paint(); } });
+  if (mq.addEventListener) mq.addEventListener('change', apply);
+  apply();
 })();
 </script>
 <script>
@@ -1101,7 +1169,7 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
   var VERT = 'attribute vec2 aPos;void main(){gl_Position=vec4(aPos,0.,1.);}';
   var FRAG = [
     '#ifdef GL_FRAGMENT_PRECISION_HIGH', 'precision highp float;', '#else', 'precision mediump float;', '#endif',
-    'uniform vec2 uRes;uniform vec2 uCenter;uniform float uR;uniform float uTime;uniform vec2 uPointer;',
+    'uniform vec2 uRes;uniform vec2 uCenter;uniform float uR;uniform float uTime;uniform vec2 uPointer;uniform float uZoom;uniform float uCollapse;',
     'const float PI=3.14159265;',
     'const float COS_I=0.32;',            /* disc squash: cos(inclination) */
     'const float TAN_I=2.9614;',          /* tan(acos(0.32)) */
@@ -1125,7 +1193,7 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
     ' float n=turb(rho,phi,uTime);float prof=smoothstep(RHO_IN,2.6,rho)*pow(2.6/max(rho,2.6),2.5);float tex=0.3+1.4*n*n;float dop=1.0+0.3*cos(phi);float side=mix(0.22,1.0,near);',
     ' float e=band*prof*tex*dop*side;float temp=pow(2.6/max(rho,2.6),1.3)*smoothstep(RHO_IN,2.3,rho)*mix(0.6,1.0,near)*(0.55+0.7*n);return ramp(temp)*e;}',
     'void main(){',
-    ' vec2 px=gl_FragCoord.xy-uCenter-uPointer;vec2 q=px/uR;float b=length(q);vec2 qh=q/max(b,1e-4);float pxR=1.0/uR;',
+    ' vec2 px=(gl_FragCoord.xy-uCenter-uPointer)/uZoom;vec2 q=px/uR;float b=length(q);vec2 qh=q/max(b,1e-4);float pxR=1.0/uR;',
     ' float shadow=1.0-smoothstep(1.0-1.5*pxR,1.0+0.5*pxR,b);',
     ' vec3 emis=vec3(0.0);float nearHit=0.0;',
     /* near side: the straight ray meets the tilted plane in front of the hole */
@@ -1139,12 +1207,12 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
     '   if(h<0.14){vec2 sp=vec2(hash12(ci+3.3),hash12(ci+9.1))*0.7+0.15;float d=length((cf-sp)*0.35)*uR;float tw=0.7+0.3*sin(uTime*(0.5+1.5*h)+h*40.0);',
     '    emis+=vec3(1.0,0.96,0.9)*exp(-d*d/1.8)*(0.2+0.8*hash12(ci+5.5))*tw*0.22;}}}',
     /* photon ring: thin, orange-white, a touch brighter toward the near side */
-    ' float ring=exp(-pow((b-1.03)/(1.3*pxR),2.0))*(0.9+0.3*(-qh.y));emis+=ramp(0.92)*ring*1.8;',
+    ' float ring=exp(-pow((b-1.03)/(1.3*pxR),2.0))*(0.9+0.3*(-qh.y));emis*=1.0-0.7*uCollapse;emis+=ramp(0.92)*ring*(1.8+1.4*uCollapse);',
     ' float ringGlow=exp(-max(b-1.0,0.0)*3.0)*0.45*(1.0-shadow);emis+=ramp(0.8)*ringGlow;',
     /* haze ~1/r around the disc, fake bloom along the band, anamorphic streak off the top rim */
-    ' float re=length(vec2(q.x,q.y/0.55));emis+=C_BRAND*(0.09/(0.3+re))*(1.0-shadow);',
-    ' float nearW=smoothstep(0.4,-0.4,q.y);float re2=length(vec2(q.x,q.y/COS_I));emis+=ramp(0.6)*exp(-pow(re2-2.0,2.0)/1.4)*mix(0.3,1.0,nearW)*0.28;',
-    ' float sy=(q.y-1.0)*uR;emis+=ramp(0.75)*exp(-sy*sy/60.0)*exp(-abs(q.x)/2.2)*0.1;',
+    ' float dim=1.0-0.6*uCollapse;float re=length(vec2(q.x,q.y/0.55));emis+=C_BRAND*(0.09/(0.3+re))*(1.0-shadow)*dim;',
+    ' float nearW=smoothstep(0.4,-0.4,q.y);float re2=length(vec2(q.x,q.y/COS_I));emis+=ramp(0.6)*exp(-pow(re2-2.0,2.0)/1.4)*mix(0.3,1.0,nearW)*0.28*dim;',
+    ' float sy=(q.y-1.0)*uR;emis+=ramp(0.75)*exp(-sy*sy/60.0)*exp(-abs(q.x)/2.2)*0.1*dim;',
     /* post: vignette, filmic curve, screen over the base, grain + dither */
     ' vec2 vq=(gl_FragCoord.xy-0.5*uRes)/(0.5*uRes.x);float vd=length(vq);float vig=1.0-0.3*smoothstep(0.3,1.1,vd);',
     ' vec3 c=emis*2.2*vig;c=c/(1.0+c);',
@@ -1180,7 +1248,8 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
     gl.enableVertexAttribArray(a);
     gl.vertexAttribPointer(a, 2, gl.FLOAT, false, 0, 0);
     loc = { res: gl.getUniformLocation(p, 'uRes'), center: gl.getUniformLocation(p, 'uCenter'),
-      r: gl.getUniformLocation(p, 'uR'), time: gl.getUniformLocation(p, 'uTime'), pointer: gl.getUniformLocation(p, 'uPointer') };
+      r: gl.getUniformLocation(p, 'uR'), time: gl.getUniformLocation(p, 'uTime'), pointer: gl.getUniformLocation(p, 'uPointer'),
+      zoom: gl.getUniformLocation(p, 'uZoom'), collapse: gl.getUniformLocation(p, 'uCollapse') };
   }
   try { setup(); } catch (e) { flat(e && e.message || e); return; }
 
@@ -1199,9 +1268,13 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
   }
 
   var start = 0, px = 0, py = 0, tx = 0, ty = 0, shift = -1, rafId = 0;
+  function sm(t) { t = t < 0 ? 0 : t > 1 ? 1 : t; return t * t * (3 - 2 * t); }
   function draw(t) {
+    var p = window.__heroP || 0;          /* story progress 0..1, set by the hero story script */
     gl.uniform1f(loc.time, t);
     gl.uniform2f(loc.pointer, px * k, py * k);
+    gl.uniform1f(loc.zoom, 1 + 0.3 * sm(p / 0.8));
+    gl.uniform1f(loc.collapse, sm((p - 0.52) / 0.3));
     gl.drawArrays(gl.TRIANGLES, 0, 3);
   }
   function frame(now) {
@@ -1210,7 +1283,7 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
     px += (tx - px) * POINTER_EASE;
     py += (ty - py) * POINTER_EASE;
     draw((now - start) / 1000);
-    var next = Math.round(window.scrollY * PARALLAX);
+    var next = window.__heroStory ? 0 : Math.round(window.scrollY * PARALLAX);
     if (next !== shift) {
       shift = next;
       canvas.style.transform = 'translate3d(0,' + shift + 'px,0)';

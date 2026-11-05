@@ -11,6 +11,8 @@ Claude Code and Codex on one always-on Mac. Your team joins from any phone, with
 
 [Download for Mac](https://ctrlall.app/download) [Try it live](https://ctrlall.app/#try)
 
+Your team shares one Claude Code and Codex session on one Mac: anyone with the role taps Allow from a phone, and goals keep building after everyone logs off.
+
 Runs the agents you already pay for.
 
 - Claude Code
@@ -21,8 +23,6 @@ Runs the agents you already pay for.
 - Kimi
 - Hermes
 - Ollama
-
-Your team shares one Claude Code and Codex session on one Mac: anyone with the role taps Allow from a phone, and goals keep building after everyone logs off.
 
 ## Watch. Redirect. Hand off.
 
