@@ -3,7 +3,7 @@
 > Every coding agent you pay for, in one inbox, with your team, from your pocket. Claude Code and Codex on one Mac, roles for the team, goals that run overnight. Free beta.
 
 Canonical: https://ctrlall.app/
-Last updated: 2026-11-06
+Last updated: 2026-11-07
 
 ## Run coding agents as a team.
 

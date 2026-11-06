@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Run your own relay · ctrl+all</title>
+<meta name="description" content="The free path for a phone anywhere: run the ctrl+all relay yourself. What a relay is, what it sees, and where the setup guide lives.">
+<meta property="og:title" content="Run your own relay · ctrl+all">
+<meta property="og:description" content="The free path for a phone anywhere: run the ctrl+all relay yourself. What a relay is, what it sees, and where the setup guide lives.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://namangoyal3.github.io/ctrlall-site/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0c0e">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://ctrlall.app/byo-relay">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23ff5b2e'/%3E%3Cpath d='M18 38 32 24l14 14' fill='none' stroke='%23fff' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+/* The same tokens as index.html, and only the rules this one page needs. */
+:root{
+  --bg:#0b0c0e; --bg-2:#131417; --bg-3:#1a1b1f; --ink:#f5f5f7; --ink-2:#b4b4b9; --ink-3:#8e8e93;
+  --line:rgba(255,255,255,.12); --line-2:rgba(255,255,255,.07);
+  --brand:#ff5b2e; --brand-deep:#e0431a;
+  --r-pill:999px; --nav-h:60px; --w:1160px; --ease:cubic-bezier(.16,1,.3,1);
+  --mono:"SF Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+h1,p{margin:0}
+.wrap{width:min(var(--w),100% - 40px);margin-inline:auto}
+/* nav */
+.nav{position:sticky;top:0;z-index:10;height:var(--nav-h);background:color-mix(in srgb,var(--bg) 78%,transparent);
+  -webkit-backdrop-filter:saturate(160%) blur(18px);backdrop-filter:saturate(160%) blur(18px);border-bottom:1px solid var(--line-2)}
+.nav .wrap{height:100%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:17px;letter-spacing:-.01em}
+.mark{width:26px;height:26px;border-radius:7px;background:var(--brand);display:grid;place-items:center;flex:none}
+.mark svg{width:14px;height:14px}
+.nav-links{display:flex;gap:28px;font-size:14px;font-weight:500;color:var(--ink-2);justify-self:center}
+.nav-links a{transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{justify-self:end}
+.nav-cta .btn{height:36px;padding:0 16px;font-size:14px}
+/* buttons: pills, as on the home page */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:50px;padding:0 24px;border:0;border-radius:var(--r-pill);
+  background:var(--ink);color:var(--bg);font:inherit;font-size:16px;font-weight:600;cursor:pointer;white-space:nowrap;
+  transition:transform .2s var(--ease),background .2s,color .2s}
+.btn:hover{background:#fff;transform:translateY(-1px)}
+.btn:active{transform:translateY(1px) scale(.98)}
+.btn-dl{background:var(--brand);color:#fff}
+.btn-dl:hover{background:var(--brand-deep);color:#fff}
+a:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
+/* the document */
+.doc{padding:clamp(72px,10vw,120px) 0 clamp(96px,12vw,150px)}
+.doc .wrap{max-width:720px}
+.crumb{display:inline-block;margin-bottom:22px;font-size:14px;font-weight:500;color:var(--ink-3);transition:color .2s}
+.crumb:hover{color:var(--ink)}
+.h1{font-size:clamp(34px,4.6vw,56px);line-height:1.06;letter-spacing:-.035em;font-weight:600;text-wrap:balance}
+.lede{margin-top:18px;font-size:clamp(17px,1.4vw,20px);line-height:1.5;color:var(--ink-2);text-wrap:pretty}
+.doc .body p{margin-top:18px;font-size:17px;line-height:1.6;color:var(--ink-2);text-wrap:pretty}
+.doc .body p b{color:var(--ink);font-weight:600}
+.doc code{font:500 .92em var(--mono);color:var(--ink);background:var(--bg-3);padding:2px 6px;border-radius:5px;white-space:nowrap}
+.doc .body{margin-top:10px;padding-top:10px;border-top:1px solid var(--line-2)}
+.doc .btn{margin-top:32px}
+.fine{margin-top:28px;font-size:14px;line-height:1.5;color:var(--ink-3)}
+.fine a,.doc .body a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--brand);text-decoration-thickness:1px;text-underline-offset:3px;transition:color .2s}
+.fine a:hover,.doc .body a:hover{color:var(--brand)}
+/* footer */
+footer{border-top:1px solid var(--line-2);padding:28px 0 calc(28px + env(safe-area-inset-bottom));background:var(--bg)}
+footer .wrap{display:flex;align-items:center;justify-content:space-between;font-size:14px;color:var(--ink-3);flex-wrap:wrap;row-gap:10px}
+footer .brand{font-size:15px;color:var(--ink)}
+footer .tm{flex-basis:100%;font-size:12px;line-height:1.5}
+footer a:hover{color:var(--ink)}
+@media (max-width:640px){
+  .nav .wrap{grid-template-columns:auto 1fr}
+  .nav-links{display:none}
+  .doc{padding-top:56px}
+  .doc .btn{width:100%}
+  .fine a{display:inline-block;padding:10px 0;margin:-10px 0}
+  footer .wrap{flex-direction:column;gap:12px;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <nav class="wrap" aria-label="Main">
+    <a class="brand" href="/" aria-label="ctrl+all home">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><path d="M16 40 32 24l16 16" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      ctrl+all
+    </a>
+    <div class="nav-links"><a href="/#how">How it works</a><a href="/#pricing">Pricing</a><a href="/#faq">FAQ</a><a href="/#download">Download</a></div>
+    <div class="nav-cta"><a class="btn btn-dl" href="https://ctrlall.app/download">Download for Mac</a></div>
+  </nav>
+</header>
+
+<main id="top">
+<section class="doc" aria-labelledby="byo-h">
+  <div class="wrap">
+    <a class="crumb" href="/#pricing">Back to pricing</a>
+    <h1 class="h1" id="byo-h">Run your own relay.</h1>
+    <p class="lede">The phone app reaches your Mac through a relay. Pro is the one we run for you. The free path is to run one yourself.</p>
+    <div class="body">
+      <p>A relay is the <code>ctrlall-relay</code> process a phone connects through. Your Mac keeps one end-to-end-encrypted connection open to it, and a paired phone uses it to reach the Mac. The relay sees that your Mac is online and the size of each message. It cannot read a message, because frames are sealed on your devices.</p>
+      <p>A relay you run is yours: your machine or your account, your logs, no bill from us. Everything else is the same on either relay. The engine, the apps, every agent and every update stay free, and <code>ctrlall relay show</code> prints the relay in use.</p>
+      <p>The setup guide lives in the repository. It says where a relay can run, which command fits where your phone is, and how to point the app at it.</p>
+    </div>
+    <a class="btn" href="https://github.com/namangoyal3/ctrlall/blob/main/docs/RELAY_SETUP.md">Read the setup guide</a>
+    <p class="fine">Stuck? Write to <a href="mailto:support@ctrlall.app">support@ctrlall.app</a>.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="/"><span class="mark" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><path d="M16 40 32 24l16 16" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>ctrl+all</a>
+    <span>Made for people who run agents. &copy; 2026 ctrl+all. Help: <a href="mailto:support@ctrlall.app">support@ctrlall.app</a></span>
+    <span class="tm">Claude, Codex, Gemini, Copilot, Grok, Cursor and the other names and logos on this site are trademarks of their owners. ctrl+all is not affiliated with or endorsed by them.</span>
+  </div>
+</footer>
+
+</body>
+</html>
