@@ -375,6 +375,11 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
 .wl .inner{padding:32px;position:relative} .wl h2{font-size:28px;letter-spacing:-.03em;font-weight:600} .wl .sub{margin-top:10px;font-size:16px}
 .wl .close{position:absolute;top:14px;right:14px;width:34px;height:34px;border:0;border-radius:50%;background:var(--bg-3);color:var(--ink);font-size:22px;cursor:pointer}
 .wl .form{margin-top:22px}
+.gate-btn{margin-top:22px;min-height:44px;display:flex;justify-content:center} .gate-btn>div{color-scheme:light}
+.gate-fallback{margin-top:14px;font-size:13px;color:var(--ink-3)} .gate-fallback a{color:var(--ink-2);text-decoration:underline}
+.gate[data-state="busy"] .gate-btn{opacity:.5;pointer-events:none}
+.gate[data-state="done"] .gate-btn,.gate[data-state="done"] .gate-fallback{display:none}
+.gate[data-state="error"] [data-gate-note]{color:var(--brand)}
 
 /* motion vocabulary */
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)} .reveal.in{opacity:1;transform:none}
@@ -431,6 +436,7 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
   footer .wrap{flex-direction:column;gap:12px;align-items:flex-start}
 }
 </style>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
 
@@ -893,19 +899,14 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
   </div>
 </section>
 
-<dialog class="wl" id="wl" aria-labelledby="wl-h">
+<dialog class="wl gate" id="wl" aria-labelledby="wl-h" data-state="idle">
   <div class="inner">
     <button type="button" class="close" data-close aria-label="Close">&times;</button>
-    <h2 id="wl-h">Run it on your Mac.</h2>
-    <p class="sub">You just tried the parts that matter. <a href="https://ctrlall.app/download" style="text-decoration:underline">Download the beta</a>, or leave your email for release news.</p>
-    <form class="form" data-waitlist novalidate>
-      <label class="sr" for="email-dlg">Email address</label>
-      <input id="email-dlg" type="email" name="email" placeholder="Your email" autocomplete="email" inputmode="email" required>
-      <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button class="btn" type="submit">Get release news</button>
-    </form>
-    <p class="note" aria-live="polite">We use your email only to send ctrl+all release news.</p>
-    <div class="done" role="status"><strong>You're on the list.</strong>We send ctrl+all release news. Nothing else.</div>
+    <h2 id="wl-h">Download ctrl+all for Mac.</h2>
+    <p class="sub">Sign in with Google and the download starts. We use your email for your download link and ctrl+all release news. Nothing else.</p>
+    <div class="gate-btn" id="gate-btn"></div>
+    <p class="note" aria-live="polite" data-gate-note>Free beta. macOS 14.5 or later, Apple silicon and Intel.</p>
+    <p class="gate-fallback">Sign-in not loading? <a href="https://github.com/namangoyal3/ctrlall-releases/releases/latest" rel="noopener">Get it from GitHub releases</a>.</p>
   </div>
 </dialog>
 
@@ -1342,5 +1343,52 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
 })();
 </script>
 <script src="demo.js" defer></script>
+<script>
+/* download gate: every download link opens the dialog; Google sign-in posts its credential to the
+   Worker, which logs the lead and answers the DMG URL. The GitHub releases link stays as the way out. */
+(function () {
+  var dlg = document.getElementById("wl"), slot = document.getElementById("gate-btn"), note = dlg && dlg.querySelector("[data-gate-note]");
+  if (!dlg || !slot) return;
+  var CLIENT_ID = "615632895904-thc6ojn9g6i8cnbnh2f42v0oq3q4ct84.apps.googleusercontent.com";
+  var LOCAL = location.hostname === "ctrlall.app" || location.hostname === "www.ctrlall.app" || location.hostname === "127.0.0.1" || location.hostname === "localhost";
+  var noteText = note ? note.textContent : "";
+  function state(s, msg) { dlg.setAttribute("data-state", s); if (note) note.textContent = msg || noteText; }
+  function open() {
+    if (dlg.open) return;
+    if (typeof dlg.showModal === "function") dlg.showModal(); else dlg.setAttribute("open", "");
+    render();
+  }
+  var rendered = false;
+  function render() {
+    if (rendered || !window.google || !google.accounts || !google.accounts.id) return;
+    rendered = true;
+    google.accounts.id.initialize({ client_id: CLIENT_ID, callback: onCredential, ux_mode: "popup", auto_select: false, itp_support: true });
+    google.accounts.id.renderButton(slot, { type: "standard", theme: "outline", size: "large", text: "continue_with", shape: "pill", width: 300 });
+  }
+  function onCredential(resp) {
+    state("busy", "Checking your sign-in…");
+    fetch("/api/gate/google", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ credential: resp.credential }) })
+      .then(function (r) { return r.json().then(function (j) { return { status: r.status, j: j }; }); })
+      .then(function (x) {
+        if (!x.j || !x.j.ok || !x.j.url) throw new Error(x.j && x.j.error || String(x.status));
+        try { localStorage.setItem("ctrlall-waitlist", "1"); } catch (_) {}
+        state("done");
+        if (note) note.innerHTML = "Starting your download… Didn’t start? <a href=\"" + x.j.url + "\" style=\"text-decoration:underline\">Download again</a>.";
+        location.href = x.j.url;
+      })
+      .catch(function (e) { state("error", "Sign-in did not go through (" + e.message + "). Try again, or use the GitHub link below."); });
+  }
+  if (!LOCAL) return; /* on the GitHub Pages mirror the buttons stay plain links to ctrlall.app/download */
+  Array.prototype.forEach.call(document.querySelectorAll("a[href=\"https://ctrlall.app/download\"]"), function (a) {
+    a.addEventListener("click", function (e) { e.preventDefault(); open(); });
+  });
+  window.addEventListener("load", function () { setTimeout(render, 0); });
+  if (new URLSearchParams(location.search).get("gate") === "1") {
+    history.replaceState(null, "", location.pathname + location.hash);
+    window.addEventListener("load", open);
+  }
+  window.ctrlallOpenGate = open;
+})();
+</script>
 </body>
 </html>

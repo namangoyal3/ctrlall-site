@@ -9,7 +9,7 @@ Last updated: 2026-11-06
 
 Claude Code and Codex on one always-on Mac. Your team joins from any phone, with roles. Goals run overnight. Free beta.
 
-[Download for Mac](https://ctrlall.app/download) [Try it live](https://ctrlall.app/#try)
+[Download for Mac](https://github.com/namangoyal3/ctrlall-releases/releases/latest) [Try it live](https://ctrlall.app/#try)
 
 Your team shares one Claude Code and Codex session on one Mac: anyone with the role taps Allow from a phone, and goals keep building after everyone logs off.
 
@@ -78,7 +78,7 @@ Free beta. Needs macOS 14.5 or later. Runs on Apple silicon and Intel. Updates i
 - One agent CLI, such as Claude Code or Codex.
 - Your own account with its vendor.
 
-[Download for Mac](https://ctrlall.app/download)
+[Download for Mac](https://github.com/namangoyal3/ctrlall-releases/releases/latest)
 
 ### The first time you open it
 
@@ -138,5 +138,5 @@ Yes. The `ctrlall` CLI ships inside the app, and `ctrlall relay show` prints the
 No. Since version 1.0.0 the app is signed with an Apple Developer ID and notarized by Apple. If macOS does warn you, or says the app is damaged, do not override it: the file is not the one we published. Delete it and write to support@ctrlall.app.
 
 ## Related
-- [Download for Mac](https://ctrlall.app/download)
+- [Download for Mac](https://github.com/namangoyal3/ctrlall-releases/releases/latest)
 - [Support](mailto:support@ctrlall.app)

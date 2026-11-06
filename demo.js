@@ -34,9 +34,8 @@
     var d = $('#wl');
     if (!d || d.open) return;
     try { sessionStorage.setItem('ctrlall-prompted', '1'); } catch (_) {}
-    if (typeof d.showModal === 'function') d.showModal(); else d.setAttribute('open', '');
-    var input = $('input[type=email]', d);
-    if (input) setTimeout(function () { input.focus(); }, 300);
+    if (typeof window.ctrlallOpenGate === 'function') window.ctrlallOpenGate();
+    else if (typeof d.showModal === 'function') d.showModal(); else d.setAttribute('open', '');
   }
   window.ctrlallOpenWaitlist = openWaitlist;
 
