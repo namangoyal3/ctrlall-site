@@ -28,7 +28,7 @@ preferred_citation: ctrl+all (https://ctrlall.app/)
 when_quoting: Include the canonical HTML URL and the "Last updated" date from /index.md.
 
 [scope]
-included: /, /index.md, /llms.txt, /llms-full.txt, /ai.txt
+included: /, /index.md, /byo-relay, /llms.txt, /llms-full.txt, /ai.txt
 excluded: none. The site has no private paths.
 
 [contact]

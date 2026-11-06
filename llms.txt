@@ -8,6 +8,7 @@ Free beta. Needs macOS 14.5 or later. Runs on Apple silicon and Intel. Updates i
 
 ## Core pages
 - [Home](https://ctrlall.app/index.md): Run coding agents as a team. Claude Code and Codex on one Mac, roles for the team, goals that run overnight. Free beta.
+- [Run your own relay](https://ctrlall.app/byo-relay): what a self-hosted relay is, what it sees, and where the setup guide lives
 
 ## Machine-readable
 - [Full content](https://ctrlall.app/llms-full.txt): every page in one file

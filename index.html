@@ -281,55 +281,52 @@ h1,h2,h3,p,ul,ol{margin:0} ul,ol{padding:0;list-style:none}
 /* pricing */
 .pricing{padding:clamp(96px,12vw,150px) 0 0;scroll-margin-top:calc(var(--nav-h) + 12px)}
 .pricing .reveal{transition-delay:calc(var(--i,0) * .08s)}
-.pr-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px 32px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,44px)}
-.pr-head .head{margin-bottom:0}
-
-/* billing toggle: a segmented pill, the thumb slides */
-.pr-bill{position:relative;display:grid;grid-template-columns:1fr 1fr;padding:4px;border:1px solid var(--line);border-radius:var(--r-pill);background:var(--bg-2);flex:none}
-.pr-bill::before{content:"";position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:var(--r-pill);background:var(--ink);transition:transform .28s var(--ease)}
-.pricing[data-plan="month"] .pr-bill::before{transform:translateX(100%)}
-.pr-bill button{position:relative;z-index:1;height:36px;min-width:104px;padding:0 18px;border:0;border-radius:var(--r-pill);background:none;color:var(--ink-2);font:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:color .2s}
-.pr-bill button:hover{color:var(--ink)}
-.pr-bill button[aria-pressed="true"]{color:var(--bg);cursor:default}
-.pr-bill button:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
-
-/* the two cards: Free narrower and quiet, Pro wider with the brand hairline */
+/* three tiers, one rhythm: Free narrow and quiet, Pro wider with the brand hairline, Founders a band under both */
 .pr-grid{display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:14px;align-items:stretch}
-.pr-card{position:relative;display:flex;flex-direction:column;padding:clamp(24px,2.8vw,36px);border-radius:var(--r-tile);background:var(--bg-2);border:1px solid var(--line-2);transition:border-color .3s,transform .4s var(--ease),box-shadow .4s var(--ease)}
+.pr-card{position:relative;display:flex;flex-direction:column;padding:clamp(24px,2.8vw,36px);border-radius:var(--r-tile);background:var(--bg-2);border:1px solid var(--line-2);transition:border-color .3s,transform .4s var(--ease)}
 .pr-card:hover{border-color:var(--line);transform:translateY(-2px)}
-.pr-pro{border-color:color-mix(in srgb,var(--brand) 55%,transparent);background:linear-gradient(180deg,color-mix(in srgb,var(--brand) 9%,var(--bg-2)),var(--bg-2) 58%);box-shadow:0 30px 80px -44px rgba(255,91,46,.55)}
+.pr-pro{border-color:color-mix(in srgb,var(--brand) 55%,transparent);background:linear-gradient(180deg,color-mix(in srgb,var(--brand) 9%,var(--bg-2)),var(--bg-2) 58%)}
 .pr-pro::after{content:"";position:absolute;top:-1px;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,var(--brand),transparent);pointer-events:none}
-.pr-pro:hover{border-color:var(--brand);box-shadow:0 36px 90px -44px rgba(255,91,46,.75)}
-
+.pr-pro:hover{border-color:var(--brand)}
 .pr-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 12px}
 .pr-name{display:block;flex-basis:100%;font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--ink-2)}
 .pr-pro .pr-name{color:var(--brand)}
-.pr-price{display:inline-flex;align-items:baseline;gap:3px;margin-top:12px;font-size:40px;line-height:1;letter-spacing:-.04em;font-weight:600;font-variant-numeric:tabular-nums}
-.pr-pro .pr-price{font-size:clamp(52px,5vw,68px)}
+.pr-price{display:inline-flex;align-items:baseline;gap:6px;margin-top:12px;font-size:40px;line-height:1;letter-spacing:-.04em;font-weight:600;font-variant-numeric:tabular-nums}
+.pr-pro .pr-price{font-size:clamp(40px,4vw,56px);letter-spacing:-.035em}
 .pr-per{font-size:16px;letter-spacing:-.01em;font-weight:500;color:var(--ink-3)}
-.pr-alt{margin-top:12px;font-size:14px;color:var(--ink-3)}
-.pr-price,.pr-alt{transition:opacity .16s var(--ease),transform .16s var(--ease)}
-.pr-top.is-swapping .pr-price,.pr-top.is-swapping .pr-alt{opacity:0;transform:translateY(6px)}
+.pr-alt{flex-basis:100%;margin-top:12px;font-size:16px;line-height:1.5;color:var(--ink-2);max-width:30em;text-wrap:pretty}
 .pr-what{margin:18px 0 28px;font-size:16px;line-height:1.5;color:var(--ink-2);max-width:30em;text-wrap:pretty}
 .pr-pro .pr-what{color:var(--ink)}
-.pr-card .btn{margin-top:auto;align-self:flex-start}
-.pr-fine{margin-top:12px;font-size:13px;line-height:1.45;color:var(--ink-3)}
-
+.pr-card > .btn,.pr-ctas{margin-top:auto}
+.pr-card > .btn{align-self:flex-start}
+.pr-ctas{display:flex;flex-wrap:wrap;gap:10px}
+/* founders: one band across both columns; name and price, the sentence, one link */
+.pr-founders{grid-column:1 / -1;flex-direction:row;flex-wrap:wrap;align-items:center;gap:16px clamp(24px,3vw,40px);padding:clamp(20px,2.4vw,28px) clamp(24px,2.8vw,36px)}
+.pr-founders .pr-top{flex:none;gap:0 10px}
+.pr-founders .pr-name{flex-basis:auto}
+.pr-founders .pr-price{margin-top:0;font-size:28px}
+.pr-founders .pr-per{font-size:15px}
+.pr-founders .pr-what{flex:1 1 16em;margin:0}
+.pr-founders > .btn{margin-top:0;margin-left:auto}
+.pr-soldout{display:inline-flex;align-items:center;height:50px;margin-left:auto;font-size:16px;font-weight:600;color:var(--ink-3)}
 /* the one line under the grid */
 .pr-byo{margin-top:22px;font-size:15px;color:var(--ink-3)}
 .pr-byo a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--brand);text-decoration-thickness:1px;text-underline-offset:3px;transition:color .2s}
 .pr-byo a:hover{color:var(--brand)}
-
 /* the FAQ answer names two commands */
 .faq code{font:500 .92em var(--mono);color:var(--ink);background:var(--bg-3);padding:2px 6px;border-radius:5px;white-space:nowrap}
 #faq-relay{scroll-margin-top:calc(var(--nav-h) + 12px)}
 
 @media (max-width:640px){
   .pricing{padding-top:72px}
-  .pr-head{flex-direction:column;align-items:stretch}
   .pr-grid{grid-template-columns:1fr}
-  .pr-card .btn{align-self:stretch}
-  .pr-pro .pr-price{font-size:52px}
+  .pr-card > .btn{align-self:stretch}
+  .pr-ctas .btn{flex:1 1 140px}
+  .pr-founders{flex-direction:column;align-items:stretch;gap:14px}
+  .pr-founders .pr-what{flex:none}
+  .pr-founders > .btn,.pr-soldout{margin-left:0}
+  .pr-soldout{justify-content:center}
+  .pr-byo a{display:inline-block;padding:10px 0;margin:-10px 0}
 }
 
 /* faq */
@@ -823,17 +820,11 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
   </div>
 </section>
 
-<section class="pricing reveal" id="pricing" aria-labelledby="pr-h" data-plan="year">
+<section class="pricing reveal" id="pricing" aria-labelledby="pr-h">
   <div class="wrap">
-    <div class="pr-head">
-      <div class="head">
-        <h2 class="h2" id="pr-h">Free to run. Pay for the relay.</h2>
-        <p class="sub">Everything on the Mac is free. Pro is the relay we run for you.</p>
-      </div>
-      <div class="pr-bill" role="group" aria-label="Billing period">
-        <button type="button" data-bill="year" aria-pressed="true">Yearly</button>
-        <button type="button" data-bill="month" aria-pressed="false">Monthly</button>
-      </div>
+    <div class="head">
+      <h2 class="h2" id="pr-h">Free to run. Pay for the relay.</h2>
+      <p class="sub">Everything on the Mac is free. Pro is the relay we run for you.</p>
     </div>
     <div class="pr-grid">
       <article class="pr-card pr-free reveal" style="--i:1" aria-labelledby="pr-free-h">
@@ -842,13 +833,20 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
         <a class="btn btn-2" href="#download">Download for Mac</a>
       </article>
       <article class="pr-card pr-pro reveal" style="--i:2" aria-labelledby="pr-pro-h">
-        <p class="pr-top"><b class="pr-name" id="pr-pro-h">Pro</b> <span class="pr-price" aria-live="polite"><span class="pr-amount">$48</span><span class="pr-per">/year</span></span> <span class="pr-alt">or $5 a month</span></p>
+        <p class="pr-top"><b class="pr-name" id="pr-pro-h">Pro</b> <span class="pr-price"><span class="pr-amount">30 days free,</span></span> <span class="pr-alt">then $5 a month or $48 a year. Card required.</span></p>
         <p class="pr-what">The hosted relay, push notifications, and pairing with no setup.</p>
-        <button class="btn" type="button" data-open-waitlist>Get notified</button>
-        <p class="pr-fine">Checkout opens with 1.1. In the beta the hosted relay is free.</p>
+        <div class="pr-ctas">
+          <a class="btn" href="https://checkout.dodopayments.com/buy/pdt_0NrMZKt0LWQFKmneCbQ7X?quantity=1&amp;redirect_url=https%3A%2F%2Fctrlall.app%2Fkey">Start monthly</a>
+          <a class="btn" href="https://checkout.dodopayments.com/buy/pdt_0NrMZKuuD93FA9fv6woGH?quantity=1&amp;redirect_url=https%3A%2F%2Fctrlall.app%2Fkey">Start yearly</a>
+        </div>
+      </article>
+      <article class="pr-card pr-founders reveal" style="--i:3" aria-labelledby="pr-founders-h">
+        <p class="pr-top"><b class="pr-name" id="pr-founders-h">Founders</b> <span class="pr-price"><span class="pr-amount">$79</span><span class="pr-per">once</span></span></p>
+        <p class="pr-what">Pro for life. 200 seats.</p>
+        <a class="btn btn-2" href="https://checkout.dodopayments.com/buy/pdt_0NrMZKw0wTKe0uaS8L1UP?quantity=1&amp;redirect_url=https%3A%2F%2Fctrlall.app%2Fkey" data-founders-link>Pay once</a>
       </article>
     </div>
-    <p class="pr-byo reveal" style="--i:3">Prefer to run your own relay? It's free and <a href="#faq-relay">documented</a>.</p>
+    <p class="pr-byo reveal" style="--i:4">Prefer to run your own relay? It's free and <a href="/byo-relay">documented</a>.</p>
   </div>
 </section>
 
@@ -1088,34 +1086,19 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
 })();
 </script>
 <script>
-/* pricing: billing toggle, the Pro button, the FAQ deep link. Vanilla, no deps. */
+/* pricing: Founders is capped at 200 seats and /api/pricing says when they are gone. If the call fails, the link stays. */
 (function () {
-  var sec = document.getElementById('pricing'), top = sec && sec.querySelector('.pr-pro .pr-top');
-  if (!sec || !top) return;
-  var PLANS = { year: ['$48', '/year', 'or $5 a month'], month: ['$5', '/month', 'or $48 a year'] };
-  var amount = top.querySelector('.pr-amount'), per = top.querySelector('.pr-per'), alt = top.querySelector('.pr-alt');
-  var buttons = Array.prototype.slice.call(sec.querySelectorAll('[data-bill]'));
-  function setBill(key) {
-    if (!PLANS[key] || sec.getAttribute('data-plan') === key) return;
-    sec.setAttribute('data-plan', key);
-    buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-bill') === key)); });
-    top.classList.add('is-swapping');
-    setTimeout(function () {
-      amount.textContent = PLANS[key][0]; per.textContent = PLANS[key][1]; alt.textContent = PLANS[key][2];
-      top.classList.remove('is-swapping');
-    }, 140);
-  }
-  buttons.forEach(function (b, i) {
-    b.addEventListener('click', function () { setBill(b.getAttribute('data-bill')); });
-    b.addEventListener('keydown', function (e) {
-      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-      var next = buttons[(i + 1) % buttons.length]; next.focus(); next.click();
-    });
-  });
-  var pro = sec.querySelector('[data-open-waitlist]');
-  if (pro) pro.addEventListener('click', function () { if (typeof window.ctrlallOpenWaitlist === 'function') window.ctrlallOpenWaitlist(); else location.hash = '#waitlist'; });
-  var relay = sec.querySelector('a[href="#faq-relay"]');
-  if (relay) relay.addEventListener('click', function () { var d = document.getElementById('faq-relay'); if (d) d.open = true; });
+  var link = document.querySelector('#pricing [data-founders-link]');
+  if (!link || typeof fetch !== 'function') return;
+  fetch('/api/pricing', { headers: { Accept: 'application/json' } })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) {
+      if (!d || d.founders_sold_out !== true) return;
+      var out = document.createElement('span');
+      out.className = 'pr-soldout'; out.textContent = 'Sold out';
+      link.replaceWith(out);
+    })
+    .catch(function () {});
 })();
 </script>
 <script>
