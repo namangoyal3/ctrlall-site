@@ -377,9 +377,23 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
 .wl .form{margin-top:22px}
 .gate-btn{margin-top:22px;min-height:44px;display:flex;justify-content:center} .gate-btn>div{color-scheme:light}
 .gate-fallback{margin-top:14px;font-size:13px;color:var(--ink-3)} .gate-fallback a{color:var(--ink-2);text-decoration:underline}
+.gate-or{margin-top:18px;display:flex;align-items:center;gap:12px;font-size:13px;color:var(--ink-3)}
+.gate-or::before,.gate-or::after{content:"";flex:1;height:1px;background:var(--line-2)}
+.gate-link{border:0;background:none;padding:0;font:inherit;color:var(--ink-2);text-decoration:underline;cursor:pointer} .gate-link:disabled{color:var(--ink-3);text-decoration:none;cursor:default}
+.gate-sent{margin-top:18px;font-size:15px;color:var(--ink-2)} .gate-sent strong{color:var(--ink);overflow-wrap:anywhere}
+.gate-resend{margin-top:12px;font-size:13px}
+.gate-fine{margin-top:8px;font-size:12px;color:var(--ink-3)}
+.gate .gate-email .form{margin-top:14px}
+.gate [data-gate-sent],.gate [data-gate-code],.gate [data-gate-resend]{display:none}
+.gate[data-step="code"] [data-gate-address],.gate[data-step="starting"] [data-gate-address]{display:none}
+.gate[data-step="code"] [data-gate-sent],.gate[data-step="code"] [data-gate-resend]{display:block}
+.gate[data-step="code"] [data-gate-code]{display:flex}
+.gate[data-step="starting"] .gate-or,.gate[data-step="starting"] .gate-btn,.gate[data-step="starting"] .gate-fine{display:none}
+.gate [data-gate-code] input{letter-spacing:.3em;font-variant-numeric:tabular-nums}
+.gate[data-state="sending"] .form .btn,.gate[data-state="verifying"] .form .btn{opacity:.6;pointer-events:none}
 .gate[data-state="busy"] .gate-btn{opacity:.5;pointer-events:none}
-.gate[data-state="done"] .gate-btn,.gate[data-state="done"] .gate-fallback{display:none}
-.gate[data-state="error"] [data-gate-note]{color:var(--brand)}
+.gate[data-state="done"] .gate-btn,.gate[data-state="done"] .gate-fallback,.gate[data-state="done"] .gate-or,.gate[data-state="done"] .gate-email,.gate[data-state="done"] .gate-fine{display:none}
+.gate[data-state="error"] [data-gate-note]{color:#ff8a66}
 
 /* motion vocabulary */
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)} .reveal.in{opacity:1;transform:none}
@@ -899,14 +913,31 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
   </div>
 </section>
 
-<dialog class="wl gate" id="wl" aria-labelledby="wl-h" data-state="idle">
+<dialog class="wl gate" id="wl" aria-labelledby="wl-h" data-state="idle" data-step="address">
   <div class="inner">
     <button type="button" class="close" data-close aria-label="Close">&times;</button>
-    <h2 id="wl-h">Download ctrl+all for Mac.</h2>
-    <p class="sub">Sign in with Google and the download starts. We use your email for your download link and ctrl+all release news. Nothing else.</p>
+    <h2 id="wl-h">Verify your email and download.</h2>
+    <p class="sub">Verify your email and the download starts. Sign in with Google, or get a 6-digit code by email.</p>
     <div class="gate-btn" id="gate-btn"></div>
+    <p class="gate-or"><span>or get a code by email</span></p>
+    <div class="gate-email">
+      <form class="form" data-gate-address novalidate>
+        <label class="sr" for="gate-email">Email address</label>
+        <input id="gate-email" type="email" name="email" placeholder="Your email" autocomplete="email" inputmode="email" required>
+        <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn-2" type="submit">Send code</button>
+      </form>
+      <p class="gate-sent" data-gate-sent>We sent a code to <strong data-gate-to></strong>. <button type="button" class="gate-link" data-gate-change>Change</button></p>
+      <form class="form" data-gate-code novalidate>
+        <label class="sr" for="gate-code">6-digit code</label>
+        <input id="gate-code" type="text" name="code" placeholder="123456" autocomplete="one-time-code" inputmode="numeric" pattern="[0-9]*" maxlength="6" required>
+        <button class="btn btn-2" type="submit">Verify and download</button>
+      </form>
+      <button type="button" class="gate-link gate-resend" data-gate-resend disabled>Resend code</button>
+    </div>
     <p class="note" aria-live="polite" data-gate-note>Free beta. macOS 14.5 or later, Apple silicon and Intel.</p>
-    <p class="gate-fallback">Sign-in not loading? <a href="https://github.com/namangoyal3/ctrlall-releases/releases/latest" rel="noopener">Get it from GitHub releases</a>.</p>
+    <p class="gate-fine">We use your email to send your download code and ctrl+all release news.</p>
+    <p class="gate-fallback">Not working? <a href="https://github.com/namangoyal3/ctrlall-releases/releases/latest" rel="noopener">Get it from GitHub releases</a>.</p>
   </div>
 </dialog>
 
@@ -1113,7 +1144,7 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
     });
   });
   var pro = sec.querySelector('[data-open-waitlist]');
-  if (pro) pro.addEventListener('click', function () { if (typeof window.ctrlallOpenWaitlist === 'function') window.ctrlallOpenWaitlist(); else location.hash = '#waitlist'; });
+  if (pro) pro.addEventListener('click', function () { location.hash = '#waitlist'; }); /* pricing news goes to the release-news form, not the download gate */
   var relay = sec.querySelector('a[href="#faq-relay"]');
   if (relay) relay.addEventListener('click', function () { var d = document.getElementById('faq-relay'); if (d) d.open = true; });
 })();
@@ -1344,20 +1375,43 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
 </script>
 <script src="demo.js" defer></script>
 <script>
-/* download gate: every download link opens the dialog; Google sign-in posts its credential to the
-   Worker, which logs the lead and answers the DMG URL. The GitHub releases link stays as the way out. */
+/* download gate: every download link opens the dialog. Two ways through, both answered by the Worker
+   with the DMG URL: Google sign-in, or an email address plus a 6-digit code (/api/gate/send, /verify).
+   data-state: idle | busy (Google) | sending | verifying | error | done. data-step: address | code | starting.
+   The GitHub releases link stays as the way out. */
 (function () {
   var dlg = document.getElementById("wl"), slot = document.getElementById("gate-btn"), note = dlg && dlg.querySelector("[data-gate-note]");
   if (!dlg || !slot) return;
   var CLIENT_ID = "615632895904-thc6ojn9g6i8cnbnh2f42v0oq3q4ct84.apps.googleusercontent.com";
   var LOCAL = location.hostname === "ctrlall.app" || location.hostname === "www.ctrlall.app" || location.hostname === "127.0.0.1" || location.hostname === "localhost";
+  var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  var COOLDOWN = 60;
+  var SUPPORT = "support@ctrlall.app";
   var noteText = note ? note.textContent : "";
-  function state(s, msg) { dlg.setAttribute("data-state", s); if (note) note.textContent = msg || noteText; }
+  var addrForm = dlg.querySelector("[data-gate-address]"), codeForm = dlg.querySelector("[data-gate-code]");
+  var emailIn = document.getElementById("gate-email"), codeIn = document.getElementById("gate-code");
+  var toEl = dlg.querySelector("[data-gate-to]"), resendBtn = dlg.querySelector("[data-gate-resend]");
+  var addrBtn = addrForm.querySelector("button"), codeBtn = codeForm.querySelector("button");
+  var addrLabel = addrBtn.textContent, codeLabel = codeBtn.textContent;
+  var address = "", timer = null;
+
+  function state(s, msg) {
+    dlg.setAttribute("data-state", s);
+    if (note) { note.textContent = msg || noteText; note.className = s === "error" ? "note err" : "note"; }
+  }
+  function step(name) { dlg.setAttribute("data-step", name); }
+  function reset() {
+    clearInterval(timer); address = ""; step("address"); state("idle");
+    addrBtn.textContent = addrLabel; codeBtn.textContent = codeLabel; codeIn.value = "";
+  }
   function open() {
     if (dlg.open) return;
+    reset();
     if (typeof dlg.showModal === "function") dlg.showModal(); else dlg.setAttribute("open", "");
     render();
   }
+  dlg.addEventListener("close", reset);
+
   var rendered = false;
   function render() {
     if (rendered || !window.google || !google.accounts || !google.accounts.id) return;
@@ -1365,19 +1419,91 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
     google.accounts.id.initialize({ client_id: CLIENT_ID, callback: onCredential, ux_mode: "popup", auto_select: false, itp_support: true });
     google.accounts.id.renderButton(slot, { type: "standard", theme: "outline", size: "large", text: "continue_with", shape: "pill", width: 300 });
   }
+
+  function post(path, body) {
+    return fetch(path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) })
+      .then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (j) {
+          // A Cloudflare rate-limit 429 has no JSON body: treat it as slow_down.
+          return { status: r.status, ok: !!j.ok, error: j.error || (r.status === 429 ? "slow_down" : "unavailable"), j: j };
+        });
+      }, function () { return { status: 0, ok: false, error: "unavailable", j: {} }; });
+  }
+
+  function startDownload(url) {
+    try { localStorage.setItem("ctrlall-waitlist", "1"); } catch (_) {}
+    clearInterval(timer); step("starting"); state("done");
+    if (note) {
+      note.textContent = "Starting your download… Didn’t start? ";
+      var a = document.createElement("a"); a.href = url; a.textContent = "Download again"; a.style.textDecoration = "underline";
+      note.appendChild(a); note.appendChild(document.createTextNode("."));
+    }
+    location.href = url;
+  }
+
   function onCredential(resp) {
     state("busy", "Checking your sign-in…");
-    fetch("/api/gate/google", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ credential: resp.credential }) })
-      .then(function (r) { return r.json().then(function (j) { return { status: r.status, j: j }; }); })
-      .then(function (x) {
-        if (!x.j || !x.j.ok || !x.j.url) throw new Error(x.j && x.j.error || String(x.status));
-        try { localStorage.setItem("ctrlall-waitlist", "1"); } catch (_) {}
-        state("done");
-        if (note) note.innerHTML = "Starting your download… Didn’t start? <a href=\"" + x.j.url + "\" style=\"text-decoration:underline\">Download again</a>.";
-        location.href = x.j.url;
-      })
-      .catch(function (e) { state("error", "Sign-in did not go through (" + e.message + "). Try again, or use the GitHub link below."); });
+    post("/api/gate/google", { credential: resp.credential }).then(function (x) {
+      if (!x.ok || !x.j.url) state("error", "Sign-in did not go through (" + (x.error || x.status) + "). Try again, or use the GitHub link below.");
+      else startDownload(x.j.url);
+    });
   }
+
+  function countdown(from) {
+    var left = from;
+    clearInterval(timer);
+    function tick() {
+      resendBtn.disabled = left > 0;
+      resendBtn.textContent = left > 0 ? "Resend code (" + left + "s)" : "Resend code";
+      if (left-- <= 0) clearInterval(timer);
+    }
+    tick(); timer = setInterval(tick, 1000);
+  }
+
+  function toCodeStep(msg) {
+    toEl.textContent = address; step("code"); state(msg ? "error" : "idle", msg);
+    codeIn.value = ""; codeIn.focus();
+  }
+
+  function sendCode(label) {
+    var email = (emailIn.value || "").trim().toLowerCase();
+    if (addrForm.querySelector("input[name=company]").value) return; /* honeypot: the Worker also drops it */
+    if (!EMAIL.test(email) || email.length > 254) { state("error", "That email does not look right."); emailIn.focus(); return; }
+    address = email; state("sending", "Sending the code…"); addrBtn.textContent = "Sending…"; resendBtn.disabled = true;
+    post("/api/gate/send", { email: email, company: addrForm.querySelector("input[name=company]").value }).then(function (x) {
+      addrBtn.textContent = label || addrLabel;
+      if (x.ok) { countdown(COOLDOWN); toCodeStep(""); return; }
+      if (x.error === "slow_down") { countdown(COOLDOWN); toCodeStep("Wait a moment, then resend."); return; }
+      step("address");
+      if (x.error === "bad_email") { state("error", "That email does not look right."); emailIn.focus(); }
+      else if (x.error === "daily_cap") state("error", "Downloads are paused for today. Email " + SUPPORT + ".");
+      else state("error", "We could not send the code. Try again or email " + SUPPORT + ".");
+    });
+  }
+
+  addrForm.addEventListener("submit", function (e) { e.preventDefault(); sendCode(); });
+  resendBtn.addEventListener("click", function () { emailIn.value = address; sendCode(); });
+  dlg.querySelector("[data-gate-change]").addEventListener("click", function () {
+    clearInterval(timer); step("address"); state("idle"); emailIn.value = address; emailIn.focus();
+  });
+  codeForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var code = (codeIn.value || "").replace(/\s+/g, "");
+    if (!/^\d{6}$/.test(code)) { state("error", "That code is not right."); codeIn.focus(); return; }
+    state("verifying", "Checking the code…"); codeBtn.textContent = "Checking…";
+    post("/api/gate/verify", { email: address, code: code }).then(function (x) {
+      codeBtn.textContent = codeLabel;
+      if (x.ok && x.j.url) { startDownload(x.j.url); return; }
+      if (x.error === "bad_code") { state("error", "That code is not right."); codeIn.focus(); codeIn.select(); return; }
+      emailIn.value = address;
+      if (x.error === "expired" || x.error === "too_many" || x.error === "bad_email") {
+        clearInterval(timer); step("address"); addrBtn.textContent = "Send a new code";
+        state("error", x.error === "expired" ? "That code has expired." : x.error === "too_many" ? "Too many tries. Send a new code." : "That email does not look right.");
+        emailIn.focus();
+      } else state("error", "We could not check the code. Try again or email " + SUPPORT + ".");
+    });
+  });
+
   if (!LOCAL) return; /* on the GitHub Pages mirror the buttons stay plain links to ctrlall.app/download */
   Array.prototype.forEach.call(document.querySelectorAll("a[href=\"https://ctrlall.app/download\"]"), function (a) {
     a.addEventListener("click", function (e) { e.preventDefault(); open(); });
