@@ -281,7 +281,7 @@ h1,h2,h3,p,ul,ol{margin:0} ul,ol{padding:0;list-style:none}
 /* pricing */
 .pricing{padding:clamp(96px,12vw,150px) 0 0;scroll-margin-top:calc(var(--nav-h) + 12px)}
 .pricing .reveal{transition-delay:calc(var(--i,0) * .08s)}
-/* three tiers, one rhythm: Free narrow and quiet, Pro wider with the brand hairline, Founders a band under both */
+/* Free stays narrow and quiet; Pro uses the brand hairline. */
 .pr-grid{display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:14px;align-items:stretch}
 .pr-card{position:relative;display:flex;flex-direction:column;padding:clamp(24px,2.8vw,36px);border-radius:var(--r-tile);background:var(--bg-2);border:1px solid var(--line-2);transition:border-color .3s,transform .4s var(--ease)}
 .pr-card:hover{border-color:var(--line);transform:translateY(-2px)}
@@ -300,15 +300,6 @@ h1,h2,h3,p,ul,ol{margin:0} ul,ol{padding:0;list-style:none}
 .pr-card > .btn,.pr-ctas{margin-top:auto}
 .pr-card > .btn{align-self:flex-start}
 .pr-ctas{display:flex;flex-wrap:wrap;gap:10px}
-/* founders: one band across both columns; name and price, the sentence, one link */
-.pr-founders{grid-column:1 / -1;flex-direction:row;flex-wrap:wrap;align-items:center;gap:16px clamp(24px,3vw,40px);padding:clamp(20px,2.4vw,28px) clamp(24px,2.8vw,36px)}
-.pr-founders .pr-top{flex:none;gap:0 10px}
-.pr-founders .pr-name{flex-basis:auto}
-.pr-founders .pr-price{margin-top:0;font-size:28px}
-.pr-founders .pr-per{font-size:15px}
-.pr-founders .pr-what{flex:1 1 16em;margin:0}
-.pr-founders > .btn{margin-top:0;margin-left:auto}
-.pr-soldout{display:inline-flex;align-items:center;height:50px;margin-left:auto;font-size:16px;font-weight:600;color:var(--ink-3)}
 /* the one line under the grid */
 .pr-byo{margin-top:22px;font-size:15px;color:var(--ink-3)}
 .pr-byo a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--brand);text-decoration-thickness:1px;text-underline-offset:3px;transition:color .2s}
@@ -322,10 +313,6 @@ h1,h2,h3,p,ul,ol{margin:0} ul,ol{padding:0;list-style:none}
   .pr-grid{grid-template-columns:1fr}
   .pr-card > .btn{align-self:stretch}
   .pr-ctas .btn{flex:1 1 140px}
-  .pr-founders{flex-direction:column;align-items:stretch;gap:14px}
-  .pr-founders .pr-what{flex:none}
-  .pr-founders > .btn,.pr-soldout{margin-left:0}
-  .pr-soldout{justify-content:center}
   .pr-byo a{display:inline-block;padding:10px 0;margin:-10px 0}
 }
 
@@ -840,13 +827,8 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
           <a class="btn" href="https://checkout.dodopayments.com/buy/pdt_0NrMZKuuD93FA9fv6woGH?quantity=1&amp;redirect_url=https%3A%2F%2Fctrlall.app%2Fkey">Start yearly</a>
         </div>
       </article>
-      <article class="pr-card pr-founders reveal" style="--i:3" aria-labelledby="pr-founders-h">
-        <p class="pr-top"><b class="pr-name" id="pr-founders-h">Founders</b> <span class="pr-price"><span class="pr-amount">$79</span><span class="pr-per">once</span></span></p>
-        <p class="pr-what">Pro for life. 200 seats.</p>
-        <a class="btn btn-2" href="https://checkout.dodopayments.com/buy/pdt_0NrMZKw0wTKe0uaS8L1UP?quantity=1&amp;redirect_url=https%3A%2F%2Fctrlall.app%2Fkey" data-founders-link>Pay once</a>
-      </article>
     </div>
-    <p class="pr-byo reveal" style="--i:4">Prefer to run your own relay? It's free and <a href="/byo-relay">documented</a>.</p>
+    <p class="pr-byo reveal" style="--i:3">Prefer to run your own relay? It's free and <a href="/byo-relay">documented</a>.</p>
   </div>
 </section>
 
@@ -1083,22 +1065,6 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
   addEventListener('resize', function () { if (on) { measure(); paint(); } });
   if (mq.addEventListener) mq.addEventListener('change', apply);
   apply();
-})();
-</script>
-<script>
-/* pricing: Founders is capped at 200 seats and /api/pricing says when they are gone. If the call fails, the link stays. */
-(function () {
-  var link = document.querySelector('#pricing [data-founders-link]');
-  if (!link || typeof fetch !== 'function') return;
-  fetch('/api/pricing', { headers: { Accept: 'application/json' } })
-    .then(function (r) { return r.ok ? r.json() : null; })
-    .then(function (d) {
-      if (!d || d.founders_sold_out !== true) return;
-      var out = document.createElement('span');
-      out.className = 'pr-soldout'; out.textContent = 'Sold out';
-      link.replaceWith(out);
-    })
-    .catch(function () {});
 })();
 </script>
 <script>
