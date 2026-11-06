@@ -109,12 +109,6 @@ The hosted relay, push notifications, and pairing with no setup.
 
 [Start monthly](https://checkout.dodopayments.com/buy/pdt_0NrMZKt0LWQFKmneCbQ7X?quantity=1&redirect_url=https%3A%2F%2Fctrlall.app%2Fkey) [Start yearly](https://checkout.dodopayments.com/buy/pdt_0NrMZKuuD93FA9fv6woGH?quantity=1&redirect_url=https%3A%2F%2Fctrlall.app%2Fkey)
 
-**Founders** $79 once
-
-Pro for life. 200 seats.
-
-[Pay once](https://checkout.dodopayments.com/buy/pdt_0NrMZKw0wTKe0uaS8L1UP?quantity=1&redirect_url=https%3A%2F%2Fctrlall.app%2Fkey)
-
 Prefer to run your own relay? It's free and [documented](https://ctrlall.app/byo-relay).
 
 ## Questions, answered.
