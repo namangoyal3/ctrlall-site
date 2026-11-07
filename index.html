@@ -825,11 +825,11 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
         <a class="btn btn-2" href="#download">Download for Mac</a>
       </article>
       <article class="pr-card pr-pro reveal" style="--i:2" aria-labelledby="pr-pro-h">
-        <p class="pr-top"><b class="pr-name" id="pr-pro-h">Pro</b> <span class="pr-price"><span class="pr-amount">30 days free,</span></span> <span class="pr-alt">then $5 a month or $48 a year. Card required.</span></p>
+        <p class="pr-top"><b class="pr-name" id="pr-pro-h">Pro</b> <span class="pr-price"><span class="pr-amount">$5 a month</span></span> <span class="pr-alt">or $48 a year. Payment activates hosted access for your account.</span></p>
         <p class="pr-what">The hosted relay, push notifications, and pairing with no setup.</p>
         <div class="pr-ctas">
-          <a class="btn" href="https://checkout.dodopayments.com/buy/pdt_0NrMZKt0LWQFKmneCbQ7X?quantity=1&amp;redirect_url=https%3A%2F%2Fctrlall.app%2Fkey">Start monthly</a>
-          <a class="btn" href="https://checkout.dodopayments.com/buy/pdt_0NrMZKuuD93FA9fv6woGH?quantity=1&amp;redirect_url=https%3A%2F%2Fctrlall.app%2Fkey">Start yearly</a>
+          <a class="btn" href="https://ctrlall.app/?pro_plan=monthly">Choose monthly</a>
+          <a class="btn" href="https://ctrlall.app/?pro_plan=yearly">Choose yearly</a>
         </div>
       </article>
     </div>
@@ -1297,10 +1297,12 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
 })();
 </script>
 <script src="demo.js" defer></script>
+<script type="module" src="pro-account.js"></script>
 <script>
 /* download gate: every download link opens the dialog; Google sign-in posts its credential to the
    Worker, which logs the lead and answers the DMG URL. The GitHub releases link stays as the way out. */
 (function () {
+  if (["pro_request", "pro_plan", "pro_receipt", "pro_manage"].some(key => new URLSearchParams(location.search).has(key))) return;
   var dlg = document.getElementById("wl"), slot = document.getElementById("gate-btn"), note = dlg && dlg.querySelector("[data-gate-note]");
   if (!dlg || !slot) return;
   var CLIENT_ID = "615632895904-thc6ojn9g6i8cnbnh2f42v0oq3q4ct84.apps.googleusercontent.com";

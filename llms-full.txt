@@ -107,11 +107,11 @@ The engine, the desktop and web apps, every agent, local pairing, a relay you ru
 
 [Download for Mac](https://ctrlall.app/#download)
 
-**Pro** 30 days free, then $5 a month or $48 a year. Card required.
+**Pro** $5 a month or $48 a year. Payment activates hosted access for your account.
 
 The hosted relay, push notifications, and pairing with no setup.
 
-[Start monthly](https://checkout.dodopayments.com/buy/pdt_0NrMZKt0LWQFKmneCbQ7X?quantity=1&redirect_url=https%3A%2F%2Fctrlall.app%2Fkey) [Start yearly](https://checkout.dodopayments.com/buy/pdt_0NrMZKuuD93FA9fv6woGH?quantity=1&redirect_url=https%3A%2F%2Fctrlall.app%2Fkey)
+[Choose monthly](https://ctrlall.app/?pro_plan=monthly) [Choose yearly](https://ctrlall.app/?pro_plan=yearly)
 
 Prefer to run your own relay? It's free and [documented](https://ctrlall.app/byo-relay).
 
