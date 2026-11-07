@@ -60,6 +60,10 @@ Notes every agent reads before every turn.
 
 Undo a turn. Files and transcript go back.
 
+### Apple Watch shortcuts
+
+**Preview · Manual setup.** Dictate a task, read its reply, and answer supported Claude permissions. Requires a paired iPhone, an awake Mac, and a private connector with HTTPS access.
+
 ## Zero tokens metered.
 
 You already pay your agent's vendor. ctrl+all runs the same CLIs on your own Mac. No second bill, no cloud copy of your code.
