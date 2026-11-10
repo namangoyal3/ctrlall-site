@@ -1,19 +1,19 @@
 # ctrl+all - full content
-> Every coding agent you pay for, in one inbox, with your team, from your pocket. Claude Code and Codex on one Mac, roles for the team, goals that run overnight. Free beta.
-Generated: 2026-11-07
+> Control Claude Code and Codex on your Mac from Android or iPhone. Share chats, approve requests, run project terminals, and schedule tasks. Free Mac app.
+Generated: 2026-11-10
 
 ---
 <!-- source: https://ctrlall.app/ -->
 # ctrl+all
 
-> Every coding agent you pay for, in one inbox, with your team, from your pocket. Claude Code and Codex on one Mac, roles for the team, goals that run overnight. Free beta.
+> Control Claude Code and Codex on your Mac from Android or iPhone. Share chats, approve requests, run project terminals, and schedule tasks. Free Mac app.
 
 Canonical: https://ctrlall.app/
-Last updated: 2026-11-07
+Last updated: 2026-11-10
 
 ## Run coding agents as a team.
 
-Claude Code and Codex on one always-on Mac. Your team joins from any phone, with roles. Goals run overnight. Free beta.
+Control Claude Code and Codex on your Mac from Android or iPhone. Share chats with your team. Keep your Mac awake while agents work.
 
 [Download for Mac](https://github.com/namangoyal3/ctrlall-releases/releases/latest) [Try it live](https://ctrlall.app/#try)
 
@@ -64,9 +64,21 @@ Undo a turn. Files and transcript go back.
 
 **Preview · Manual setup.** Dictate a task, read its reply, and answer supported Claude permissions. Requires a paired iPhone, an awake Mac, and a private connector with HTTPS access.
 
+### Project terminals
+
+Open managed shells in your project folder. View output and send commands from your paired phone.
+
+### Scheduled routines
+
+Run a saved task on a schedule. Each routine opens a new chat and keeps its results.
+
+### Android and iPhone
+
+Scan a QR code to connect your phone browser. Review chats and answer supported approval requests away from your Mac.
+
 ## Zero tokens metered.
 
-You already pay your agent's vendor. ctrl+all runs the same CLIs on your own Mac. No second bill, no cloud copy of your code.
+Use your existing agent subscriptions on your Mac. ctrl+all adds no token charges. The Mac app is free; the hosted relay costs extra.
 
 **8** engines verified live
 
@@ -80,7 +92,7 @@ You already pay your agent's vendor. ctrl+all runs the same CLIs on your own Mac
 
 ## Download ctrl+all.
 
-Free beta. Needs macOS 14.5 or later. Runs on Apple silicon and Intel. Updates install themselves.
+Free Mac app. Needs macOS 14.5 or later. Runs on Apple silicon and Intel. The hosted relay has a separate Pro subscription.
 
 ### You need
 
@@ -93,7 +105,9 @@ Free beta. Needs macOS 14.5 or later. Runs on Apple silicon and Intel. Updates i
 ### The first time you open it
 
 1. Open the disk image. Drag ctrl+all to **Applications**.
-2. Open it from Applications. It opens, no warning.
+2. Open it from Applications.
+3. Open New chat. Choose a project folder and an available assistant.
+4. Send your task. Scan the pairing QR code to connect your phone.
 
 Signed with an Apple Developer ID and notarized by Apple. Updates arrive in the sidebar: click "Restart to update".
 
@@ -111,11 +125,31 @@ The engine, the desktop and web apps, every agent, local pairing, a relay you ru
 
 The hosted relay, push notifications, and pairing with no setup.
 
-[Start monthly](https://checkout.dodopayments.com/buy/pdt_0NrMZKt0LWQFKmneCbQ7X?quantity=1&redirect_url=https%3A%2F%2Fctrlall.app%2Fkey) [Start yearly](https://checkout.dodopayments.com/buy/pdt_0NrMZKuuD93FA9fv6woGH?quantity=1&redirect_url=https%3A%2F%2Fctrlall.app%2Fkey)
+[Start yearly · $48/year](https://ctrlall.app/buy/yearly) [Start monthly · $5/month](https://ctrlall.app/buy/monthly)
 
 Prefer to run your own relay? It's free and [documented](https://ctrlall.app/byo-relay).
 
 ## Questions, answered.
+
+### What is ctrl+all?
+
+ctrl+all is a Mac app that runs coding agents on your Mac. A paired phone browser lets you view chats, send tasks, and answer supported approval requests. Your Mac must stay awake and connected.
+
+### Can I use Android or iPhone?
+
+Yes. Scan the pairing QR code on your Mac and open the link in your Android or iPhone browser. You do not need a native phone app.
+
+### How do I start a project chat?
+
+Open New chat. Choose your project folder and an available assistant, such as Claude Code or Codex. Sign in to the assistant if required. Send your task, then pair your phone to continue remotely.
+
+### Can I control a terminal that is already open?
+
+ctrl+all manages its own project shells. You can return to those shells from the app and use terminal controls from a paired phone. It does not attach to an existing Terminal.app or iTerm session.
+
+### Can I view my existing Claude Code or Codex history?
+
+The next desktop update adds an optional local history viewer. You choose whether ctrl+all reads those files. The viewer does not resume old chats or send history to a phone or agent. The public v1.0.3 download does not include this viewer.
 
 ### Is this just ssh and tmux to my Mac?
 
@@ -125,9 +159,9 @@ Those show one person one terminal. ctrl+all runs the agents on one Mac as a sha
 
 One Mac runs the engine, and the owner invites teammates by role: viewers watch, operators run chats and approve steps, owners also manage people. Each pairs their own phone and sees the same chats, goals and inbox, fenced to their role.
 
-### Do I need an account or a cloud workspace?
+### Do I need a cloud workspace?
 
-No. The engine and your code stay on your Mac; off your network a relay forwards sealed frames it cannot read, or Tailscale Funnel does it with no cloud account at all.
+No. Your agent processes and code stay on your Mac. Use your existing agent vendor accounts. The public download requires Google sign-in. Pro adds a billing subscription for the hosted relay. You can also run your own relay.
 
 ### Which agents does it run?
 
@@ -135,11 +169,13 @@ Claude Code and Codex, each as it would run in your terminal, on the subscriptio
 
 ### Does it cost per token?
 
-No. The beta is free and ctrl+all meters nothing: your Claude and Codex plans do the work.
+ctrl+all adds no token charges. Your agent vendor bills your account under its own plan. The Mac app and a self-hosted relay are free. Pro includes the hosted relay: 30 days free, then $5/month or $48/year. A card is required.
 
 ### What does the relay see?
 
-Only that your Mac is online and how big each message is: frames are sealed on your devices with X25519, Ed25519 and ChaCha20-Poly1305, so the relay cannot open them. It also serves the phone web client, so you trust its operator for that code; beyond that the app only checks GitHub for updates, and crash reports are off.
+The relay sees connection metadata and frame sizes. Your devices seal message frames with X25519, Ed25519 and ChaCha20-Poly1305, so the relay cannot read their contents. The relay also serves the phone client, so you trust its operator for that code.
+
+The Mac app checks GitHub for updates and sends usage counts to ctrlall.app by default. Crash reports are off by default. Turn usage counts off in Settings → Reports. Read [every usage event and its allowed properties](https://ctrlall.app/analytics).
 
 ### Can I run my own relay?
 
@@ -152,3 +188,105 @@ No. Since version 1.0.0 the app is signed with an Apple Developer ID and notariz
 ## Related
 - [Download for Mac](https://github.com/namangoyal3/ctrlall-releases/releases/latest)
 - [Support](mailto:support@ctrlall.app)
+
+---
+<!-- source: https://ctrlall.app/byo-relay -->
+[Back to pricing](https://ctrlall.app/#pricing)
+
+## Run your own relay.
+
+The phone app reaches your Mac through a relay. Pro is the one we run for you. The free path is to run one yourself.
+
+A relay is the `ctrlall-relay` process a phone connects through. Your Mac keeps one end-to-end-encrypted connection open to it, and a paired phone uses it to reach the Mac. The relay sees that your Mac is online and the size of each message. It cannot read a message, because frames are sealed on your devices.
+
+A relay you run is yours: your machine or your account, your logs, no bill from us. Everything else is the same on either relay. The engine, the apps, every agent and every update stay free, and `ctrlall relay show` prints the relay in use.
+
+## Connect a relay you already run
+
+The CLI ships inside the Mac app. Open Terminal and set a short name for this session:
+
+```
+alias ctrlall='/Applications/ctrl+all.app/Contents/MacOS/ctrlall'
+ctrlall relay show
+```
+
+Use the public WebSocket address of your relay. Replace the example address below with your own address.
+
+**Finish active agent work first.** A relay change can restart the engine and interrupt a live session.
+
+```
+ctrlall relay set wss://relay.example.com
+ctrlall relay show
+```
+
+## Pair your phone
+
+Keep your Mac awake. Open the app's pairing screen, or run:
+
+```
+ctrlall pair
+```
+
+Scan the QR code with Android or iPhone. Approve the device on your Mac. Each teammate pairs a separate device.
+
+## Check the connection
+
+A successful Mac health check proves only that the Mac can reach the relay. Your phone must reach it too.
+
+A localhost address works only on the Mac. A LAN address needs the same network. A Tailscale address needs the same tailnet.
+
+For access from another network, use a reachable public relay address. Keep the relay's phone client compatible with your Mac app.
+
+For a new relay deployment or help with a tunnel, contact [support@ctrlall.app](mailto:support@ctrlall.app).
+
+Stuck? Write to [support@ctrlall.app](mailto:support@ctrlall.app).
+
+---
+<!-- source: https://ctrlall.app/analytics -->
+[Back to home](https://ctrlall.app/)
+
+## What ctrl+all counts.
+
+ctrl+all counts what people do, never what they say. This page lists every event the Mac app can send.
+
+ctrl+all counts what people do, never what they say. The Mac app sends a short list of usage events. The list is below. Each event carries three things: an install id (a random number, not tied to you), the app version, and the experiment names your install was given.
+
+ctrl+all never sends prompts, replies, files, paths, names, emails, or keys. A property holds only a value from the list in this page. Free text is never a property.
+
+## How to turn it off
+
+- Open Settings, then Reports, and turn off "Send usage counts".
+- Or set the environment variable `CTRLALL_DISABLE_ANALYTICS=1` for the app engine.
+- Turning it off deletes the install id on your Mac. Turning it on later makes a new id. Rows already stored cannot be traced back to you, so they stay until they expire.
+- Usage counts are on by default for every install.
+
+## Where rows live
+
+Rows live in Cloudflare Workers Analytics Engine. Rows expire after 90 days. ctrl+all does not store your IP address.
+
+## Every event
+
+| Event | Sent by | Properties and allowed values | Why it exists | GA4 mirror |
+| --- | --- | --- | --- | --- |
+| `app_heartbeat` | Mac app (engine) | `tier`: free, pro, founders, expired `cohort`: ISO week, like 2026-W45 `rotated`: true, false | One row per Mac per UTC day. The first one for an install id is the install. | No |
+| `app_updated` | Mac app (engine) | `from`: app version, like 1.0.4 | Engine start on a version other than the last one it ran. | No |
+| `provider_connected` | Mac app (engine) | `provider`: anthropic, codex, copilot, cursor, gemini, kimi, zai, openai, local, other | A provider credential was stored. Never the credential. | Yes |
+| `chat_started` | Mac app (engine) | `provider`: anthropic, codex, copilot, cursor, gemini, kimi, zai, openai, local, other `origin`: desk, phone | A chat was created. Never its text. | Yes |
+| `phone_paired` | Mac app (engine) | none | A phone finished pairing. | No |
+| `provider_error` | Mac app (engine) | `provider`: anthropic, codex, copilot, cursor, gemini, kimi, zai, openai, local, other `kind`: auth, rate\_limit, network, other | A provider call failed, by class. Never the message. | No |
+| `pro_screen_viewed` | Mac app (screen) | `from`: nav, phone, link, nudge | The Pro screen opened. | Yes |
+| `checkout_clicked` | Mac app (screen) | `plan`: monthly, yearly, founders | A checkout button was clicked in the app. | Yes |
+| `key_pasted` | Mac app (screen) | `result`: ok, bad, expired, conflict | A key was pasted and the engine answered. Never the key. | Yes |
+| `exp_exposed` | Mac app (screen) | `exp`: pro\_headline | An experiment variant was rendered. The variant rides in x. | No |
+| `site_download_click` | ctrlall.app | `via`: direct, pricing, other | /download was opened. | Yes |
+| `site_checkout_click` | ctrlall.app | `plan`: monthly, yearly, founders | A pricing-page checkout link was followed (/buy/<plan>). | Yes |
+| `site_gate_signed_in` | ctrlall.app | none | The download gate accepted a Google sign-in. | No |
+| `key_minted` | ctrlall.app | `plan`: monthly, yearly, founders | A licence key was issued after payment. | Yes |
+| `sub_renewed` | ctrlall.app | `plan`: monthly, yearly, founders | A subscription renewed. | Yes |
+| `sub_stopped` | ctrlall.app | `reason`: cancelled, expired, failed, dispute, refund | A subscription stopped, by reason. | No |
+| `webhook_rejected` | ctrlall.app | `reason`: signature, stale, body, unknown\_event | A Dodo webhook was refused. | No |
+| `event_unknown` | ctrlall.app | none | A row from /api/e that is not in this list. Its name is not stored. | No |
+
+GA4 is Google Analytics. A mirror runs only when the site owner has set it up. It carries the event name and its properties. The client id encodes the random install id as two decimal integers. Site events use 0.0 and do not identify a visitor.
+
+Questions? Write to [support@ctrlall.app](mailto:support@ctrlall.app).
