@@ -8,6 +8,8 @@
 <meta property="og:title" content="What ctrl+all counts">
 <meta property="og:description" content="Every usage event the ctrl+all Mac app can send, what each property may hold, and how to turn it off.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://ctrlall.app/analytics">
+<meta property="og:image" content="https://ctrlall.app/assets/og.png">
 <meta name="theme-color" content="#0b0c0e">
 <meta name="color-scheme" content="dark">
 <link rel="canonical" href="https://ctrlall.app/analytics">
@@ -62,6 +64,9 @@ a:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
 .doc .body p b{color:var(--ink);font-weight:600}
 .doc code{font:500 .92em var(--mono);color:var(--ink);background:var(--bg-3);padding:2px 6px;border-radius:5px;white-space:nowrap}
 .doc .body{margin-top:10px;padding-top:10px;border-top:1px solid var(--line-2)}
+.doc h2{margin:32px 0 12px;font-size:22px}
+.doc pre{margin:14px 0;padding:16px;overflow-x:auto;border:1px solid var(--line-2);border-radius:12px;background:var(--bg-2)}
+.doc pre code{padding:0;background:none;white-space:pre}
 .doc .btn{margin-top:32px}
 .fine{margin-top:28px;font-size:14px;line-height:1.5;color:var(--ink-3)}
 .fine a,.doc .body a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--brand);text-decoration-thickness:1px;text-underline-offset:3px;transition:color .2s}
@@ -149,7 +154,7 @@ td code{white-space:normal}
 <tr><td><code>event_unknown</code></td><td>ctrlall.app</td><td>none</td><td>A row from /api/e that is not in this list. Its name is not stored.</td><td>No</td></tr>
 </tbody>
 </table></div>
-      <p>GA4 is Google Analytics. A mirror runs only when the site owner has set it up. It carries the event name and its properties, with the install id as the client id.</p>
+      <p>GA4 is Google Analytics. A mirror runs only when the site owner has set it up. It carries the event name and its properties. The client id encodes the random install id as two decimal integers. Site events use 0.0 and do not identify a visitor.</p>
     </div>
     <p class="fine">Questions? Write to <a href="mailto:support@ctrlall.app">support@ctrlall.app</a>.</p>
   </div>

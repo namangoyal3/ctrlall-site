@@ -1,13 +1,13 @@
 # ctrl+all
 
-> Every coding agent you pay for, in one inbox, with your team, from your pocket. Claude Code and Codex on one Mac, roles for the team, goals that run overnight. Free beta.
+> Control Claude Code and Codex on your Mac from Android or iPhone. Share chats, approve requests, run project terminals, and schedule tasks. Free Mac app.
 
 Canonical: https://ctrlall.app/
-Last updated: 2026-11-07
+Last updated: 2026-11-10
 
 ## Run coding agents as a team.
 
-Claude Code and Codex on one always-on Mac. Your team joins from any phone, with roles. Goals run overnight. Free beta.
+Control Claude Code and Codex on your Mac from Android or iPhone. Share chats with your team. Keep your Mac awake while agents work.
 
 [Download for Mac](https://github.com/namangoyal3/ctrlall-releases/releases/latest) [Try it live](https://ctrlall.app/#try)
 
@@ -58,9 +58,21 @@ Undo a turn. Files and transcript go back.
 
 **Preview · Manual setup.** Dictate a task, read its reply, and answer supported Claude permissions. Requires a paired iPhone, an awake Mac, and a private connector with HTTPS access.
 
+### Project terminals
+
+Open managed shells in your project folder. View output and send commands from your paired phone.
+
+### Scheduled routines
+
+Run a saved task on a schedule. Each routine opens a new chat and keeps its results.
+
+### Android and iPhone
+
+Scan a QR code to connect your phone browser. Review chats and answer supported approval requests away from your Mac.
+
 ## Zero tokens metered.
 
-You already pay your agent's vendor. ctrl+all runs the same CLIs on your own Mac. No second bill, no cloud copy of your code.
+Use your existing agent subscriptions on your Mac. ctrl+all adds no token charges. The Mac app is free; the hosted relay costs extra.
 
 **8** engines verified live
 
@@ -74,7 +86,7 @@ You already pay your agent's vendor. ctrl+all runs the same CLIs on your own Mac
 
 ## Download ctrl+all.
 
-Free beta. Needs macOS 14.5 or later. Runs on Apple silicon and Intel. Updates install themselves.
+Free Mac app. Needs macOS 14.5 or later. Runs on Apple silicon and Intel. The hosted relay has a separate Pro subscription.
 
 ### You need
 
@@ -87,7 +99,9 @@ Free beta. Needs macOS 14.5 or later. Runs on Apple silicon and Intel. Updates i
 ### The first time you open it
 
 1. Open the disk image. Drag ctrl+all to **Applications**.
-2. Open it from Applications. It opens, no warning.
+2. Open it from Applications.
+3. Open New chat. Choose a project folder and an available assistant.
+4. Send your task. Scan the pairing QR code to connect your phone.
 
 Signed with an Apple Developer ID and notarized by Apple. Updates arrive in the sidebar: click "Restart to update".
 
@@ -105,11 +119,31 @@ The engine, the desktop and web apps, every agent, local pairing, a relay you ru
 
 The hosted relay, push notifications, and pairing with no setup.
 
-[Start monthly](https://checkout.dodopayments.com/buy/pdt_0NrMZKt0LWQFKmneCbQ7X?quantity=1&redirect_url=https%3A%2F%2Fctrlall.app%2Fkey) [Start yearly](https://checkout.dodopayments.com/buy/pdt_0NrMZKuuD93FA9fv6woGH?quantity=1&redirect_url=https%3A%2F%2Fctrlall.app%2Fkey)
+[Start yearly · $48/year](https://ctrlall.app/buy/yearly) [Start monthly · $5/month](https://ctrlall.app/buy/monthly)
 
 Prefer to run your own relay? It's free and [documented](https://ctrlall.app/byo-relay).
 
 ## Questions, answered.
+
+### What is ctrl+all?
+
+ctrl+all is a Mac app that runs coding agents on your Mac. A paired phone browser lets you view chats, send tasks, and answer supported approval requests. Your Mac must stay awake and connected.
+
+### Can I use Android or iPhone?
+
+Yes. Scan the pairing QR code on your Mac and open the link in your Android or iPhone browser. You do not need a native phone app.
+
+### How do I start a project chat?
+
+Open New chat. Choose your project folder and an available assistant, such as Claude Code or Codex. Sign in to the assistant if required. Send your task, then pair your phone to continue remotely.
+
+### Can I control a terminal that is already open?
+
+ctrl+all manages its own project shells. You can return to those shells from the app and use terminal controls from a paired phone. It does not attach to an existing Terminal.app or iTerm session.
+
+### Can I view my existing Claude Code or Codex history?
+
+The next desktop update adds an optional local history viewer. You choose whether ctrl+all reads those files. The viewer does not resume old chats or send history to a phone or agent. The public v1.0.3 download does not include this viewer.
 
 ### Is this just ssh and tmux to my Mac?
 
@@ -119,9 +153,9 @@ Those show one person one terminal. ctrl+all runs the agents on one Mac as a sha
 
 One Mac runs the engine, and the owner invites teammates by role: viewers watch, operators run chats and approve steps, owners also manage people. Each pairs their own phone and sees the same chats, goals and inbox, fenced to their role.
 
-### Do I need an account or a cloud workspace?
+### Do I need a cloud workspace?
 
-No. The engine and your code stay on your Mac; off your network a relay forwards sealed frames it cannot read, or Tailscale Funnel does it with no cloud account at all.
+No. Your agent processes and code stay on your Mac. Use your existing agent vendor accounts. The public download requires Google sign-in. Pro adds a billing subscription for the hosted relay. You can also run your own relay.
 
 ### Which agents does it run?
 
@@ -129,11 +163,13 @@ Claude Code and Codex, each as it would run in your terminal, on the subscriptio
 
 ### Does it cost per token?
 
-No. The beta is free and ctrl+all meters nothing: your Claude and Codex plans do the work.
+ctrl+all adds no token charges. Your agent vendor bills your account under its own plan. The Mac app and a self-hosted relay are free. Pro includes the hosted relay: 30 days free, then $5/month or $48/year. A card is required.
 
 ### What does the relay see?
 
-Only that your Mac is online and how big each message is: frames are sealed on your devices with X25519, Ed25519 and ChaCha20-Poly1305, so the relay cannot open them. It also serves the phone web client, so you trust its operator for that code; beyond that the app only checks GitHub for updates, and crash reports are off.
+The relay sees connection metadata and frame sizes. Your devices seal message frames with X25519, Ed25519 and ChaCha20-Poly1305, so the relay cannot read their contents. The relay also serves the phone client, so you trust its operator for that code.
+
+The Mac app checks GitHub for updates and sends usage counts to ctrlall.app by default. Crash reports are off by default. Turn usage counts off in Settings → Reports. Read [every usage event and its allowed properties](https://ctrlall.app/analytics).
 
 ### Can I run my own relay?
 

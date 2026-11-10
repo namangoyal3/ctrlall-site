@@ -3,13 +3,39 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ctrl+all</title>
-<meta name="description" content="Every coding agent you pay for, in one inbox, with your team, from your pocket. Claude Code and Codex on one Mac, roles for the team, goals that run overnight. Free beta.">
-<meta property="og:title" content="ctrl+all">
-<meta property="og:description" content="Run coding agents as a team. Claude Code and Codex on one Mac, roles for the team, goals that run overnight. Free beta.">
+<title>ctrl+all — Claude Code and Codex from your phone</title>
+<meta name="description" content="Control Claude Code and Codex on your Mac from Android or iPhone. Share chats, approve requests, run project terminals, and schedule tasks. Free Mac app.">
+<meta property="og:site_name" content="ctrl+all">
+<meta property="og:title" content="ctrl+all — Claude Code and Codex from your phone">
+<meta property="og:description" content="Control coding agents on your Mac from Android or iPhone. Share chats with your team, approve requests, and run project terminals.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://namangoyal3.github.io/ctrlall-site/assets/og.png">
+<meta property="og:url" content="https://ctrlall.app/">
+<meta property="og:image" content="https://ctrlall.app/assets/og.png">
+<meta property="og:image:alt" content="ctrl+all — coding agents on your Mac, controlled from your phone">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://ctrlall.app/">
+<link rel="alternate" type="text/markdown" href="https://ctrlall.app/index.md">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {"@type": "Organization", "@id": "https://ctrlall.app/#organization", "name": "ctrl+all", "url": "https://ctrlall.app/", "email": "support@ctrlall.app"},
+    {"@type": "WebSite", "@id": "https://ctrlall.app/#website", "name": "ctrl+all", "url": "https://ctrlall.app/", "publisher": {"@id": "https://ctrlall.app/#organization"}},
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://ctrlall.app/#app",
+      "name": "ctrl+all",
+      "url": "https://ctrlall.app/",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "macOS 14.5 or later",
+      "description": "Control Claude Code and Codex on your Mac from Android or iPhone. Share chats, approve requests, run project terminals, and schedule tasks.",
+      "downloadUrl": "https://ctrlall.app/download",
+      "publisher": {"@id": "https://ctrlall.app/#organization"},
+      "offers": {"@type": "Offer", "name": "Free Mac app and self-hosted relay", "price": "0", "priceCurrency": "USD", "url": "https://ctrlall.app/#pricing"}
+    }
+  ]
+}
+</script>
 <meta name="theme-color" content="#0b0c0e">
 <meta name="color-scheme" content="dark">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23ff5b2e'/%3E%3Cpath d='M18 38 32 24l14 14' fill='none' stroke='%23fff' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
@@ -31,7 +57,7 @@
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;overflow-x:clip}
 body{margin:0;background:var(--bg);color:var(--ink);
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip}
@@ -443,7 +469,7 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
   <div class="wrap">
     <div class="hero-copy">
     <h1 class="h1" id="hero-h"><span class="w" style="--i:0">Run</span> <span class="w" style="--i:1">coding</span> <span class="w" style="--i:2">agents</span><br> <span class="w" style="--i:3">as</span> <span class="w" style="--i:4"><em>a team.</em></span></h1>
-    <p class="lede">Claude Code and Codex on one always-on Mac. Your team joins from any phone, with roles. Goals run overnight. Free beta.</p>
+    <p class="lede">Control Claude Code and Codex on your Mac from Android or iPhone. Share chats with your team. Keep your Mac awake while agents work.</p>
     <div class="ctas">
       <a class="btn btn-dl" href="https://ctrlall.app/download">Download for Mac <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
       <a class="btn btn-2" href="#try">Try it live <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
@@ -753,6 +779,18 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
         <h3>Apple Watch shortcuts</h3>
         <p><strong>Preview · Manual setup.</strong> Dictate a task, read its reply, and answer supported Claude permissions. Requires a paired iPhone, an awake Mac, and a private connector with HTTPS access.</p>
       </article>
+      <article class="tile reveal">
+        <h3>Project terminals</h3>
+        <p>Open managed shells in your project folder. View output and send commands from your paired phone.</p>
+      </article>
+      <article class="tile reveal">
+        <h3>Scheduled routines</h3>
+        <p>Run a saved task on a schedule. Each routine opens a new chat and keeps its results.</p>
+      </article>
+      <article class="tile reveal">
+        <h3>Android and iPhone</h3>
+        <p>Scan a QR code to connect your phone browser. Review chats and answer supported approval requests away from your Mac.</p>
+      </article>
     </div>
   </div>
 </section>
@@ -764,7 +802,7 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
       <h2 class="big-label" id="zero-h">Zero tokens metered.</h2>
     </div>
     <div>
-      <p class="sub">You already pay your agent's vendor. ctrl+all runs the same CLIs on your own Mac. No second bill, no cloud copy of your code.</p>
+      <p class="sub">Use your existing agent subscriptions on your Mac. ctrl+all adds no token charges. The Mac app is free; the hosted relay costs extra.</p>
       <div class="stats">
         <div><b data-count="8">8</b><span>engines verified live</span></div>
         <div><b data-count="140" data-prefix="~">~140</b><span>operations a paired phone can call</span></div>
@@ -788,7 +826,7 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
   <div class="wrap">
     <div class="head reveal">
       <h2 class="h2" id="dl-h">Download ctrl+all.</h2>
-      <p class="sub req">Free beta. Needs macOS 14.5 or later. Runs on Apple silicon and Intel. Updates install themselves.</p>
+      <p class="sub req">Free Mac app. Needs macOS 14.5 or later. Runs on Apple silicon and Intel. The hosted relay has a separate Pro subscription.</p>
     </div>
     <div class="grid">
       <div class="need reveal">
@@ -804,7 +842,9 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
         <h3>The first time you open it</h3>
         <ol>
           <li>Open the disk image. Drag ctrl+all to <b>Applications</b>.</li>
-          <li>Open it from Applications. It opens, no warning.</li>
+          <li>Open it from Applications.</li>
+          <li>Open New chat. Choose a project folder and an available assistant.</li>
+          <li>Send your task. Scan the pairing QR code to connect your phone.</li>
         </ol>
         <p class="fine">Signed with an Apple Developer ID and notarized by Apple. Updates arrive in the sidebar: click "Restart to update".</p>
       </div>
@@ -828,8 +868,8 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
         <p class="pr-top"><b class="pr-name" id="pr-pro-h">Pro</b> <span class="pr-price"><span class="pr-amount">30 days free,</span></span> <span class="pr-alt">then $5 a month or $48 a year. Card required.</span></p>
         <p class="pr-what">The hosted relay, push notifications, and pairing with no setup.</p>
         <div class="pr-ctas">
-          <a class="btn" href="https://checkout.dodopayments.com/buy/pdt_0NrMZKt0LWQFKmneCbQ7X?quantity=1&amp;redirect_url=https%3A%2F%2Fctrlall.app%2Fkey">Start monthly</a>
-          <a class="btn" href="https://checkout.dodopayments.com/buy/pdt_0NrMZKuuD93FA9fv6woGH?quantity=1&amp;redirect_url=https%3A%2F%2Fctrlall.app%2Fkey">Start yearly</a>
+          <a class="btn" href="https://ctrlall.app/buy/yearly">Start yearly · $48/year</a>
+          <a class="btn btn-2" href="https://ctrlall.app/buy/monthly">Start monthly · $5/month</a>
         </div>
       </article>
     </div>
@@ -840,12 +880,17 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
 <section class="faq" id="faq" aria-labelledby="faq-h">
   <div class="wrap">
     <h2 class="h2 reveal" id="faq-h">Questions, answered.</h2>
+      <details class="reveal"><summary>What is ctrl+all?</summary><p>ctrl+all is a Mac app that runs coding agents on your Mac. A paired phone browser lets you view chats, send tasks, and answer supported approval requests. Your Mac must stay awake and connected.</p></details>
+      <details class="reveal"><summary>Can I use Android or iPhone?</summary><p>Yes. Scan the pairing QR code on your Mac and open the link in your Android or iPhone browser. You do not need a native phone app.</p></details>
+      <details class="reveal"><summary>How do I start a project chat?</summary><p>Open New chat. Choose your project folder and an available assistant, such as Claude Code or Codex. Sign in to the assistant if required. Send your task, then pair your phone to continue remotely.</p></details>
+      <details class="reveal"><summary>Can I control a terminal that is already open?</summary><p>ctrl+all manages its own project shells. You can return to those shells from the app and use terminal controls from a paired phone. It does not attach to an existing Terminal.app or iTerm session.</p></details>
+      <details class="reveal"><summary>Can I view my existing Claude Code or Codex history?</summary><p>The next desktop update adds an optional local history viewer. You choose whether ctrl+all reads those files. The viewer does not resume old chats or send history to a phone or agent. The public v1.0.3 download does not include this viewer.</p></details>
       <details class="reveal"><summary>Is this just ssh and tmux to my Mac?</summary><p>Those show one person one terminal. ctrl+all runs the agents on one Mac as a shared session: teammates join with roles, one Allow from anyone with the role answers the prompt for all, and a goal keeps building after everyone logs off.</p></details>
       <details class="reveal"><summary>How does a team use it?</summary><p>One Mac runs the engine, and the owner invites teammates by role: viewers watch, operators run chats and approve steps, owners also manage people. Each pairs their own phone and sees the same chats, goals and inbox, fenced to their role.</p></details>
-      <details class="reveal"><summary>Do I need an account or a cloud workspace?</summary><p>No. The engine and your code stay on your Mac; off your network a relay forwards sealed frames it cannot read, or Tailscale Funnel does it with no cloud account at all.</p></details>
+      <details class="reveal"><summary>Do I need a cloud workspace?</summary><p>No. Your agent processes and code stay on your Mac. Use your existing agent vendor accounts. The public download requires Google sign-in. Pro adds a billing subscription for the hosted relay. You can also run your own relay.</p></details>
       <details class="reveal"><summary>Which agents does it run?</summary><p>Claude Code and Codex, each as it would run in your terminal, on the subscription you already have. OpenCode, Grok, Hermes, Kimi, GitHub Copilot and a local Ollama model run as experimental engines.</p></details>
-      <details class="reveal"><summary>Does it cost per token?</summary><p>No. The beta is free and ctrl+all meters nothing: your Claude and Codex plans do the work.</p></details>
-      <details class="reveal"><summary>What does the relay see?</summary><p>Only that your Mac is online and how big each message is: frames are sealed on your devices with X25519, Ed25519 and ChaCha20-Poly1305, so the relay cannot open them. It also serves the phone web client, so you trust its operator for that code; beyond that the app only checks GitHub for updates, and crash reports are off.</p></details>
+      <details class="reveal"><summary>Does it cost per token?</summary><p>ctrl+all adds no token charges. Your agent vendor bills your account under its own plan. The Mac app and a self-hosted relay are free. Pro includes the hosted relay: 30 days free, then $5/month or $48/year. A card is required.</p></details>
+      <details class="reveal"><summary>What does the relay see?</summary><p>The relay sees connection metadata and frame sizes. Your devices seal message frames with X25519, Ed25519 and ChaCha20-Poly1305, so the relay cannot read their contents. The relay also serves the phone client, so you trust its operator for that code.</p><p>The Mac app checks GitHub for updates and sends usage counts to ctrlall.app by default. Crash reports are off by default. Turn usage counts off in Settings → Reports. Read <a href="/analytics">every usage event and its allowed properties</a>.</p></details>
       <details class="reveal" id="faq-relay"><summary>Can I run my own relay?</summary><p>Yes. The <code>ctrlall</code> CLI ships inside the app, and <code>ctrlall relay show</code> prints the relay in use. For a phone on your Wi-Fi or tailnet, the relay install script runs a relay on the Mac. For a phone anywhere, put Tailscale Funnel in front of it or run <code>ctrlall relay tunnel</code>. Either way the relay only forwards sealed frames it cannot read.</p></details>
       <details class="reveal"><summary>Will macOS warn me when I open it?</summary><p>No. Since version 1.0.0 the app is signed with an Apple Developer ID and notarized by Apple. If macOS does warn you, or says the app is damaged, do not override it: the file is not the one we published. Delete it and write to support@ctrlall.app.</p></details>
   </div>
@@ -857,7 +902,7 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
     <h2 class="h2" id="cta-h"><span class="w" style="--i:0">Stop</span> <span class="w" style="--i:1">running</span> <span class="w" style="--i:2">agents</span> <span class="w" style="--i:3">alone.</span></h2>
     <ul class="channels" aria-label="Works with">
       <li style="--i:0"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,40H48A24,24,0,0,0,24,64V176a24,24,0,0,0,24,24h72v16H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V200h72a24,24,0,0,0,24-24V64A24,24,0,0,0,208,40ZM48,56H208a8,8,0,0,1,8,8v80H40V64A8,8,0,0,1,48,56ZM208,184H48a8,8,0,0,1-8-8V160H216v16A8,8,0,0,1,208,184Z"/></svg>Mac</li>
-      <li style="--i:1"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"/></svg>iPhone</li>
+      <li style="--i:1"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"/></svg>Android &amp; iPhone</li>
       <li style="--i:2"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,128a8,8,0,0,1-3,6.25l-40,32a8,8,0,1,1-10-12.5L107.19,128,75,102.25a8,8,0,1,1,10-12.5l40,32A8,8,0,0,1,128,128Zm48,24H136a8,8,0,0,0,0,16h40a8,8,0,0,0,0-16Zm56-96V200a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56ZM216,200V56H40V200H216Z"/></svg>CLI</li>
       <li style="--i:3"><img src="assets/logos/claude.png" alt="" loading="lazy">Claude Code</li>
       <li style="--i:4"><img src="assets/logos/codex.png" alt="" loading="lazy">Codex</li>
@@ -890,7 +935,7 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
     <h2 id="wl-h">Download ctrl+all for Mac.</h2>
     <p class="sub">Sign in with Google and the download starts. We use your email for your download link and ctrl+all release news. Nothing else.</p>
     <div class="gate-btn" id="gate-btn"></div>
-    <p class="note" aria-live="polite" data-gate-note>Free beta. macOS 14.5 or later, Apple silicon and Intel.</p>
+    <p class="note" aria-live="polite" data-gate-note>Free Mac app. macOS 14.5 or later, Apple silicon and Intel.</p>
     <p class="gate-fallback">Sign-in not loading? <a href="https://github.com/namangoyal3/ctrlall-releases/releases/latest" rel="noopener">Get it from GitHub releases</a>.</p>
   </div>
 </dialog>

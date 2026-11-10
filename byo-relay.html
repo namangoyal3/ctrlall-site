@@ -8,7 +8,8 @@
 <meta property="og:title" content="Run your own relay · ctrl+all">
 <meta property="og:description" content="The free path for a phone anywhere: run the ctrl+all relay yourself. What a relay is, what it sees, and where the setup guide lives.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://namangoyal3.github.io/ctrlall-site/assets/og.png">
+<meta property="og:image" content="https://ctrlall.app/assets/og.png">
+<meta property="og:url" content="https://ctrlall.app/byo-relay">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0b0c0e">
 <meta name="color-scheme" content="dark">
@@ -64,6 +65,9 @@ a:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
 .doc .body p b{color:var(--ink);font-weight:600}
 .doc code{font:500 .92em var(--mono);color:var(--ink);background:var(--bg-3);padding:2px 6px;border-radius:5px;white-space:nowrap}
 .doc .body{margin-top:10px;padding-top:10px;border-top:1px solid var(--line-2)}
+.doc h2{margin:32px 0 12px;font-size:22px}
+.doc pre{margin:14px 0;padding:16px;overflow-x:auto;border:1px solid var(--line-2);border-radius:12px;background:var(--bg-2)}
+.doc pre code{padding:0;background:none;white-space:pre}
 .doc .btn{margin-top:32px}
 .fine{margin-top:28px;font-size:14px;line-height:1.5;color:var(--ink-3)}
 .fine a,.doc .body a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--brand);text-decoration-thickness:1px;text-underline-offset:3px;transition:color .2s}
@@ -106,9 +110,24 @@ footer a:hover{color:var(--ink)}
     <div class="body">
       <p>A relay is the <code>ctrlall-relay</code> process a phone connects through. Your Mac keeps one end-to-end-encrypted connection open to it, and a paired phone uses it to reach the Mac. The relay sees that your Mac is online and the size of each message. It cannot read a message, because frames are sealed on your devices.</p>
       <p>A relay you run is yours: your machine or your account, your logs, no bill from us. Everything else is the same on either relay. The engine, the apps, every agent and every update stay free, and <code>ctrlall relay show</code> prints the relay in use.</p>
-      <p>The setup guide lives in the repository. It says where a relay can run, which command fits where your phone is, and how to point the app at it.</p>
+      <h2>Connect a relay you already run</h2>
+      <p>The CLI ships inside the Mac app. Open Terminal and set a short name for this session:</p>
+      <pre><code>alias ctrlall='/Applications/ctrl+all.app/Contents/MacOS/ctrlall'
+ctrlall relay show</code></pre>
+      <p>Use the public WebSocket address of your relay. Replace the example address below with your own address.</p>
+      <p><strong>Finish active agent work first.</strong> A relay change can restart the engine and interrupt a live session.</p>
+      <pre><code>ctrlall relay set wss://relay.example.com
+ctrlall relay show</code></pre>
+      <h2>Pair your phone</h2>
+      <p>Keep your Mac awake. Open the app's pairing screen, or run:</p>
+      <pre><code>ctrlall pair</code></pre>
+      <p>Scan the QR code with Android or iPhone. Approve the device on your Mac. Each teammate pairs a separate device.</p>
+      <h2>Check the connection</h2>
+      <p>A successful Mac health check proves only that the Mac can reach the relay. Your phone must reach it too.</p>
+      <p>A localhost address works only on the Mac. A LAN address needs the same network. A Tailscale address needs the same tailnet.</p>
+      <p>For access from another network, use a reachable public relay address. Keep the relay's phone client compatible with your Mac app.</p>
+      <p>For a new relay deployment or help with a tunnel, contact <a href="mailto:support@ctrlall.app">support@ctrlall.app</a>.</p>
     </div>
-    <a class="btn" href="https://github.com/namangoyal3/ctrlall/blob/main/docs/RELAY_SETUP.md">Read the setup guide</a>
     <p class="fine">Stuck? Write to <a href="mailto:support@ctrlall.app">support@ctrlall.app</a>.</p>
   </div>
 </section>
