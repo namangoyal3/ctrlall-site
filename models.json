@@ -1,0 +1,26 @@
+{
+  "v": 1,
+  "updated": "2026-11-12",
+  "note": "The model picker in ctrl+all reads this file (core/src/model_manifest.rs). An engine listed here replaces that engine's built-in list; an engine left out keeps it. Rows need id and name; blurb is optional. local is never listed: Ollama reports its own models.",
+  "engines": {
+    "claude": [
+      { "id": "claude-fable-5-2", "name": "Claude Fable 5.2", "blurb": "Most capable; the hardest reasoning, reviews and long multi-file work" },
+      { "id": "claude-opus-5-5", "name": "Claude Opus 5.5", "blurb": "Deep reasoning; long, multi-file tasks and reviews" },
+      { "id": "claude-opus-5-5[1m]", "name": "Claude Opus 5.5 · 1M context", "blurb": "Opus 5.5 with the 1M-token window; whole-repo reads" },
+      { "id": "claude-sonnet-5-5", "name": "Claude Sonnet 5.5", "blurb": "The everyday coding model; fast with strong judgement" },
+      { "id": "claude-haiku-5-5", "name": "Claude Haiku 5.5", "blurb": "Cheapest and quickest; small edits, questions, glue" },
+      { "id": "claude-fable-5-1", "name": "Claude Fable 5.1", "blurb": "The previous Fable; still strong on hard work" }
+    ],
+    "codex": [
+      { "id": "gpt-5-codex", "name": "GPT-5 Codex", "blurb": "OpenAI's agentic coding tune; the Codex default" },
+      { "id": "gpt-5", "name": "GPT-5", "blurb": "General frontier model; broad knowledge, slower on code" },
+      { "id": "o3", "name": "o3", "blurb": "Reasoning-first; plans and hard debugging" }
+    ],
+    "gemini": [
+      { "id": "gemini-3.1-pro-preview", "name": "Gemini 3.1 Pro (preview)", "blurb": "Google's strongest reasoning model" },
+      { "id": "gemini-3-flash-preview", "name": "Gemini 3 Flash (preview)", "blurb": "Fast; fine for routine edits" },
+      { "id": "gemini-2.5-pro", "name": "Gemini 2.5 Pro", "blurb": "Previous generation; stable" },
+      { "id": "gemini-2.5-flash", "name": "Gemini 2.5 Flash", "blurb": "Previous generation; fast and cheap" }
+    ]
+  }
+}

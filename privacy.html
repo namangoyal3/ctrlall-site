@@ -175,7 +175,7 @@ td code{white-space:normal}
 
       <h2>Usage counts</h2>
       <p>The app sends short usage events to ctrlall.app, for example one a day to show it is in use, and one when a chat starts. Each event has a random install id, the app version and a value from a fixed list. <a href="/analytics">The full list is public</a>. Events never contain prompts, replies, files, paths, names, email addresses or keys.</p>
-      <p>The events go to Cloudflare Workers Analytics Engine and expire after 90 days. We do not store your IP address with them. Some events may also be copied to Google Analytics. A copy carries the install id and no other identifier.</p>
+      <p>The events go to Cloudflare Workers Analytics Engine, which keeps them for three months and then drops them. We do not store your IP address with them. Some events may also be copied to Google Analytics. A copy carries the install id and no other identifier.</p>
       <p>Usage counts are on by default. Turn them off in Settings, Reports, &quot;Send usage counts&quot;, or set <code>CTRLALL_DISABLE_ANALYTICS=1</code>. Turning them off deletes the install id.</p>
 
       <h2>Crash reports and feedback</h2>
@@ -185,6 +185,7 @@ td code{white-space:normal}
 
       <h2>Updates</h2>
       <p>The app checks for a new version by downloading a small file from GitHub (<code>namangoyal3/ctrlall-releases</code>). The check sends no install id. GitHub sees your IP address, as it does for any download. The app installs an update only when its signature matches the ctrl+all release key.</p>
+      <p>The app also downloads the list of models each engine offers from this site (<code>ctrlall.app/models.json</code>), at most four times a day. The request carries no identifier. The list is kept on your Mac, so the app shows the last one it saw when it is offline.</p>
 
       <h2>This website</h2>
       <p><b>Google Analytics.</b> Every page of ctrlall.app loads Google Analytics. Google uses cookies to count visits and to see the pages you open, your browser and device, and your approximate location. A tracker blocker stops it, and the site still works.</p>
@@ -199,7 +200,7 @@ td code{white-space:normal}
       <h2>Deleting your data</h2>
       <ul>
         <li><b>On your Mac:</b> run <code>ctrlall uninstall --purge</code>. It deletes the app and <code>~/.ctrlall</code>.</li>
-        <li><b>Usage counts:</b> turn them off. The rows we already have cannot be traced back to you and expire after 90 days.</li>
+        <li><b>Usage counts:</b> turn them off. That stops new events and deletes the install id on your Mac. The rows already sent keep their install id and drop out after Cloudflare&apos;s three-month retention.</li>
         <li><b>Download sign-in, release news and licences:</b> write to <a href="mailto:support@ctrlall.app">support@ctrlall.app</a> from the address in question. We delete the record and remove you from the list.</li>
         <li><b>AI providers:</b> ask the provider whose account you set up. We never had that data.</li>
       </ul>
