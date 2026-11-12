@@ -1,6 +1,6 @@
 # ctrl+all - full content
 > Control Claude Code and Codex on your Mac from Android or iPhone. Share chats, approve requests, run project terminals, and schedule tasks. Free Mac app.
-Generated: 2026-11-10
+Generated: 2026-11-12
 
 ---
 <!-- source: https://ctrlall.app/ -->
@@ -9,17 +9,17 @@ Generated: 2026-11-10
 > Control Claude Code and Codex on your Mac from Android or iPhone. Share chats, approve requests, run project terminals, and schedule tasks. Free Mac app.
 
 Canonical: https://ctrlall.app/
-Last updated: 2026-11-10
+Last updated: 2026-11-12
 
 ## Run coding agents as a team.
 
-Control Claude Code and Codex on your Mac from Android or iPhone. Share chats with your team. Keep your Mac awake while agents work.
+Run Claude Code and Codex on your Mac. Continue from Android or iPhone with your team.
 
 [Download for Mac](https://github.com/namangoyal3/ctrlall-releases/releases/latest) [Try it live](https://ctrlall.app/#try)
 
 Your team shares one Claude Code and Codex session on one Mac: anyone with the role taps Allow from a phone, and goals keep building after everyone logs off.
 
-Runs the agents you already pay for.
+Claude Code and Codex. Other engines are experimental.
 
 - Claude Code
 - Codex
@@ -38,43 +38,43 @@ Today an agent lives in one person's terminal. ctrl+all gives it a room.
 2. **Redirect** Steer it mid-run from any phone. A permission card takes one Allow, from whoever has the role.
 3. **Hand off** Invite teammates as owner, operator or viewer. Goals keep building overnight.
 
-## Set up once. Every agent gets it.
-
-### A CLI for scripts
-
-The same control room in your shell.
-
-### MCP, once
-
-Add a server one time. Every engine gets it.
-
-### Skills marketplace
-
-Curated or by git URL. One place to install and remove.
-
-### Project memory
-
-Notes every agent reads before every turn.
-
-### Rewind
-
-Undo a turn. Files and transcript go back.
-
-### Apple Watch shortcuts
-
-**Preview · Manual setup.** Dictate a task, read its reply, and answer supported Claude permissions. Requires a paired iPhone, an awake Mac, and a private connector with HTTPS access.
-
-### Project terminals
-
-Open managed shells in your project folder. View output and send commands from your paired phone.
-
-### Scheduled routines
-
-Run a saved task on a schedule. Each routine opens a new chat and keeps its results.
+## From a project chat to your phone.
 
 ### Android and iPhone
 
-Scan a QR code to connect your phone browser. Review chats and answer supported approval requests away from your Mac.
+Scan the QR code. Continue from your phone browser.
+
+### Projects and chats
+
+Choose a project folder. Keep its chats together.
+
+### Your choice of agent
+
+Use Claude Code or Codex with your existing subscription.
+
+### Local conversation history
+
+Choose whether to read existing Claude Code and Codex chats on your Mac.
+
+### Project terminals
+
+Open a project shell. View it and send commands from your phone.
+
+### Goals and routines
+
+Set a goal or schedule a routine. Review the results.
+
+### Device access choices
+
+Choose View only, Operate, or Full control for each paired phone.
+
+### Desktop updates
+
+See available updates in Settings. Restart when your work can pause.
+
+### Your existing tools
+
+Use installed skills and connected MCP servers with supported assistants.
 
 ## Zero tokens metered.
 
@@ -121,11 +121,17 @@ The engine, the desktop and web apps, every agent, local pairing, a relay you ru
 
 [Download for Mac](https://ctrlall.app/#download)
 
-**Pro** 30 days free, then $5 a month or $48 a year. Card required.
+**Pro** 30 days free, then $12 a month or $120 a year. Card required.
 
 The hosted relay, push notifications, and pairing with no setup.
 
-[Start yearly · $48/year](https://ctrlall.app/buy/yearly) [Start monthly · $5/month](https://ctrlall.app/buy/monthly)
+[Start yearly · $120/year](https://ctrlall.app/buy/yearly) [Start monthly · $12/month](https://ctrlall.app/buy/monthly)
+
+**Team** $30 per seat a month. Coming soon.
+
+Device collaboration works today. Paid Team subscriptions are coming soon.
+
+[Join the waitlist](https://ctrlall.app/#waitlist)
 
 Prefer to run your own relay? It's free and [documented](https://ctrlall.app/byo-relay).
 
@@ -139,6 +145,10 @@ ctrl+all is a Mac app that runs coding agents on your Mac. A paired phone browse
 
 Yes. Scan the pairing QR code on your Mac and open the link in your Android or iPhone browser. You do not need a native phone app.
 
+### How do Apple Watch shortcuts work?
+
+Watch shortcuts are a preview with manual setup. Use a paired iPhone, an awake Mac, and a private connector with HTTPS access. You can dictate a task, read its reply, and answer supported Claude permissions.
+
 ### How do I start a project chat?
 
 Open New chat. Choose your project folder and an available assistant, such as Claude Code or Codex. Sign in to the assistant if required. Send your task, then pair your phone to continue remotely.
@@ -149,7 +159,7 @@ ctrl+all manages its own project shells. You can return to those shells from the
 
 ### Can I view my existing Claude Code or Codex history?
 
-The next desktop update adds an optional local history viewer. You choose whether ctrl+all reads those files. The viewer does not resume old chats or send history to a phone or agent. The public v1.0.3 download does not include this viewer.
+Yes. Open History and choose whether ctrl+all can read those local files. The viewer does not resume old chats or send history to a phone or agent.
 
 ### Is this just ssh and tmux to my Mac?
 
@@ -167,15 +177,25 @@ No. Your agent processes and code stay on your Mac. Use your existing agent vend
 
 Claude Code and Codex, each as it would run in your terminal, on the subscription you already have. OpenCode, Grok, Hermes, Kimi, GitHub Copilot and a local Ollama model run as experimental engines.
 
+### Can I reuse my local skills and tools?
+
+Yes. ctrl+all can find installed skills and connect MCP servers. Support depends on the assistant. Use the CLI for scripted tasks. Project instructions stay with the project.
+
+### Can I install skills from a marketplace?
+
+**The skills marketplace is coming soon.** You can use your installed local skills now.
+
 ### Does it cost per token?
 
-ctrl+all adds no token charges. Your agent vendor bills your account under its own plan. The Mac app and a self-hosted relay are free. Pro includes the hosted relay: 30 days free, then $5/month or $48/year. A card is required.
+ctrl+all adds no token charges. Your agent vendor bills your account under its own plan. The Mac app and a self-hosted relay are free. Pro includes the hosted relay: 30 days free, then $12/month or $120/year. A card is required.
 
 ### What does the relay see?
 
 The relay sees connection metadata and frame sizes. Your devices seal message frames with X25519, Ed25519 and ChaCha20-Poly1305, so the relay cannot read their contents. The relay also serves the phone client, so you trust its operator for that code.
 
-The Mac app checks GitHub for updates and sends usage counts to ctrlall.app by default. Crash reports are off by default. Turn usage counts off in Settings → Reports. Read [every usage event and its allowed properties](https://ctrlall.app/analytics).
+The Mac app checks GitHub for updates and sends usage counts to ctrlall.app by default. Turn usage counts off in Settings → Reports. Read [every usage event and its allowed properties](https://ctrlall.app/analytics).
+
+Crash reports send filtered app diagnostics when the build supports reporting. Review or disable them in Settings. Usage counts have a separate control.
 
 ### Can I run my own relay?
 
@@ -285,6 +305,7 @@ Rows live in Cloudflare Workers Analytics Engine. Rows expire after 90 days. ctr
 | `sub_renewed` | ctrlall.app | `plan`: monthly, yearly, founders | A subscription renewed. | Yes |
 | `sub_stopped` | ctrlall.app | `reason`: cancelled, expired, failed, dispute, refund | A subscription stopped, by reason. | No |
 | `webhook_rejected` | ctrlall.app | `reason`: signature, stale, body, unknown\_event | A Dodo webhook was refused. | No |
+| `ga4_delivery` | ctrlall.app | `outcome`: accepted, http\_rejected, server\_error, transport\_error | The GA4 endpoint accepted or refused a collection request. Acceptance does not confirm processing. | No |
 | `event_unknown` | ctrlall.app | none | A row from /api/e that is not in this list. Its name is not stored. | No |
 
 GA4 is Google Analytics. A mirror runs only when the site owner has set it up. It carries the event name and its properties. The client id encodes the random install id as two decimal integers. Site events use 0.0 and do not identify a visitor.

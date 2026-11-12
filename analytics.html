@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXNFMTE7CQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JXNFMTE7CQ');
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>What ctrl+all counts</title>
@@ -151,6 +159,7 @@ td code{white-space:normal}
 <tr><td><code>sub_renewed</code></td><td>ctrlall.app</td><td><code>plan</code>: monthly, yearly, founders</td><td>A subscription renewed.</td><td>Yes</td></tr>
 <tr><td><code>sub_stopped</code></td><td>ctrlall.app</td><td><code>reason</code>: cancelled, expired, failed, dispute, refund</td><td>A subscription stopped, by reason.</td><td>No</td></tr>
 <tr><td><code>webhook_rejected</code></td><td>ctrlall.app</td><td><code>reason</code>: signature, stale, body, unknown_event</td><td>A Dodo webhook was refused.</td><td>No</td></tr>
+<tr><td><code>ga4_delivery</code></td><td>ctrlall.app</td><td><code>outcome</code>: accepted, http_rejected, server_error, transport_error</td><td>The GA4 endpoint accepted or refused a collection request. Acceptance does not confirm processing.</td><td>No</td></tr>
 <tr><td><code>event_unknown</code></td><td>ctrlall.app</td><td>none</td><td>A row from /api/e that is not in this list. Its name is not stored.</td><td>No</td></tr>
 </tbody>
 </table></div>
@@ -164,7 +173,7 @@ td code{white-space:normal}
 <footer>
   <div class="wrap">
     <a class="brand" href="/"><span class="mark" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><path d="M16 40 32 24l16 16" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>ctrl+all</a>
-    <span>Made for people who run agents. &copy; 2026 ctrl+all. Help: <a href="mailto:support@ctrlall.app">support@ctrlall.app</a></span>
+    <span>Made for people who run agents. &copy; 2026 ctrl+all. <a href="/privacy">Privacy</a>. Help: <a href="mailto:support@ctrlall.app">support@ctrlall.app</a></span>
     <span class="tm">Claude, Codex, Gemini, Copilot, Grok, Cursor and the other names and logos on this site are trademarks of their owners. ctrl+all is not affiliated with or endorsed by them.</span>
   </div>
 </footer>
