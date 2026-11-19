@@ -3,11 +3,11 @@
 > Humans and coding agents in one shared flow. Control Claude Code and Codex from your phone, with Apple Watch shortcuts in preview. Free Mac app.
 
 Canonical: https://ctrlall.app/
-Last updated: 2026-11-19
+Last updated: 2026-11-20
 
 ## Run coding agents as a team.
 
-Run Claude Code and Codex on your Mac. Continue from Android or iPhone with your team.
+Run Claude Code or Codex on your Mac. Your teammates pair their own phones, take a role, and watch, steer and approve the same session, from anywhere. No calls, no screen shares, no prompt handoffs.
 
 [Download for Mac](https://github.com/namangoyal3/ctrlall-releases/releases/latest) [Try it live](https://ctrlall.app/#try)
 
@@ -26,7 +26,7 @@ Claude Code and Codex. Other engines are experimental.
 
 ## Watch. Redirect. Hand off.
 
-Today an agent lives in one person's terminal. ctrl+all gives it a room.
+Today an agent lives in one person's terminal. Every handoff means a call, a screen share, and a retelling of every prompt. ctrl+all gives the session a room.
 
 1. **Watch** One session. Every paired phone sees the same turn, live.
 2. **Redirect** Steer it mid-run from any phone. A permission card takes one Allow, from whoever has the role.
@@ -142,6 +142,10 @@ Prefer to run your own relay? It's free and [documented](https://ctrlall.app/byo
 ### What is ctrl+all?
 
 ctrl+all is a Mac app that runs coding agents on your Mac. A paired phone browser lets you view chats, send tasks, and answer supported approval requests. Your Mac must stay awake and connected.
+
+### Why does ctrl+all exist?
+
+It started in remote hackathons: every time a teammate wanted to help with a coding agent, helping meant a call and a screen share just to hand over prompts and guidance. ctrl+all keeps the work in one shared session, so the team builds together instead of re-explaining.
 
 ### Can I use Android or iPhone?
 
