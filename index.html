@@ -11,11 +11,11 @@
 </script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ctrl+all — Claude Code and Codex from your phone</title>
-<meta name="description" content="Control Claude Code and Codex on your Mac from Android or iPhone. Share chats, approve requests, run project terminals, and schedule tasks. Free Mac app.">
+<title>ctrl+all | Multiplayer AI coding agents from your phone</title>
+<meta name="description" content="Humans and coding agents in one shared flow. Control Claude Code and Codex from your phone, with Apple Watch shortcuts in preview. Free Mac app.">
 <meta property="og:site_name" content="ctrl+all">
-<meta property="og:title" content="ctrl+all — Claude Code and Codex from your phone">
-<meta property="og:description" content="Control coding agents on your Mac from Android or iPhone. Share chats with your team, approve requests, and run project terminals.">
+<meta property="og:title" content="ctrl+all | Multiplayer AI coding agents from your phone">
+<meta property="og:description" content="Humans and coding agents in one shared flow. Control Claude Code and Codex from your phone, with Apple Watch shortcuts in preview.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ctrlall.app/">
 <meta property="og:image" content="https://ctrlall.app/assets/og.png">
@@ -36,7 +36,7 @@
       "url": "https://ctrlall.app/",
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "macOS 14.5 or later",
-      "description": "Control Claude Code and Codex on your Mac from Android or iPhone. Share chats, approve requests, run project terminals, and schedule tasks.",
+      "description": "Humans and coding agents in one shared flow. Control Claude Code and Codex from your phone, with Apple Watch shortcuts in preview.",
       "downloadUrl": "https://ctrlall.app/download",
       "publisher": {"@id": "https://ctrlall.app/#organization"},
       "offers": {"@type": "Offer", "name": "Free Mac app and self-hosted relay", "price": "0", "priceCurrency": "USD", "url": "https://ctrlall.app/#pricing"}
@@ -315,6 +315,12 @@ h1,h2,h3,p,ul,ol{margin:0} ul,ol{padding:0;list-style:none}
 .pr-alt{flex-basis:100%;margin-top:12px;font-size:16px;line-height:1.5;color:var(--ink-2);max-width:30em;text-wrap:pretty}
 .pr-what{margin:18px 0 28px;font-size:16px;line-height:1.5;color:var(--ink-2);max-width:30em;text-wrap:pretty}
 .pr-pro .pr-what{color:var(--ink)}
+.pr-card .pr-what{margin-bottom:14px}
+.pr-list{margin:0 0 28px;padding:0;list-style:none;display:grid;gap:10px;font-size:15px;line-height:1.45;color:var(--ink-2);max-width:32em}
+.pr-list li{position:relative;padding-left:20px;text-wrap:pretty}
+.pr-list li::before{content:"";position:absolute;left:2px;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--line)}
+.pr-pro .pr-list li::before{background:var(--brand)}
+.pr-fine{margin:14px 0 0;font-size:13px;line-height:1.45;color:var(--ink-3)}
 .pr-card > .btn,.pr-ctas{margin-top:auto}
 .pr-card > .btn{align-self:flex-start}
 .pr-ctas{display:flex;flex-wrap:wrap;gap:10px}
@@ -517,7 +523,7 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
 
 <section class="stmt" aria-label="What ctrl+all does">
   <div class="wrap">
-    <p data-words>Your team shares one <span class="chip"><img src="assets/logos/claude.svg" alt="">Claude Code</span> and <span class="chip"><img src="assets/logos/codex.png" alt="">Codex</span> session on <span class="chip"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,40H48A24,24,0,0,0,24,64V176a24,24,0,0,0,24,24h72v16H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V200h72a24,24,0,0,0,24-24V64A24,24,0,0,0,208,40ZM48,56H208a8,8,0,0,1,8,8v80H40V64A8,8,0,0,1,48,56ZM208,184H48a8,8,0,0,1-8-8V160H216v16A8,8,0,0,1,208,184Z"/></svg>one Mac</span>: anyone with the role taps <span class="chip ok">Allow</span> from a <span class="chip"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"/></svg>phone</span>, and goals keep building after everyone logs off.</p>
+    <p data-words>Your team shares one <span class="chip"><img src="assets/logos/claude.svg" width="22" height="22" alt="">Claude Code</span> and <span class="chip"><img src="assets/logos/codex.png" width="22" height="22" alt="">Codex</span> session on <span class="chip"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,40H48A24,24,0,0,0,24,64V176a24,24,0,0,0,24,24h72v16H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V200h72a24,24,0,0,0,24-24V64A24,24,0,0,0,208,40ZM48,56H208a8,8,0,0,1,8,8v80H40V64A8,8,0,0,1,48,56ZM208,184H48a8,8,0,0,1-8-8V160H216v16A8,8,0,0,1,208,184Z"/></svg>one Mac</span>: anyone with the role taps <span class="chip ok">Allow</span> from a <span class="chip"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"/></svg>phone</span>, and goals keep building after everyone logs off.</p>
   </div>
 </section>
 
@@ -668,7 +674,7 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
               <button type="button" class="start" id="goal-start">Start</button>
             </div>
             <div class="goal-run hide" id="goal-run">
-              <h4>Add CSV export to the reports page</h4>
+              <h3>Add CSV export to the reports page</h3>
               <p class="sub"><span id="goal-engine">Claude Code</span> · goal/add-csv-export · standard effort</p>
               <ul class="rail" id="goal-rail">
                 <li><i></i>Interview: PRD.md and PLAN.md written<small></small></li>
@@ -859,16 +865,27 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
     <div class="pr-grid">
       <article class="pr-card pr-free reveal" style="--i:1" aria-labelledby="pr-free-h">
         <p class="pr-top"><b class="pr-name" id="pr-free-h">Free</b> <span class="pr-price"><span class="pr-amount">$0</span></span></p>
-        <p class="pr-what">The engine, the desktop and web apps, every agent, local pairing, a relay you run yourself, and every update.</p>
+        <p class="pr-what">Everything on your Mac, with a relay you run yourself.</p>
+        <ul class="pr-list">
+          <li>The Mac app, every agent, and every update</li>
+          <li>Pairing on your own Wi-Fi or tailnet</li>
+          <li>A relay you host and keep running</li>
+        </ul>
         <a class="btn btn-2" href="#download">Download for Mac</a>
       </article>
       <article class="pr-card pr-pro reveal" style="--i:2" aria-labelledby="pr-pro-h">
-        <p class="pr-top"><b class="pr-name" id="pr-pro-h">Pro</b> <span class="pr-price"><span class="pr-amount">30 days free,</span></span> <span class="pr-alt">then $12 a month or $120 a year. Card required.</span></p>
-        <p class="pr-what">The hosted relay, push notifications, and pairing with no setup.</p>
+        <p class="pr-top"><b class="pr-name" id="pr-pro-h">Pro</b> <span class="pr-price"><span class="pr-amount">$12</span><span class="pr-per">a month</span></span> <span class="pr-alt">Or $120 a year, which saves $24. The first 30 days are free. Card required.</span></p>
+        <p class="pr-what">Everything in Free, plus the relay we run for you.</p>
+        <ul class="pr-list">
+          <li>Pair any phone in one scan. No relay to host, no ports to open.</li>
+          <li>A push reaches your phone when an agent needs your answer.</li>
+          <li>We run and update the relay. It carries sealed messages that it cannot read.</li>
+        </ul>
         <div class="pr-ctas">
-          <a class="btn" href="https://ctrlall.app/buy/yearly">Start yearly · $120/year</a>
+          <a class="btn" href="https://ctrlall.app/buy/yearly">Start 30 days free · $120/year</a>
           <a class="btn btn-2" href="https://ctrlall.app/buy/monthly">Start monthly · $12/month</a>
         </div>
+        <p class="pr-fine">US list prices. Regional prices, taxes, and currency fees appear at checkout.</p>
       </article>
       <article class="pr-card pr-team reveal" style="--i:3;grid-column:1 / -1" aria-labelledby="pr-team-h">
         <p class="pr-top"><b class="pr-name" id="pr-team-h">Team</b> <span class="pr-price"><span class="pr-amount">$30</span></span> <span class="pr-alt">per seat a month. Coming soon.</span></p>
@@ -895,7 +912,7 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
       <details class="reveal"><summary>Which agents does it run?</summary><p>Claude Code and Codex, each as it would run in your terminal, on the subscription you already have. OpenCode, Grok, Hermes, Kimi, GitHub Copilot and a local Ollama model run as experimental engines.</p></details>
       <details class="reveal"><summary>Can I reuse my local skills and tools?</summary><p>Yes. ctrl+all can find installed skills and connect MCP servers. Support depends on the assistant. Use the CLI for scripted tasks. Project instructions stay with the project.</p></details>
       <details class="reveal" id="faq-marketplace"><summary>Can I install skills from a marketplace?</summary><p><strong>The skills marketplace is coming soon.</strong> You can use your installed local skills now.</p></details>
-      <details class="reveal"><summary>Does it cost per token?</summary><p>ctrl+all adds no token charges. Your agent vendor bills your account under its own plan. The Mac app and a self-hosted relay are free. Pro includes the hosted relay: 30 days free, then $12/month or $120/year. A card is required.</p></details>
+      <details class="reveal"><summary>Does it cost per token?</summary><p>Your agent vendor bills your account; ctrl+all adds no token charges. The Mac app and a self-hosted relay are free. Pro includes the hosted relay and a 30-day trial. US list prices are $12/month or $120/year. Regional prices, taxes, and currency fees appear at checkout. Enter a card to start the trial.</p></details>
       <details class="reveal"><summary>What does the relay see?</summary><p>The relay sees connection metadata and frame sizes. Your devices seal message frames with X25519, Ed25519 and ChaCha20-Poly1305, so the relay cannot read their contents. The relay also serves the phone client, so you trust its operator for that code.</p><p>The Mac app checks GitHub for updates and sends usage counts to ctrlall.app by default. Turn usage counts off in Settings → Reports. Read <a href="/analytics">every usage event and its allowed properties</a>.</p><p>Crash reports send filtered app diagnostics when the build supports reporting. Review or disable them in Settings. Usage counts have a separate control.</p></details>
       <details class="reveal" id="faq-relay"><summary>Can I run my own relay?</summary><p>Yes. The <code>ctrlall</code> CLI ships inside the app, and <code>ctrlall relay show</code> prints the relay in use. For a phone on your Wi-Fi or tailnet, the relay install script runs a relay on the Mac. For a phone anywhere, put Tailscale Funnel in front of it or run <code>ctrlall relay tunnel</code>. Either way the relay only forwards sealed frames it cannot read.</p></details>
       <details class="reveal"><summary>Will macOS warn me when I open it?</summary><p>No. Since version 1.0.0 the app is signed with an Apple Developer ID and notarized by Apple. If macOS does warn you, or says the app is damaged, do not override it: the file is not the one we published. Delete it and write to support@ctrlall.app.</p></details>
@@ -910,11 +927,11 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
       <li style="--i:0"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,40H48A24,24,0,0,0,24,64V176a24,24,0,0,0,24,24h72v16H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V200h72a24,24,0,0,0,24-24V64A24,24,0,0,0,208,40ZM48,56H208a8,8,0,0,1,8,8v80H40V64A8,8,0,0,1,48,56ZM208,184H48a8,8,0,0,1-8-8V160H216v16A8,8,0,0,1,208,184Z"/></svg>Mac</li>
       <li style="--i:1"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"/></svg>Android &amp; iPhone</li>
       <li style="--i:2"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,128a8,8,0,0,1-3,6.25l-40,32a8,8,0,1,1-10-12.5L107.19,128,75,102.25a8,8,0,1,1,10-12.5l40,32A8,8,0,0,1,128,128Zm48,24H136a8,8,0,0,0,0,16h40a8,8,0,0,0,0-16Zm56-96V200a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56ZM216,200V56H40V200H216Z"/></svg>CLI</li>
-      <li style="--i:3"><img src="assets/logos/claude.svg" alt="" loading="lazy">Claude Code</li>
-      <li style="--i:4"><img src="assets/logos/codex.png" alt="" loading="lazy">Codex</li>
-      <li style="--i:5"><img src="assets/logos/opencode.svg" alt="" loading="lazy">OpenCode</li>
-      <li style="--i:6"><img src="assets/logos/copilot.svg" alt="" loading="lazy">Copilot</li>
-      <li style="--i:7"><img src="assets/logos/ollama.png" alt="" loading="lazy">Ollama</li>
+      <li style="--i:3"><img src="assets/logos/claude.svg" width="24" height="24" alt="" loading="lazy">Claude Code</li>
+      <li style="--i:4"><img src="assets/logos/codex.png" width="24" height="24" alt="" loading="lazy">Codex</li>
+      <li style="--i:5"><img src="assets/logos/opencode.svg" width="24" height="24" alt="" loading="lazy">OpenCode</li>
+      <li style="--i:6"><img src="assets/logos/copilot.svg" width="24" height="24" alt="" loading="lazy">Copilot</li>
+      <li style="--i:7"><img src="assets/logos/ollama.png" width="24" height="24" alt="" loading="lazy">Ollama</li>
       <li style="--i:8"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M237.66,18.34a8,8,0,0,0-11.32,0l-52.4,52.41-5.37-5.38a32.05,32.05,0,0,0-45.26,0L100,88.69l-6.34-6.35A8,8,0,0,0,82.34,93.66L88.69,100,65.37,123.31a32,32,0,0,0,0,45.26l5.38,5.37-52.41,52.4a8,8,0,0,0,11.32,11.32l52.4-52.41,5.37,5.38a32,32,0,0,0,45.26,0L156,167.31l6.34,6.35a8,8,0,0,0,11.32-11.32L167.31,156l23.32-23.31a32,32,0,0,0,0-45.26l-5.38-5.37,52.41-52.4A8,8,0,0,0,237.66,18.34Zm-116.29,161a16,16,0,0,1-22.62,0L76.69,157.25a16,16,0,0,1,0-22.62L100,111.31,144.69,156Zm57.94-57.94L156,144.69,111.31,100l23.32-23.31a16,16,0,0,1,22.62,0l22.06,22A16,16,0,0,1,179.31,121.37ZM88.57,35A8,8,0,0,1,103.43,29l8,20A8,8,0,0,1,96.57,55ZM24.57,93A8,8,0,0,1,35,88.57l20,8A8,8,0,0,1,49,111.43l-20-8A8,8,0,0,1,24.57,93ZM231.43,163a8,8,0,0,1-10.4,4.46l-20-8A8,8,0,1,1,207,144.57l20,8A8,8,0,0,1,231.43,163Zm-64,58.06A8,8,0,0,1,152.57,227l-8-20A8,8,0,0,1,159.43,201Z"/></svg>MCP</li>
       <li style="--i:9"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-38.34-85.66a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L116,164.69l42.34-42.35A8,8,0,0,1,169.66,122.34Z"/></svg>Routines</li>
     </ul>
@@ -1405,4 +1422,4 @@ footer .brand{font-size:15px;color:var(--ink)} footer .tm{flex-basis:100%;font-s
 })();
 </script>
 </body>
-  </html>
+</html>

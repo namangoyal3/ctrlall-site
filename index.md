@@ -1,9 +1,9 @@
 # ctrl+all
 
-> Control Claude Code and Codex on your Mac from Android or iPhone. Share chats, approve requests, run project terminals, and schedule tasks. Free Mac app.
+> Humans and coding agents in one shared flow. Control Claude Code and Codex from your phone, with Apple Watch shortcuts in preview. Free Mac app.
 
 Canonical: https://ctrlall.app/
-Last updated: 2026-11-12
+Last updated: 2026-11-19
 
 ## Run coding agents as a team.
 
@@ -111,15 +111,23 @@ Everything on the Mac is free. Pro is the relay we run for you.
 
 **Free** $0
 
-The engine, the desktop and web apps, every agent, local pairing, a relay you run yourself, and every update.
+Everything on your Mac, with a relay you run yourself.
+
+- The Mac app, every agent, and every update
+- Pairing on your own Wi-Fi or tailnet
+- A relay you host and keep running
 
 [Download for Mac](https://ctrlall.app/#download)
 
-**Pro** 30 days free, then $12 a month or $120 a year. Card required.
+**Pro** $12 a month Or $120 a year, which saves $24. The first 30 days are free. Card required.
 
-The hosted relay, push notifications, and pairing with no setup.
+Everything in Free, plus the relay we run for you.
 
-[Start yearly · $120/year](https://ctrlall.app/buy/yearly) [Start monthly · $12/month](https://ctrlall.app/buy/monthly)
+- Pair any phone in one scan. No relay to host, no ports to open.
+- A push reaches your phone when an agent needs your answer.
+- We run and update the relay. It carries sealed messages that it cannot read.
+
+[Start 30 days free · $120/year](https://ctrlall.app/buy/yearly) [Start monthly · $12/month](https://ctrlall.app/buy/monthly)
 
 **Team** $30 per seat a month. Coming soon.
 
@@ -181,7 +189,7 @@ Yes. ctrl+all can find installed skills and connect MCP servers. Support depends
 
 ### Does it cost per token?
 
-ctrl+all adds no token charges. Your agent vendor bills your account under its own plan. The Mac app and a self-hosted relay are free. Pro includes the hosted relay: 30 days free, then $12/month or $120/year. A card is required.
+Your agent vendor bills your account; ctrl+all adds no token charges. The Mac app and a self-hosted relay are free. Pro includes the hosted relay and a 30-day trial. US list prices are $12/month or $120/year. Regional prices, taxes, and currency fees appear at checkout. Enter a card to start the trial.
 
 ### What does the relay see?
 
